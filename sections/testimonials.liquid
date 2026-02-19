@@ -1,0 +1,262 @@
+{%- style -%}
+  .testimonials-section {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  .testimonials__heading {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2.4rem;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .testimonials__subheading {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    font-size: 1.5rem;
+    color: {{ section.settings.text_color }};
+    opacity: 0.75;
+  }
+
+  .testimonials__grid {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .testimonial-card {
+    background-color: {{ section.settings.card_background }};
+    border-radius: 8px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  .testimonial-card__stars {
+    margin-bottom: 1.6rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+
+  .testimonial-card__stars svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .testimonial-card__quote {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: {{ section.settings.text_color }};
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .testimonial-card__author {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: {{ section.settings.heading_color }};
+    margin-bottom: 0.3rem;
+  }
+
+  .testimonial-card__detail {
+    font-size: 1.2rem;
+    color: {{ section.settings.text_color }};
+    opacity: 0.6;
+  }
+
+  @media screen and (max-width: 989px) {
+    .testimonials__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .testimonials__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="testimonials-section">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="testimonials__heading">{{ section.settings.heading }}</h2>
+  {%- endif -%}
+  {%- if section.settings.subheading != blank -%}
+    <p class="testimonials__subheading">{{ section.settings.subheading }}</p>
+  {%- endif -%}
+
+  <div class="testimonials__grid">
+    {%- for block in section.blocks -%}
+      <div class="testimonial-card" {{ block.shopify_attributes }}>
+        {%- if block.settings.rating > 0 -%}
+          <div class="testimonial-card__stars">
+            {%- for i in (1..block.settings.rating) -%}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{{ section.settings.star_color }}" stroke="none">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/>
+              </svg>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <p class="testimonial-card__quote">"{{ block.settings.quote }}"</p>
+
+        {%- if block.settings.author != blank -%}
+          <p class="testimonial-card__author">{{ block.settings.author }}</p>
+        {%- endif -%}
+        {%- if block.settings.detail != blank -%}
+          <p class="testimonial-card__detail">{{ block.settings.detail }}</p>
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "testimonials-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Clients Say"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real results from real skincare lovers"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#f9f8f5"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#2c2c2c"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "color",
+      "id": "star_color",
+      "label": "Star color",
+      "default": "#81806e"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "This product changed my skin!"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author name",
+          "default": "Happy Customer"
+        },
+        {
+          "type": "text",
+          "id": "detail",
+          "label": "Detail (location, product, etc.)",
+          "default": "Verified Buyer"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "label": "Star rating",
+          "default": 5
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've tried countless serums, but the Peptide Firming Serum is in a class of its own. My skin feels tighter and looks visibly smoother after just two weeks.",
+            "author": "Marie L.",
+            "detail": "Verified Buyer · Peptide Firming Serum",
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As someone with sensitive skin, I'm incredibly selective about what I use. Every Romàn Skin product feels luxurious, gentle, and genuinely effective. My esthetician noticed the difference!",
+            "author": "Catherine D.",
+            "detail": "Verified Buyer",
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The quality of these formulas reminds me of the European spa products I fell in love with in Paris. Finally, a clean skincare line that actually delivers professional-grade results at home.",
+            "author": "Jennifer R.",
+            "detail": "Verified Buyer · Complete Routine Set",
+            "rating": 5
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

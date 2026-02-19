@@ -15,60 +15,155 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Ancient Secrets, Modern Glow.",
+            "heading": "Peptide-Powered European Skin Science",
             "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Clinically inspired formulas developed from 30+ years of esthetic expertise and advanced Parisian training. ✓ Restores firmness · ✓ Improves visible radiance · ✓ Clean, professional-grade ingredients",
+            "text_style": "body"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "Shop the Collection",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
+            "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false
           }
         }
       },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+      "block_order": ["heading", "text", "button"],
       "settings": {
-        "image": "shopify://shop_images/Photoroom_20240812_195223.jpg",
+        "asset_image": "hero-1.png",
         "image_overlay_opacity": 30,
         "image_height": "large",
-        "desktop_content_position": "middle-center",
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "color_scheme": "scheme-3",
         "image_behavior": "fixed",
-        "mobile_content_alignment": "center",
+        "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
-    "rich_text_LaFtxF": {
-      "type": "rich-text",
+    "trust_strip": {
+      "type": "trust-strip",
       "blocks": {
-        "heading_CyC47Y": {
-          "type": "heading",
+        "cidesco": {
+          "type": "trust_item",
           "settings": {
-            "heading": "History and Legacy",
-            "heading_size": "h1"
+            "label": "CIDESCO Certified",
+            "icon": "none",
+            "asset_image": "CIDESCO-logo.webp"
+          }
+        },
+        "experience": {
+          "type": "trust_item",
+          "settings": {
+            "label": "30+ Years Clinical Experience",
+            "icon": "certificate"
+          }
+        },
+        "ingredients": {
+          "type": "trust_item",
+          "settings": {
+            "label": "Clean, Natural Ingredients",
+            "icon": "leaf"
+          }
+        },
+        "formulas": {
+          "type": "trust_item",
+          "settings": {
+            "label": "Professional Spa Formulas",
+            "icon": "spa"
           }
         }
       },
-      "block_order": [
-        "heading_CyC47Y"
-      ],
+      "block_order": ["cidesco", "experience", "ingredients", "formulas"],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
+        "background_color": "#f0ede8",
+        "text_color": "#2c2c2c",
+        "icon_color": "#81806e",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "best_sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Best Sellers",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "review_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "I've tried countless serums, but the Peptide Firming Serum is in a class of its own. My skin feels tighter and looks visibly smoother after just two weeks.",
+            "author": "Marie L.",
+            "detail": "Verified Buyer · Peptide Firming Serum",
+            "rating": 5
+          }
+        },
+        "review_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "As someone with sensitive skin, I'm incredibly selective about what I use. Every Romàn Skin product feels luxurious, gentle, and genuinely effective. My esthetician noticed the difference!",
+            "author": "Catherine D.",
+            "detail": "Verified Buyer",
+            "rating": 5
+          }
+        },
+        "review_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "The quality of these formulas reminds me of the European spa products I fell in love with in Paris. Finally, a clean skincare line that actually delivers professional-grade results at home.",
+            "author": "Jennifer R.",
+            "detail": "Verified Buyer · Complete Routine Set",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": ["review_1", "review_2", "review_3"],
+      "settings": {
+        "heading": "What Our Clients Say",
+        "subheading": "Real results from real skincare lovers",
+        "background_color": "#ffffff",
+        "card_background": "#f9f8f5",
+        "heading_color": "#2c2c2c",
+        "text_color": "#4a4a4a",
+        "star_color": "#81806e",
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -78,65 +173,39 @@
         "heading_7DMHNd": {
           "type": "heading",
           "settings": {
-            "heading": "Introducing Betty Romàn",
-            "heading_size": "h2"
+            "heading": "Meet Betty Romàn",
+            "heading_size": "h1"
           }
         },
         "text_p76qTz": {
           "type": "text",
           "settings": {
-            "text": "<p>As a seasoned esthetician with 30 years experience and a 25 year spa owner, I have dedicated my career to the art and science of skincare.</p><p>My passion for European skincare methods inspired me to pursue advanced training in Paris, where I continue to travel to further my knowledge. I have worked closely with many professional skincare brands over the years. This inspired me to develop my own skincare products which reflect my commitment to offering our clients the best in skincare products, which are all natural from quality ingredients.</p><p>Recognizing the importance of education, I attended the renowned Aesthetic Skin Care Center in the D.C. area, one of the leading private skincare institutes of its time. There, I received European-based training with a holistic emphasis on treating the skin and body as an interconnected system. I also hold the internationally respected CIDESCO Diploma, a testament to my expertise and dedication to the highest standards in the skincare industry.</p><p>My goal has always been clear: \"I want my clients to feel and look beautiful every day, not just on spa day.</p>",
+            "text": "<p>With over 30 years as an esthetician and 25 years as a spa owner, Betty Romàn brings European clinical training and CIDESCO certification to every formula.</p><p>I created Romàn Skin because no single brand combined European techniques, holistic care, and visible results the way my clients needed. These formulas are an extension of my hands-on spa treatments—designed for real results at home.</p>",
             "text_style": "body"
+          }
+        },
+        "button_story": {
+          "type": "button",
+          "settings": {
+            "button_label": "Our Story",
+            "button_link": "/pages/about-us"
           }
         }
       },
-      "block_order": [
-        "heading_7DMHNd",
-        "text_p76qTz"
-      ],
+      "block_order": ["heading_7DMHNd", "text_p76qTz", "button_story"],
       "settings": {
         "image": "shopify://shop_images/Betty_R-018_900x_jpg.webp",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
-        "desktop_content_position": "top",
+        "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
         "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "rich_text_LUPwjn": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_tJpkpx": {
-          "type": "heading",
-          "settings": {
-            "heading": "Why I Created My Own Skincare Line",
-            "heading_size": "h1"
-          }
-        },
-        "text_K6zMKY": {
-          "type": "text",
-          "settings": {
-            "text": "<p>With decades of experience as an aesthetician and spa owner I saw a void in the market for products that seamlessly combined European techniques, holistic principles, and effective results. While I worked with some of the best skincare brands in the industry, I realized that no single line fully met my clients’ unique needs.</p><p>Driven by my commitment to empowering clients to maintain beautiful, healthy skin at home, I designed my own skincare line. The products are thoughtfully crafted to embody the same principles that guide my spa treatments: high-quality ingredients, proven European methods, and a focus on holistic wellness.</p><p>My skincare line is more than a collection of products; it’s an extension of my philosophy and expertise, allowing my clients to bring the spa experience into their daily routines. My mission is simple: to help people achieve radiant, healthy skin every day, not just on spa days.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_tJpkpx",
-        "text_K6zMKY"
-      ],
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
+        "padding_top": 52,
         "padding_bottom": 52
       }
     },
@@ -150,7 +219,7 @@
         "description_style": "body",
         "collection": "all",
         "products_to_show": 12,
-        "columns_desktop": 2,
+        "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
@@ -174,34 +243,72 @@
         "heading_VAJEhM": {
           "type": "heading",
           "settings": {
-            "heading": "Our Commitment to Clean, Natural Ingredients",
+            "heading": "Clean. Clinical. Conscious.",
             "heading_size": "h1"
           }
         },
         "text_fhh3RL": {
           "type": "text",
           "settings": {
-            "text": "<p>At Romàn Skin, we believe that true beauty begins with clean, natural ingredients. Our skincare line is meticulously crafted using only the finest, purest components, free from harsh chemicals and artificial additives. We are committed to harnessing the power of nature to nourish and rejuvenate your skin, delivering results you can trust. Each product in our collection is formulated with thoughtfully selected ingredients that are as gentle on your skin as they are effective, ensuring a radiant, healthy complexion. With Roman Skin, you can embrace a skincare routine that honors both your skin and the planet.</p>",
+            "text": "<p>Our formulas feature targeted peptides, antioxidant complexes, and naturally derived actives—free from parabens, phthalates, and unnecessary fillers. Every ingredient is chosen for performance and skin compatibility.</p>",
             "text_style": "body"
           }
         }
       },
-      "block_order": [
-        "heading_VAJEhM",
-        "text_fhh3RL"
-      ],
+      "block_order": ["heading_VAJEhM", "text_fhh3RL"],
       "settings": {
-        "image": "shopify://shop_images/fresh-herb-flatlay.jpg",
+        "asset_image": "roman-skin-care-products-herbs.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
-        "desktop_content_position": "top",
+        "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "content_layout": "no-overlap",
         "section_color_scheme": "",
         "color_scheme": "",
         "image_behavior": "none",
         "mobile_content_alignment": "left",
+        "padding_top": 52,
+        "padding_bottom": 16
+      }
+    },
+    "ingredient_icons": {
+      "type": "ingredient-icons",
+      "blocks": {
+        "peptides": {
+          "type": "ingredient",
+          "settings": {
+            "label": "Peptides",
+            "icon": "peptides"
+          }
+        },
+        "vitamin_c": {
+          "type": "ingredient",
+          "settings": {
+            "label": "Vitamin C",
+            "icon": "vitamin_c"
+          }
+        },
+        "hyaluronic": {
+          "type": "ingredient",
+          "settings": {
+            "label": "Hyaluronic Acid",
+            "icon": "hyaluronic"
+          }
+        },
+        "botanical": {
+          "type": "ingredient",
+          "settings": {
+            "label": "Botanical Extracts",
+            "icon": "botanical"
+          }
+        }
+      },
+      "block_order": ["peptides", "vitamin_c", "hyaluronic", "botanical"],
+      "settings": {
+        "background_color": "#f9f8f5",
+        "text_color": "#2c2c2c",
+        "icon_color": "#81806e",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -242,11 +349,13 @@
   },
   "order": [
     "image_banner",
-    "rich_text_LaFtxF",
+    "trust_strip",
+    "best_sellers",
+    "testimonials",
     "image_with_text_G4iWXR",
-    "rich_text_LUPwjn",
     "featured_collection",
     "image_with_text_DTGUyK",
+    "ingredient_icons",
     "newsletter_ehBUaa"
   ]
 }

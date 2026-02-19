@@ -1,0 +1,231 @@
+{%- style -%}
+  .ingredient-icons {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  .ingredient-icons__inner {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .ingredient-icons__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    flex: 0 1 auto;
+    min-width: 120px;
+    max-width: 160px;
+    text-align: center;
+  }
+
+  .ingredient-icons__icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ingredient-icons__icon svg {
+    width: 52px;
+    height: 52px;
+  }
+
+  .ingredient-icons__label {
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: {{ section.settings.text_color }};
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ingredient-icons__inner {
+      gap: 2.5rem;
+    }
+
+    .ingredient-icons__item {
+      min-width: 100px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="ingredient-icons">
+  <div class="ingredient-icons__inner">
+    {%- for block in section.blocks -%}
+      <div class="ingredient-icons__item" {{ block.shopify_attributes }}>
+        <div class="ingredient-icons__icon">
+          {%- case block.settings.icon -%}
+            {%- when 'peptides' -%}
+              {%- comment -%} Chain/molecule icon for peptides {%- endcomment -%}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="{{ section.settings.icon_color }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="16" cy="20" r="6"/>
+                <circle cx="36" cy="12" r="6"/>
+                <circle cx="48" cy="30" r="6"/>
+                <circle cx="28" cy="44" r="6"/>
+                <circle cx="48" cy="50" r="6"/>
+                <line x1="21" y1="17" x2="31" y2="14"/>
+                <line x1="41" y1="15" x2="44" y2="25"/>
+                <line x1="44" y1="34" x2="33" y2="41"/>
+                <line x1="33" y1="47" x2="43" y2="49"/>
+              </svg>
+
+            {%- when 'vitamin_c' -%}
+              {%- comment -%} Citrus slice icon for Vitamin C {%- endcomment -%}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="{{ section.settings.icon_color }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="32" cy="32" r="22"/>
+                <circle cx="32" cy="32" r="14"/>
+                <line x1="32" y1="18" x2="32" y2="32"/>
+                <line x1="32" y1="32" x2="22" y2="44"/>
+                <line x1="32" y1="32" x2="42" y2="44"/>
+                <line x1="32" y1="32" x2="18" y2="28"/>
+                <line x1="32" y1="32" x2="46" y2="28"/>
+              </svg>
+
+            {%- when 'hyaluronic' -%}
+              {%- comment -%} Water drop icon for Hyaluronic Acid {%- endcomment -%}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="{{ section.settings.icon_color }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M32 6 C32 6 14 28 14 40 C14 50 22 58 32 58 C42 58 50 50 50 40 C50 28 32 6 32 6Z"/>
+                <path d="M26 42 C26 42 28 36 32 36 C36 36 38 42 38 42" fill="none"/>
+                <circle cx="32" cy="48" r="2" fill="{{ section.settings.icon_color }}" stroke="none"/>
+              </svg>
+
+            {%- when 'botanical' -%}
+              {%- comment -%} Leaf/plant icon for Botanical Extracts {%- endcomment -%}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="{{ section.settings.icon_color }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M32 58 C32 58 32 34 32 34"/>
+                <path d="M32 34 C32 34 18 28 12 14 C28 14 32 34 32 34Z"/>
+                <path d="M32 34 C32 34 46 28 52 14 C36 14 32 34 32 34Z"/>
+                <path d="M22 22 C22 22 28 28 32 34"/>
+                <path d="M42 22 C42 22 36 28 32 34"/>
+              </svg>
+
+            {%- else -%}
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="{{ section.settings.icon_color }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="32" cy="32" r="22"/>
+              </svg>
+          {%- endcase -%}
+        </div>
+        <span class="ingredient-icons__label">{{ block.settings.label }}</span>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredient Icons",
+  "tag": "section",
+  "class": "ingredient-icons-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f9f8f5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#2c2c2c"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#81806e"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Ingredient"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "peptides", "label": "Peptides (molecule)" },
+            { "value": "vitamin_c", "label": "Vitamin C (citrus)" },
+            { "value": "hyaluronic", "label": "Hyaluronic Acid (droplet)" },
+            { "value": "botanical", "label": "Botanical (leaf)" }
+          ],
+          "default": "peptides"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredient Icons",
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": {
+            "label": "Peptides",
+            "icon": "peptides"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "label": "Vitamin C",
+            "icon": "vitamin_c"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "label": "Hyaluronic Acid",
+            "icon": "hyaluronic"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "label": "Botanical Extracts",
+            "icon": "botanical"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
