@@ -9,48 +9,52 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero_split": {
+      "type": "hero-split",
       "blocks": {
+        "kicker": {
+          "type": "kicker",
+          "settings": {
+            "kicker": "PROFESSIONAL-GRADE SKINCARE"
+          }
+        },
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Peptide-Powered European Skin Science",
-            "heading_size": "h0"
+            "heading_line_1": "YOUR BEST SKIN,",
+            "heading_accent": "DELIVERED."
+          }
+        },
+        "subheading": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "CLINICALLY INSPIRED. NEVER COMPROMISED."
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Clinically inspired formulas developed from 30+ years of esthetic expertise and advanced Parisian training. ✓ Restores firmness · ✓ Improves visible radiance · ✓ Clean, professional-grade ingredients",
-            "text_style": "body"
+            "text_highlight": "Peptide-enriched. Antioxidant-fortified.",
+            "text": "Built on 30+ years of clinical esthetics mastery—every ingredient earns its place, every formula delivers visible results you can see and feel."
           }
         },
-        "button": {
+        "buttons": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop the Collection",
-            "button_link_1": "shopify://collections/all",
+            "button_label_1": "SHOP BEST SELLERS",
+            "button_link_1": "/collections/all",
             "button_style_secondary_1": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_label_2": "EXPLORE ROUTINES",
+            "button_link_2": "/collections",
+            "button_style_secondary_2": true
           }
         }
       },
-      "block_order": ["heading", "text", "button"],
+      "block_order": ["kicker", "heading", "subheading", "text", "buttons"],
       "settings": {
-        "asset_image": "hero-1.png",
-        "image_overlay_opacity": 30,
-        "image_height": "large",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "desktop_content_alignment": "left",
-        "color_scheme": "scheme-3",
-        "image_behavior": "fixed",
-        "mobile_content_alignment": "left",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "asset_image": "product-ROMAN-Daily-serum.png",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "trust_strip": {
@@ -67,32 +71,96 @@
         "experience": {
           "type": "trust_item",
           "settings": {
-            "label": "30+ Years Clinical Experience",
-            "icon": "certificate"
+            "label": "30+ Years Experience",
+            "icon": "clock",
+            "asset_image": ""
+          }
+        },
+        "clinical": {
+          "type": "trust_item",
+          "settings": {
+            "label": "Clinically Inspired",
+            "icon": "clinical",
+            "asset_image": ""
           }
         },
         "ingredients": {
           "type": "trust_item",
           "settings": {
-            "label": "Clean, Natural Ingredients",
-            "icon": "leaf"
+            "label": "Clean, Conscious Ingredients",
+            "icon": "leaf",
+            "asset_image": ""
           }
         },
         "formulas": {
           "type": "trust_item",
           "settings": {
-            "label": "Professional Spa Formulas",
-            "icon": "spa"
+            "label": "Spa-Grade Formulas",
+            "icon": "spa",
+            "asset_image": ""
           }
         }
       },
-      "block_order": ["cidesco", "experience", "ingredients", "formulas"],
+      "block_order": [
+        "cidesco",
+        "experience",
+        "clinical",
+        "ingredients",
+        "formulas"
+      ],
       "settings": {
         "background_color": "#f0ede8",
         "text_color": "#2c2c2c",
         "icon_color": "#81806e",
         "padding_top": 20,
         "padding_bottom": 20
+      }
+    },
+    "skin_concerns": {
+      "type": "skin-concerns",
+      "blocks": {
+        "dry_skin": {
+          "type": "concern_card",
+          "settings": {
+            "title": "Dry Skin",
+            "asset_image": "collection-dry-skin-woman-with-dry-skin.png",
+            "link": "shopify://collections/dryness-dehydration"
+          }
+        },
+        "dull_skin": {
+          "type": "concern_card",
+          "settings": {
+            "title": "Dull Skin",
+            "asset_image": "collection-dull-skin-woman-with-dull-skin.png",
+            "link": "shopify://collections/dull-uneven-skin"
+          }
+        },
+        "fine_lines": {
+          "type": "concern_card",
+          "settings": {
+            "title": "Fine Lines & Wrinkles",
+            "asset_image": "collection-fine-lines-man-with-fine-lines-and-wrinkles.png",
+            "link": "shopify://collections/fine-lines-wrinkles"
+          }
+        },
+        "hyperpigmentation": {
+          "type": "concern_card",
+          "settings": {
+            "title": "Hyperpigmentation",
+            "asset_image": "collection-hyperpigmentation-woman-with-Hyperpigmentation.png",
+            "link": "shopify://collections/hyperpigmentation"
+          }
+        }
+      },
+      "block_order": [
+        "dry_skin",
+        "dull_skin",
+        "fine_lines",
+        "hyperpigmentation"
+      ],
+      "settings": {
+        "padding_top": 40,
+        "padding_bottom": 40
       }
     },
     "best_sellers": {
@@ -108,6 +176,7 @@
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
+        "view_all_text": "Shop Best Sellers",
         "view_all_style": "solid",
         "enable_desktop_slider": false,
         "color_scheme": "scheme-1",
@@ -129,8 +198,8 @@
         "review_1": {
           "type": "testimonial",
           "settings": {
-            "quote": "I've tried countless serums, but the Peptide Firming Serum is in a class of its own. My skin feels tighter and looks visibly smoother after just two weeks.",
-            "author": "Marie L.",
+            "quote": "After just 2 weeks with the Peptide Firming Serum, my jawline looks noticeably tighter and my skin has a smoothness I haven't seen in years. This is the real deal.",
+            "author": "Marie L., Charlotte",
             "detail": "Verified Buyer · Peptide Firming Serum",
             "rating": 5
           }
@@ -138,26 +207,26 @@
         "review_2": {
           "type": "testimonial",
           "settings": {
-            "quote": "As someone with sensitive skin, I'm incredibly selective about what I use. Every Romàn Skin product feels luxurious, gentle, and genuinely effective. My esthetician noticed the difference!",
-            "author": "Catherine D.",
-            "detail": "Verified Buyer",
+            "quote": "I have reactive, sensitive skin and most serums irritate me. Within 3 weeks of using the full routine, my redness calmed and my esthetician said my barrier looked stronger than ever.",
+            "author": "Catherine D., Raleigh",
+            "detail": "Verified Client · Complete Routine Set",
             "rating": 5
           }
         },
         "review_3": {
           "type": "testimonial",
           "settings": {
-            "quote": "The quality of these formulas reminds me of the European spa products I fell in love with in Paris. Finally, a clean skincare line that actually delivers professional-grade results at home.",
-            "author": "Jennifer R.",
-            "detail": "Verified Buyer · Complete Routine Set",
+            "quote": "I spent years searching for European spa-quality formulas I could use at home. By week 4, my dark spots faded and my skin had a radiance my friends started asking about.",
+            "author": "Jennifer R., Atlanta",
+            "detail": "Verified Buyer · Vitamin C Brightening Serum",
             "rating": 5
           }
         }
       },
       "block_order": ["review_1", "review_2", "review_3"],
       "settings": {
-        "heading": "What Our Clients Say",
-        "subheading": "Real results from real skincare lovers",
+        "heading": "Real Results, Real Clients",
+        "subheading": "Outcome-driven skincare backed by 30+ years of clinical expertise",
         "background_color": "#ffffff",
         "card_background": "#f9f8f5",
         "heading_color": "#2c2c2c",
@@ -180,7 +249,7 @@
         "text_p76qTz": {
           "type": "text",
           "settings": {
-            "text": "<p>With over 30 years as an esthetician and 25 years as a spa owner, Betty Romàn brings European clinical training and CIDESCO certification to every formula.</p><p>I created Romàn Skin because no single brand combined European techniques, holistic care, and visible results the way my clients needed. These formulas are an extension of my hands-on spa treatments—designed for real results at home.</p>",
+            "text": "<p>30+ years as a licensed esthetician. 25 years as a spa owner. CIDESCO-certified with advanced Parisian training.</p><p>\"I created Romàn Skin because my clients deserved formulas that matched the results they got on my treatment table—peptide-powered, clinically inspired, and designed for visible transformation at home.\"</p><p><strong>— Betty Romàn, Founder & Licensed Esthetician</strong></p>",
             "text_style": "body"
           }
         },
@@ -188,13 +257,15 @@
           "type": "button",
           "settings": {
             "button_label": "Our Story",
-            "button_link": "/pages/about-us"
+            "button_link": "/pages/about-us",
+            "button_style_secondary": false
           }
         }
       },
       "block_order": ["heading_7DMHNd", "text_p76qTz", "button_story"],
       "settings": {
         "image": "shopify://shop_images/Betty_R-018_900x_jpg.webp",
+        "asset_image": "",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -222,6 +293,7 @@
         "columns_desktop": 4,
         "full_width": false,
         "show_view_all": true,
+        "view_all_text": "Shop All Products",
         "view_all_style": "solid",
         "enable_desktop_slider": false,
         "color_scheme": "scheme-1",
@@ -250,7 +322,7 @@
         "text_fhh3RL": {
           "type": "text",
           "settings": {
-            "text": "<p>Our formulas feature targeted peptides, antioxidant complexes, and naturally derived actives—free from parabens, phthalates, and unnecessary fillers. Every ingredient is chosen for performance and skin compatibility.</p>",
+            "text": "<p>Our formulas feature targeted peptides for firmness, stabilized vitamin C for radiance, hyaluronic acid for deep hydration, and botanical antioxidants for protection—free from parabens, phthalates, sulfates, and unnecessary fillers.</p><p>Every ingredient is selected for clinical performance and skin compatibility, so you get spa-grade results without compromise.</p>",
             "text_style": "body"
           }
         }
@@ -319,14 +391,14 @@
         "heading_hMdfCe": {
           "type": "heading",
           "settings": {
-            "heading": "Subscribe to our emails",
+            "heading": "Unlock Exclusive Skincare Tips & Offers",
             "heading_size": "h1"
           }
         },
         "paragraph_WwGj9N": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+            "text": "<p>Join our community for expert skincare advice, early access to new peptide formulas, and members-only offers. No spam—just results.</p>"
           }
         },
         "email_form_zKwn76": {
@@ -348,8 +420,9 @@
     }
   },
   "order": [
-    "image_banner",
+    "hero_split",
     "trust_strip",
+    "skin_concerns",
     "best_sellers",
     "testimonials",
     "image_with_text_G4iWXR",

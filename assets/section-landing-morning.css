@@ -1,0 +1,356 @@
+/* ============================================
+   Landing Page: Morning Defense System
+   ============================================ */
+
+/* --- Hero Banner --- */
+.landing-hero {
+  width: 100%;
+  background-color: #fff;
+}
+
+.landing-hero__inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 56rem;
+}
+
+.landing-hero__media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 56rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  order: -1;
+}
+
+.landing-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  max-height: 56rem;
+}
+
+.landing-hero__content {
+  padding: 4rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.landing-hero__heading {
+  font-size: 4.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: #737762;
+  text-transform: uppercase;
+}
+
+.landing-hero__text {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  margin: 0;
+  max-width: 52rem;
+}
+
+.landing-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20rem;
+  padding: 1.2rem 3rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  background-color: #737762;
+  border: 1px solid #737762;
+  color: #fff;
+  border-radius: 0;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+  margin-top: 0.8rem;
+}
+
+.landing-hero__cta:hover {
+  background-color: #5e6150;
+  border-color: #5e6150;
+}
+
+/* --- Hero Bundle Controls --- */
+.landing-hero-bundle-wrapper {
+  display: contents;
+}
+
+.landing-hero__bundle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.landing-hero__cta--button {
+  font: inherit;
+  position: relative;
+}
+
+.landing-hero__cta--button .loading__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2rem;
+  height: 2rem;
+}
+
+.landing-hero__cta--button.loading .landing-hero__cta-label {
+  visibility: hidden;
+}
+
+.landing-hero__cta--button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.landing-hero__price-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.landing-hero__price-sale {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #1a1a1a;
+}
+
+.landing-hero__price-compare {
+  font-size: 1.5rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.landing-hero__discount-note {
+  font-size: 1.25rem;
+  color: #737762;
+  margin: 0;
+  font-weight: 500;
+}
+
+.landing-hero__bundle .frequently-bought-together__error {
+  color: #c83232;
+  font-size: 1.3rem;
+  margin-top: 0.2rem;
+  display: none;
+}
+
+.landing-hero__bundle .frequently-bought-together__error:not(:empty) {
+  display: block;
+}
+
+/* --- Product Feature Row --- */
+.landing-product {
+  width: 100%;
+  background-color: #fff;
+}
+
+.landing-product--alt {
+  background-color: #f9f8f6;
+}
+
+.landing-product__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 4rem;
+  padding: 6rem 3rem;
+}
+
+.landing-product__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.landing-product__image {
+  width: 100%;
+  max-width: 52rem;
+  height: auto;
+  object-fit: contain;
+}
+
+.landing-product--image-right .landing-product__media {
+  order: 1;
+}
+
+.landing-product__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.landing-product__eyebrow {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #737762;
+  margin: 0;
+}
+
+.landing-product__heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.landing-product__text {
+  font-size: 1.55rem;
+  line-height: 1.75;
+  color: #4a4a4a;
+  margin: 0;
+}
+
+.landing-product__usage {
+  font-size: 1.35rem;
+  line-height: 1.6;
+  color: #6b6b6b;
+  margin: 0;
+  font-style: italic;
+}
+
+.landing-product__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  min-width: 16rem;
+  padding: 1rem 2.4rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid #737762;
+  color: #737762;
+  background-color: transparent;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  margin-top: 0.4rem;
+}
+
+.landing-product__cta:hover {
+  background-color: #737762;
+  color: #fff;
+}
+
+/* --- Tablet --- */
+@media screen and (max-width: 989px) {
+  .landing-hero__inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .landing-hero__media {
+    min-height: 36rem;
+    max-height: 44rem;
+    order: -1;
+  }
+
+  .landing-hero__image {
+    max-height: 44rem;
+  }
+
+  .landing-hero__content {
+    padding: 3rem 3rem 4rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .landing-hero__bundle {
+    align-items: center;
+  }
+
+  .landing-hero__heading {
+    font-size: 3.4rem;
+  }
+
+  .landing-product__inner {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    padding: 4rem 2rem;
+  }
+
+  .landing-product--image-right .landing-product__media {
+    order: 0;
+  }
+
+  .landing-product__content {
+    text-align: center;
+    align-items: center;
+  }
+
+  .landing-product__cta {
+    align-self: center;
+  }
+
+  .landing-product__heading {
+    font-size: 2.4rem;
+  }
+}
+
+/* --- Mobile --- */
+@media screen and (max-width: 749px) {
+  .landing-hero__media {
+    min-height: 28rem;
+    max-height: 36rem;
+  }
+
+  .landing-hero__image {
+    max-height: 36rem;
+  }
+
+  .landing-hero__content {
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .landing-hero__heading {
+    font-size: 3rem;
+  }
+
+  .landing-hero__text {
+    font-size: 1.5rem;
+  }
+
+  .landing-product__inner {
+    padding: 3rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .landing-product__heading {
+    font-size: 2rem;
+  }
+
+  .landing-product__text {
+    font-size: 1.4rem;
+  }
+}

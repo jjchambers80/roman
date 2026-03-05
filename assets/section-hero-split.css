@@ -1,0 +1,226 @@
+.hero-split {
+  width: 100%;
+  background-color: #fff;
+}
+
+.hero-split__inner {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 60rem;
+}
+
+.hero-split__media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 60rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  order: -1;
+}
+
+.hero-split__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  max-height: 60rem;
+}
+
+.hero-split__content {
+  padding: 4rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+
+/* -- Kicker / Eyebrow -- */
+.hero-split__kicker {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #737762;
+  border: 1.5px solid #737762;
+  border-radius: 30px;
+  padding: 0.6rem 2rem;
+  margin-bottom: 2.4rem;
+}
+
+/* -- Heading -- */
+.hero-split__heading {
+  margin: 0 0 0.4rem;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+}
+
+.hero-split__heading-primary {
+  display: block;
+  font-size: 6.4rem;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.hero-split__heading-accent {
+  display: block;
+  font-size: 6.4rem;
+  font-weight: 800;
+  color: #737762;
+}
+
+/* -- Subheading -- */
+.hero-split__subheading {
+  font-size: 2.4rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #6a6a6a;
+  margin: 1.2rem 0 2.4rem;
+  line-height: 1.3;
+}
+
+/* -- Body text -- */
+.hero-split__text {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #4a4a4a;
+  margin: 0 0 2.8rem;
+  max-width: 52rem;
+}
+
+.hero-split__text-highlight {
+  color: #737762;
+  font-weight: 600;
+}
+
+/* -- Buttons -- */
+.hero-split__buttons {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 0;
+}
+
+.hero-split__buttons .button {
+  min-width: 18rem;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  padding: 1.4rem 3rem;
+}
+
+.hero-split__buttons .button--primary {
+  background-color: #737762;
+  border-color: #737762;
+  color: #fff;
+}
+
+.hero-split__buttons .button--primary:hover {
+  background-color: #5e6150;
+  border-color: #5e6150;
+}
+
+.hero-split__buttons .button--secondary {
+  border-color: #737762;
+  color: #737762;
+}
+
+.hero-split__buttons .button--secondary:hover {
+  background-color: #737762;
+  color: #fff;
+}
+
+/* === Tablet === */
+@media screen and (max-width: 989px) {
+  .hero-split__inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .hero-split__media {
+    min-height: 40rem;
+    max-height: 50rem;
+    order: 0;
+  }
+
+  .hero-split__image {
+    max-height: 50rem;
+  }
+
+  .hero-split__content {
+    padding: 3rem 3rem 4rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-split__heading-primary,
+  .hero-split__heading-accent {
+    font-size: 5rem;
+  }
+
+  .hero-split__subheading {
+    font-size: 2rem;
+  }
+}
+
+/* === Mobile === */
+@media screen and (max-width: 749px) {
+  .hero-split__media {
+    min-height: 32rem;
+    max-height: 40rem;
+  }
+
+  .hero-split__image {
+    max-height: 40rem;
+  }
+
+  .hero-split__content {
+    padding: 2.4rem 1.5rem 3.6rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-split__kicker {
+    font-size: 1rem;
+    padding: 0.5rem 1.6rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-split__heading-primary,
+  .hero-split__heading-accent {
+    font-size: 4.2rem;
+  }
+
+  .hero-split__subheading {
+    font-size: 1.7rem;
+    margin: 1rem 0 1.8rem;
+  }
+
+  .hero-split__text {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-split__buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .hero-split__buttons .button {
+    width: 100%;
+    min-width: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

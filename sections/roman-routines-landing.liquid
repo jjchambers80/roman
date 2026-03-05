@@ -1,0 +1,554 @@
+{%- comment -%}
+  Roman Skin Care — Routines Landing Page
+  A premium hub showcasing the Morning Defense System and Evening Renewal System.
+  Mobile-first, accessible, no external JS. Inline CSS scoped with .roman-routines prefix.
+{%- endcomment -%}
+
+{%- style -%}
+  /* ==============================
+     Roman Routines Landing
+     ============================== */
+
+  .roman-routines {
+    font-family: inherit;
+    color: #4a4a4a;
+  }
+
+  /* --- Hero --- */
+  .roman-routines__hero {
+    max-width: 82rem;
+    margin: 0 auto;
+    padding: 4.8rem 1.6rem 2.4rem;
+    text-align: center;
+  }
+
+  .roman-routines__title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+    margin: 0 0 1.2rem;
+    line-height: 1.15;
+  }
+
+  .roman-routines__subtitle {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: #5a5a5a;
+    margin: 0 auto;
+    max-width: 64rem;
+  }
+
+  .roman-routines__subtitle p {
+    margin: 0;
+  }
+
+  /* --- Card Grid --- */
+  .roman-routines__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    max-width: 110rem;
+    margin: 0 auto;
+    padding: 2rem 1.6rem 3.2rem;
+  }
+
+  @media (min-width: 750px) {
+    .roman-routines__hero {
+      padding: 6rem 2rem 3rem;
+    }
+
+    .roman-routines__title {
+      font-size: 4rem;
+    }
+
+    .roman-routines__subtitle {
+      font-size: 1.6rem;
+    }
+
+    .roman-routines__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 3.2rem;
+      padding: 2rem 2rem 4rem;
+    }
+  }
+
+  /* --- Routine Card --- */
+  .roman-routines__card {
+    background: #f9f8f6;
+    border: 1px solid #e5e5e5;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    padding: 2.4rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (min-width: 750px) {
+    .roman-routines__card {
+      padding: 3.2rem;
+    }
+  }
+
+  .roman-routines__card-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 2rem;
+    object-fit: cover;
+  }
+
+  .roman-routines__card-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.4rem;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .roman-routines__card-tagline {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #737762;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 1.4rem;
+  }
+
+  .roman-routines__card-desc {
+    font-size: 1.45rem;
+    line-height: 1.7;
+    color: #4a4a4a;
+    margin-bottom: 2rem;
+  }
+
+  .roman-routines__card-desc p {
+    margin: 0;
+  }
+
+  /* Products List */
+  .roman-routines__products-heading,
+  .roman-routines__steps-heading {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.8rem;
+  }
+
+  .roman-routines__products-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+
+  .roman-routines__products-list li {
+    position: relative;
+    padding-left: 1.6rem;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    margin-bottom: 0.4rem;
+  }
+
+  .roman-routines__products-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 6px;
+    height: 6px;
+    background: #737762;
+    border-radius: 50%;
+  }
+
+  /* Steps */
+  .roman-routines__steps {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.4rem;
+    counter-reset: roman-step;
+  }
+
+  .roman-routines__step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #4a4a4a;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  .roman-routines__step:last-child {
+    border-bottom: none;
+  }
+
+  .roman-routines__step-number {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 1px solid #737762;
+    color: #737762;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .roman-routines__step-text {
+    padding-top: 0.3rem;
+  }
+
+  /* CTA Buttons */
+  .roman-btn-primary {
+    display: inline-block;
+    background: #737762;
+    color: #fff;
+    border: 1px solid #737762;
+    padding: 1.4rem 3.2rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    font-family: inherit;
+    line-height: 1.2;
+    -webkit-appearance: none;
+  }
+
+  .roman-btn-primary:hover {
+    background: #5e6150;
+    border-color: #5e6150;
+    color: #fff;
+  }
+
+  .roman-btn-primary:focus-visible {
+    outline: 2px solid #737762;
+    outline-offset: 2px;
+  }
+
+  .roman-routines__card-cta {
+    margin-top: auto;
+  }
+
+
+
+  @media (max-width: 749px) {
+    .roman-btn-primary {
+      width: 100%;
+    }
+  }
+
+  /* --- Contact CTA --- */
+  .roman-routines__contact {
+    max-width: 68rem;
+    margin: 0 auto 3.2rem;
+    padding: 3.2rem 2rem;
+    background: #f9f8f6;
+    border: 1px solid #e5e5e5;
+    text-align: center;
+  }
+
+  .roman-routines__contact-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 1rem;
+  }
+
+  .roman-routines__contact-body {
+    font-size: 1.45rem;
+    line-height: 1.7;
+    color: #5a5a5a;
+    margin: 0 0 2rem;
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .roman-routines__contact-body p {
+    margin: 0;
+  }
+
+{%- endstyle -%}
+
+{%- comment -%} ===== HERO ===== {%- endcomment -%}
+<div class="roman-routines">
+  <div class="roman-routines__hero">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="roman-routines__title">{{ section.settings.heading }}</h1>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <div class="roman-routines__subtitle">{{ section.settings.subheading }}</div>
+    {%- endif -%}
+  </div>
+
+  {%- comment -%} ===== ROUTINE CARDS ===== {%- endcomment -%}
+  <div class="roman-routines__grid">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'routine_card' -%}
+        <article class="roman-routines__card" {{ block.shopify_attributes }}>
+          {%- if block.settings.routine_image != blank -%}
+            {{
+              block.settings.routine_image
+              | image_url: width: 800
+              | image_tag:
+                loading: 'lazy',
+                class: 'roman-routines__card-image',
+                sizes: '(min-width: 750px) 50vw, 100vw',
+                widths: '400, 600, 800'
+            }}
+          {%- elsif block.settings.asset_image != blank -%}
+            <img
+              src="{{ block.settings.asset_image | asset_url }}"
+              alt="{{ block.settings.routine_name | escape }}"
+              loading="lazy"
+              class="roman-routines__card-image"
+              width="900"
+              height="900"
+            >
+          {%- endif -%}
+
+          <h2 class="roman-routines__card-name">{{ block.settings.routine_name }}</h2>
+
+          {%- if block.settings.routine_tagline != blank -%}
+            <p class="roman-routines__card-tagline">{{ block.settings.routine_tagline }}</p>
+          {%- endif -%}
+
+          {%- if block.settings.routine_description != blank -%}
+            <div class="roman-routines__card-desc">{{ block.settings.routine_description }}</div>
+          {%- endif -%}
+
+          {%- comment -%} -- Products list -- {%- endcomment -%}
+          {%- if block.settings.included_products != blank -%}
+            {%- assign products_lines = block.settings.included_products | strip | newline_to_br | split: '<br />' -%}
+            <h3 class="roman-routines__products-heading">What's Included</h3>
+            <ul class="roman-routines__products-list">
+              {%- for line in products_lines -%}
+                {%- assign trimmed = line | strip -%}
+                {%- if trimmed != '' -%}
+                  <li>{{ trimmed }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+
+          {%- comment -%} -- Steps -- {%- endcomment -%}
+          {%- if block.settings.steps != blank -%}
+            {%- assign steps_lines = block.settings.steps | strip | newline_to_br | split: '<br />' -%}
+            <h3 class="roman-routines__steps-heading">Your Routine</h3>
+            <ol class="roman-routines__steps">
+              {%- assign step_counter = 0 -%}
+              {%- for step_line in steps_lines -%}
+                {%- assign step_trimmed = step_line | strip -%}
+                {%- if step_trimmed != '' -%}
+                  {%- assign step_counter = step_counter | plus: 1 -%}
+                  <li class="roman-routines__step">
+                    <span class="roman-routines__step-number">{{ step_counter }}</span>
+                    <span class="roman-routines__step-text">{{ step_trimmed }}</span>
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ol>
+          {%- endif -%}
+
+          {%- comment -%} -- CTA -- {%- endcomment -%}
+          {%- if block.settings.cta_link != blank and block.settings.cta_label != blank -%}
+            <div class="roman-routines__card-cta">
+              <a
+                href="{{ block.settings.cta_link }}"
+                class="roman-btn-primary"
+              >
+                {{- block.settings.cta_label -}}
+              </a>
+
+            </div>
+          {%- endif -%}
+        </article>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- comment -%} ===== CONTACT CTA ===== {%- endcomment -%}
+  {%- if section.settings.show_contact_cta -%}
+    <div class="roman-routines__contact">
+      {%- if section.settings.contact_cta_heading != blank -%}
+        <h2 class="roman-routines__contact-heading">{{ section.settings.contact_cta_heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.contact_cta_body != blank -%}
+        <div class="roman-routines__contact-body">{{ section.settings.contact_cta_body }}</div>
+      {%- endif -%}
+      {%- if section.settings.contact_cta_button_link != blank and section.settings.contact_cta_button_label != blank -%}
+        <a
+          href="{{ section.settings.contact_cta_button_link }}"
+          class="roman-btn-primary"
+        >
+          {{- section.settings.contact_cta_button_label -}}
+        </a>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+</div>
+
+{% schema %}
+{
+  "name": "Routines Landing",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Build Your Routine"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Two focused systems designed to simplify your skincare and deliver consistent, visible results. Choose your morning ritual, your evening ritual, or pair both for a complete program.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Contact CTA"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact_cta",
+      "label": "Show contact CTA",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "contact_cta_heading",
+      "label": "CTA heading",
+      "default": "Not sure where to start?"
+    },
+    {
+      "type": "richtext",
+      "id": "contact_cta_body",
+      "label": "CTA body",
+      "default": "<p>Our team can help you choose a routine and learn how to layer products effectively.</p>"
+    },
+    {
+      "type": "text",
+      "id": "contact_cta_button_label",
+      "label": "CTA button label",
+      "default": "Contact Customer Care"
+    },
+    {
+      "type": "url",
+      "id": "contact_cta_button_link",
+      "label": "CTA button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "routine_card",
+      "name": "Routine Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "routine_name",
+          "label": "Routine name"
+        },
+        {
+          "type": "text",
+          "id": "routine_tagline",
+          "label": "Tagline"
+        },
+        {
+          "type": "richtext",
+          "id": "routine_description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "routine_image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "asset_image",
+          "label": "Asset filename (fallback if no image above)",
+          "info": "e.g. roman-morning-defense-system-1.png"
+        },
+        {
+          "type": "textarea",
+          "id": "included_products",
+          "label": "Included products",
+          "info": "One product per line."
+        },
+        {
+          "type": "textarea",
+          "id": "steps",
+          "label": "Routine steps",
+          "info": "One step per line (e.g. \"Step 1 — Cleanse\")."
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "CTA button label"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "CTA button link"
+        },
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Routines Landing",
+      "settings": {
+        "heading": "Build Your Routine",
+        "subheading": "<p>Two focused systems designed to simplify your skincare and deliver consistent, visible results. Choose your morning ritual, your evening ritual, or pair both for a complete program.</p>",
+        "show_contact_cta": true,
+        "contact_cta_heading": "Not sure where to start?",
+        "contact_cta_body": "<p>Our team can help you choose a routine and learn how to layer products effectively.</p>",
+        "contact_cta_button_label": "Contact Customer Care",
+        "contact_cta_button_link": "/pages/contact"
+      },
+      "blocks": [
+        {
+          "type": "routine_card",
+          "settings": {
+            "routine_name": "Morning Defense System",
+            "routine_tagline": "Cleanse. Protect. Illuminate.",
+            "routine_description": "<p>A streamlined morning ritual designed to refresh the skin, defend against daily environmental stress, and support a brighter, more resilient-looking complexion.</p>",
+            "included_products": "Balancing Skin Cleanser for All Skin Types\nIlluminating Daily Serum with Vitamin C\nMulti-Peptide Moisture Crème",
+            "steps": "Step 1 — Cleanse (Balancing Skin Cleanser)\nStep 2 — Treat (Illuminating Daily Serum)\nStep 3 — Restore (Multi-Peptide Moisture Crème)",
+            "asset_image": "morning-routine.png",
+            "cta_label": "Shop Morning System",
+            "cta_link": "/pages/morning-defense-system"
+          }
+        },
+        {
+          "type": "routine_card",
+          "settings": {
+            "routine_name": "Evening Renewal System",
+            "routine_tagline": "Cleanse. Repair. Restore.",
+            "routine_description": "<p>An evening routine designed to remove makeup and impurities without stripping, then support overnight recovery for smoother-looking texture and replenished hydration.</p>",
+            "included_products": "Gentle Cleansing Milk\nRejuvenating Serum with Ferulic Acid\nMulti-Peptide Moisture Crème",
+            "steps": "Step 1 — Cleanse (Gentle Cleansing Milk)\nStep 2 — Treat (Rejuvenating Serum)\nStep 3 — Restore (Multi-Peptide Moisture Crème)",
+            "asset_image": "eventing-routine.png",
+            "cta_label": "Shop Evening System",
+            "cta_link": "/pages/evening-renewal-system"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,331 @@
+{{ 'section-brands-landing.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- comment -%} ======== HERO BANNER ======== {%- endcomment -%}
+{%- if section.settings.hero_heading != blank or section.settings.hero_subtitle != blank -%}
+  <div class="brands-hero">
+    <div class="brands-hero__content">
+      {%- if section.settings.hero_heading != blank -%}
+        <h1 class="brands-hero__heading">{{ section.settings.hero_heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.hero_subtitle != blank -%}
+        <p class="brands-hero__subtitle">{{ section.settings.hero_subtitle }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{%- comment -%} ======== VISUALLY-HIDDEN PAGE HEADING (SEO h1) ======== {%- endcomment -%}
+{%- unless section.settings.hero_heading != blank -%}
+  <h1 class="visually-hidden">{{ page.title | default: 'Our Brands' }}</h1>
+{%- endunless -%}
+
+{%- comment -%} ======== BRAND CARDS GRID ======== {%- endcomment -%}
+<div class="brands-grid section-{{ section.id }}-padding" aria-label="{{ 'Our Brand Partners' }}">
+  <ul class="brands-grid__inner" role="list">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'brand_card' -%}
+          <li class="brand-card" {{ block.shopify_attributes }}>
+            {%- comment -%} Image Area {%- endcomment -%}
+            <div class="brand-card__image-area brand-card__image-area--{{ block.settings.color_variant }}">
+              {%- if block.settings.card_image != blank -%}
+                <img
+                  class="brand-card__cover-img"
+                  src="{{ block.settings.card_image | asset_url }}"
+                  alt="{{ block.settings.brand_name | escape }} brand cover image"
+                  loading="lazy"
+                  width="600"
+                  height="520"
+                >
+              {%- elsif block.settings.brand_logo != blank -%}
+                <img
+                  class="brand-card__logo"
+                  src="{{ block.settings.brand_logo | asset_url }}"
+                  alt="{{ block.settings.brand_name | escape }}"
+                  loading="lazy"
+                  width="180"
+                  height="120"
+                >
+              {%- elsif block.settings.brand_image != blank -%}
+                {{
+                  block.settings.brand_image
+                  | image_url: width: 800
+                  | image_tag:
+                    class: 'brand-card__cover-img',
+                    loading: 'lazy',
+                    widths: '400, 600, 800'
+                }}
+              {%- else -%}
+                {{ 'product-1' | placeholder_svg_tag: 'brand-card__logo' }}
+              {%- endif -%}
+            </div>
+
+            {%- comment -%} Card Body {%- endcomment -%}
+            <div class="brand-card__body">
+              <div class="brand-card__meta">
+                {%- if block.settings.tag_text != blank -%}
+                  <span class="brand-card__tag">{{ block.settings.tag_text }}</span>
+                {%- endif -%}
+                {%- if block.settings.badge_text != blank -%}
+                  <span class="brand-card__badge brand-card__badge--{{ block.settings.badge_style }}">
+                    {{ block.settings.badge_text }}
+                  </span>
+                {%- endif -%}
+              </div>
+
+              {%- if block.settings.brand_name != blank -%}
+                <h2 class="brand-card__name">{{ block.settings.brand_name }}</h2>
+              {%- endif -%}
+
+              {%- if block.settings.description != blank -%}
+                <p class="brand-card__description">{{ block.settings.description }}</p>
+              {%- endif -%}
+
+              {%- if block.settings.cta_text != blank and block.settings.cta_link != blank -%}
+                <a href="{{ block.settings.cta_link }}" class="brand-card__cta" aria-label="{{ block.settings.cta_text }} – {{ block.settings.brand_name | escape }}">
+                  {{ block.settings.cta_text }}
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              {%- endif -%}
+            </div>
+          </li>
+      {%- endcase -%}
+    {%- endfor -%}
+  </ul>
+</div>
+
+{%- comment -%} ======== JSON-LD STRUCTURED DATA ======== {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{{ page.title | default: 'Our Brands' | escape }}",
+  "description": "{{ page.description | default: 'Professional skincare brands curated by Romàn Skin' | escape }}",
+  "numberOfItems": {{ section.blocks.size }},
+  "itemListElement": [
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'brand_card' -%}
+      {
+        "@type": "ListItem",
+        "position": {{ forloop.index }},
+        "item": {
+          "@type": "Brand",
+          "name": {{ block.settings.brand_name | json }},
+          "description": {{ block.settings.description | json }}{%- if block.settings.cta_link != blank -%},
+          "url": "{{ shop.url }}{{ block.settings.cta_link }}"
+          {%- endif -%}
+        }
+      }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Brands Landing",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Banner"
+    },
+    {
+      "type": "text",
+      "id": "hero_heading",
+      "label": "Heading",
+      "default": "Curation of Excellence"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_subtitle",
+      "label": "Subtitle",
+      "default": "Discover our hand-selected portfolio of world-class professional skincare brands, trusted by dermatologists and aesthetic experts globally."
+    },
+
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand_card",
+      "name": "Brand Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand Name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "text",
+          "id": "card_image",
+          "label": "Card image filename",
+          "info": "Full-bleed cover image from assets/ (e.g. card-roman.png)"
+        },
+        {
+          "type": "text",
+          "id": "brand_logo",
+          "label": "Logo asset filename (fallback)",
+          "info": "Used if no card image is set (e.g. logo-landscape.svg)"
+        },
+        {
+          "type": "image_picker",
+          "id": "brand_image",
+          "label": "Or upload brand image"
+        },
+        {
+          "type": "select",
+          "id": "color_variant",
+          "label": "Card background color",
+          "options": [
+            { "value": "roman", "label": "Warm Sand" },
+            { "value": "guinot", "label": "Soft Rose" },
+            { "value": "physiodermie", "label": "Sage Mint" },
+            { "value": "janeirdale", "label": "Peach Glow" }
+          ],
+          "default": "roman"
+        },
+        {
+          "type": "text",
+          "id": "tag_text",
+          "label": "Category tag",
+          "info": "Small uppercase label (e.g. Dermatological Precision)"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Badge text",
+          "info": "Right-aligned badge (e.g. ★★★★★ or Founded 1963)"
+        },
+        {
+          "type": "select",
+          "id": "badge_style",
+          "label": "Badge style",
+          "options": [
+            { "value": "stars", "label": "Stars / Rating" },
+            { "value": "heritage", "label": "Heritage / Date" },
+            { "value": "science", "label": "Science / Italic" },
+            { "value": "clean", "label": "Clean Beauty (green)" }
+          ],
+          "default": "stars"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "cta_text",
+          "label": "CTA button text",
+          "default": "Explore Collection"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "CTA link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brands Landing",
+      "blocks": [
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Romàn Skin",
+            "brand_logo": "logo-landscape.svg",
+            "color_variant": "roman",
+            "tag_text": "Dermatological Precision",
+            "badge_text": "★★★★★",
+            "badge_style": "stars",
+            "description": "Rooted in classical aesthetics and modern science, Romàn Skin delivers high-performance formulas designed for clinical results. Their approach focuses on structural integrity and barrier repair.",
+            "cta_text": "Explore Collection"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Guinot Institut · Paris",
+            "brand_logo": "guinot-logo.svg",
+            "color_variant": "guinot",
+            "tag_text": "Parisian Heritage",
+            "badge_text": "Founded 1963",
+            "badge_style": "heritage",
+            "description": "The alternative to aesthetic medicine. Guinot leverages innovative cellular biology to create treatments that transform the skin, maintaining its status as the leading brand in French salons.",
+            "cta_text": "View Products"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Méthode Physiodermie",
+            "brand_logo": "logo-physiodermie.png",
+            "color_variant": "physiodermie",
+            "tag_text": "Clinical Bio-Science",
+            "badge_text": "⚗ Swiss Formulation",
+            "badge_style": "science",
+            "description": "A pioneer in micro-encapsulation technology. Their unique methodology targets the physiology of each skin layer, ensuring active ingredients are delivered exactly where they are needed most.",
+            "cta_text": "Shop Technology"
+          }
+        },
+        {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Jane Iredale",
+            "brand_logo": "janeiredale-logo.png",
+            "color_variant": "janeirdale",
+            "tag_text": "The Skincare Makeup",
+            "badge_text": "Clean Beauty",
+            "badge_style": "clean",
+            "description": "High-performance mineral makeup that is actually good for your skin. Jane Iredale combines mineral-rich formulations with botanical extracts to soothe and protect while enhancing your natural beauty.",
+            "cta_text": "Discover More"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

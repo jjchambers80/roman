@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "landing-morning-defense",
+      "settings": {
+        "bundle_products": [
+          "balancing-skin-cleanser-for-all-skin-types",
+          "illuminating-daily-serum-with-vitamin-c",
+          "multi-peptide-moisture-creme"
+        ],
+        "discount_percentage": 15,
+        "button_label": "Add Bundle"
+      }
+    }
+  },
+  "order": ["main"]
+}

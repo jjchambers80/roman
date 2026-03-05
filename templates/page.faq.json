@@ -1,0 +1,163 @@
+{
+  "sections": {
+    "main": {
+      "type": "roman-faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "When will my order ship?",
+            "answer": "<p>Orders typically ship within 1–2 business days (excluding weekends and holidays). Once your order ships, you will receive a confirmation email with tracking information.<\/p>",
+            "category": "orders_shipping"
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How can I track my order?",
+            "answer": "<p>A tracking link will be sent to the email address used at checkout once your order has shipped.<\/p>",
+            "category": "orders_shipping"
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "<p>Free shipping may be available during select promotions. If applicable, it will be clearly displayed at checkout.<\/p>",
+            "category": "orders_shipping"
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you ship internationally?",
+            "answer": "<p>At this time, Roman Skin Care ships within the United States only.<\/p>",
+            "category": "orders_shipping"
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return policy?",
+            "answer": "<p>We accept returns within 30 days of the delivery date. To be eligible for a return, the item must be unused, unopened, in its original packaging, and in the same condition that you received it.<\/p><p>Opened or used skincare products are not eligible for return for health and safety reasons.<\/p><p>Gift cards and final sale or clearance items are non-returnable.<\/p>",
+            "category": "returns_refunds"
+          }
+        },
+        "faq_6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I start a return?",
+            "answer": "<p>To initiate a return, please contact us using the Contact page with your order number and reason for return. We will provide detailed return instructions.<\/p>",
+            "category": "returns_refunds"
+          }
+        },
+        "faq_7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are shipping charges refundable?",
+            "answer": "<p>Original shipping charges are non-refundable. Customers are responsible for return shipping costs unless the item arrived damaged, defective, or incorrect.<\/p>",
+            "category": "returns_refunds"
+          }
+        },
+        "faq_8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does it take to receive my refund?",
+            "answer": "<p>Once we receive and inspect your returned item, we will notify you of approval or rejection. If approved, your refund will be processed to your original payment method within 5–7 business days.<\/p>",
+            "category": "returns_refunds"
+          }
+        },
+        "faq_9": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do you offer exchanges?",
+            "answer": "<p>We do not offer direct exchanges. If you need a different item, please return the original product (if eligible) and place a new order.<\/p>",
+            "category": "returns_refunds"
+          }
+        },
+        "faq_10": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if my item arrived damaged or incorrect?",
+            "answer": "<p>If you received a damaged, defective, or incorrect item, please contact us immediately through our Contact page with your order number and photos. We will resolve the issue promptly.<\/p>",
+            "category": "returns_refunds"
+          }
+        },
+        "faq_11": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How should I apply Roman Skin Care products?",
+            "answer": "<p>For best results, follow a structured routine: cleanse first, apply treatment serums next, follow with eye crème if applicable, and finish with moisturizer. In the morning, always apply SPF as your final step.<\/p>",
+            "category": "products_usage"
+          }
+        },
+        "faq_12": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I use Vitamin C products morning and night?",
+            "answer": "<p>Yes. Many Roman Skin Care serums are formulated for both AM and PM use. If you have sensitive skin, begin once daily and increase gradually.<\/p>",
+            "category": "products_usage"
+          }
+        },
+        "faq_13": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does it take to see results?",
+            "answer": "<p>Hydration and radiance may be noticeable quickly. Improvements in tone, texture, and overall appearance typically develop over several weeks with consistent use.<\/p>",
+            "category": "products_usage"
+          }
+        },
+        "faq_14": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are your products suitable for sensitive skin?",
+            "answer": "<p>Skin types vary. We recommend patch testing new products before full application and introducing new formulas gradually.<\/p>",
+            "category": "products_usage"
+          }
+        },
+        "faq_15": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do your products contain fragrance?",
+            "answer": "<p>Ingredient lists are provided on each product page so you can review formulation details prior to purchase.<\/p>",
+            "category": "products_usage"
+          }
+        },
+        "faq_16": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What payment methods do you accept?",
+            "answer": "<p>We accept major credit and debit cards, as well as accelerated checkout options available through Shopify, depending on your device and browser.<\/p>",
+            "category": "account_payments"
+          }
+        },
+        "faq_17": {
+          "type": "faq_item",
+          "settings": {
+            "question": "I didn't receive my order confirmation email. What should I do?",
+            "answer": "<p>Please check your spam or junk folder. If you still cannot locate it, contact us and we will resend your confirmation.<\/p>",
+            "category": "account_payments"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1", "faq_2", "faq_3", "faq_4",
+        "faq_5", "faq_6", "faq_7", "faq_8", "faq_9", "faq_10",
+        "faq_11", "faq_12", "faq_13", "faq_14", "faq_15",
+        "faq_16", "faq_17"
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "<p>Quick answers to common questions about ordering, shipping, returns, and how to use Roman Skin Care in a routine.<\/p>",
+        "allow_multiple_open": false,
+        "enable_faq_schema": true,
+        "show_cta": true,
+        "cta_heading": "Still have questions?",
+        "cta_body": "<p>We're here to help with product guidance, routine layering, and order support.<\/p>",
+        "cta_button_label": "Contact Customer Care",
+        "cta_button_link": "/pages/contact"
+      }
+    }
+  },
+  "order": ["main"]
+}

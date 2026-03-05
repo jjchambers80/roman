@@ -1,0 +1,180 @@
+{{ 'section-product-tabs.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- if section.blocks.size > 0 -%}
+  <product-tabs class="product-tabs color-{{ section.settings.color_scheme }} gradient">
+    <div class="page-width section-{{ section.id }}-padding">
+      {%- comment -%} Tab buttons {%- endcomment -%}
+      <div class="product-tabs__tab-list" role="tablist" aria-label="{{ section.settings.aria_label | default: 'Product information' }}">
+        {%- for block in section.blocks -%}
+          <button
+            role="tab"
+            id="Tab-{{ section.id }}-{{ forloop.index }}"
+            aria-controls="Panel-{{ section.id }}-{{ forloop.index }}"
+            aria-selected="{{ forloop.first }}"
+            tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+            class="product-tabs__tab-button"
+            {{ block.shopify_attributes }}
+          >
+            {{ block.settings.tab_label | escape }}
+          </button>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Tab panels {%- endcomment -%}
+      <div class="product-tabs__panels">
+        {%- for block in section.blocks -%}
+          <div
+            role="tabpanel"
+            id="Panel-{{ section.id }}-{{ forloop.index }}"
+            aria-labelledby="Tab-{{ section.id }}-{{ forloop.index }}"
+            aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+            class="product-tabs__panel"
+            {{ block.shopify_attributes }}
+          >
+            {%- case block.settings.content_source -%}
+              {%- when 'description' -%}
+                {%- if product.description != blank -%}
+                  <div class="rte">{{ product.description }}</div>
+                {%- endif -%}
+              {%- when 'metafield' -%}
+                {%- if block.settings.metafield_content != blank -%}
+                  <div class="rte">{{ block.settings.metafield_content }}</div>
+                {%- endif -%}
+              {%- when 'custom' -%}
+                {%- if block.settings.custom_content != blank -%}
+                  <div class="rte">{{ block.settings.custom_content }}</div>
+                {%- endif -%}
+            {%- endcase -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </product-tabs>
+
+  <script src="{{ 'product-tabs.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product Tabs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab label",
+          "default": "Tab"
+        },
+        {
+          "type": "select",
+          "id": "content_source",
+          "label": "Content source",
+          "options": [
+            {
+              "value": "description",
+              "label": "Product description"
+            },
+            {
+              "value": "metafield",
+              "label": "Metafield (rich text)"
+            },
+            {
+              "value": "custom",
+              "label": "Custom rich text"
+            }
+          ],
+          "default": "custom",
+          "info": "Choose where to pull tab content from."
+        },
+        {
+          "type": "richtext",
+          "id": "metafield_content",
+          "label": "Metafield / dynamic source",
+          "info": "Use the dynamic source picker (⚡) to connect a product metafield. Only used when source is 'Metafield'."
+        },
+        {
+          "type": "richtext",
+          "id": "custom_content",
+          "label": "Custom content",
+          "info": "Only used when source is 'Custom rich text'."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Tabs",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Overview",
+            "content_source": "description"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "How to Use",
+            "content_source": "custom"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Supplement Facts",
+            "content_source": "custom"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,94 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "brands": {
+      "type": "brands-landing",
+      "blocks": {
+        "roman": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Romàn Skin",
+            "card_image": "card-roman.png",
+            "brand_logo": "logo-landscape.svg",
+            "color_variant": "roman",
+            "tag_text": "Dermatological Precision",
+            "badge_text": "★★★★★",
+            "badge_style": "stars",
+            "description": "Rooted in classical aesthetics and modern science, Romàn Skin delivers high-performance formulas designed for clinical results. Their approach focuses on structural integrity and barrier repair.",
+            "cta_text": "Explore Collection",
+            "cta_link": "/collections/all"
+          }
+        },
+        "guinot": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Guinot Institut · Paris",
+            "card_image": "card-guinot.jpg",
+            "brand_logo": "guinot-logo.svg",
+            "color_variant": "guinot",
+            "tag_text": "Parisian Heritage",
+            "badge_text": "Founded 1963",
+            "badge_style": "heritage",
+            "description": "The alternative to aesthetic medicine. Guinot leverages innovative cellular biology to create treatments that transform the skin, maintaining its status as the leading brand in French salons.",
+            "cta_text": "View Products",
+            "cta_link": "/collections/all"
+          }
+        },
+        "physiodermie": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Méthode Physiodermie",
+            "card_image": "card-physiodermie.jpg",
+            "brand_logo": "logo-physiodermie.png",
+            "color_variant": "physiodermie",
+            "tag_text": "Clinical Bio-Science",
+            "badge_text": "⚗ Swiss Formulation",
+            "badge_style": "science",
+            "description": "A pioneer in micro-encapsulation technology. Their unique methodology targets the physiology of each skin layer, ensuring active ingredients are delivered exactly where they are needed most.",
+            "cta_text": "Shop Technology",
+            "cta_link": "/collections/all"
+          }
+        },
+        "janeirdale": {
+          "type": "brand_card",
+          "settings": {
+            "brand_name": "Jane Iredale",
+            "card_image": "card-jane-iredale.jpg",
+            "brand_logo": "janeiredale-logo.png",
+            "color_variant": "janeirdale",
+            "tag_text": "The Skincare Makeup",
+            "badge_text": "Clean Beauty",
+            "badge_style": "clean",
+            "description": "High-performance mineral makeup that is actually good for your skin. Jane Iredale combines mineral-rich formulations with botanical extracts to soothe and protect while enhancing your natural beauty.",
+            "cta_text": "Discover More",
+            "cta_link": "/collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "roman",
+        "guinot",
+        "physiodermie",
+        "janeirdale"
+      ],
+      "settings": {
+        "hero_heading": "",
+        "hero_subtitle": "",
+
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "brands"
+  ]
+}

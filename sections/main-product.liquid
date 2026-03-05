@@ -660,6 +660,143 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
+              {%- when 'bought_together' -%}
+                {%- if block.settings.bundle_products.size > 0 -%}
+                  {{ 'section-frequently-bought-together.css' | asset_url | stylesheet_tag }}
+
+                  {%- assign fbt_products = block.settings.bundle_products -%}
+                  {%- assign fbt_total_price = 0 -%}
+                  {%- assign fbt_total_compare = 0 -%}
+                  {%- assign fbt_all_available = true -%}
+                  {%- assign fbt_variant_ids = '' -%}
+
+                  {%- for fbt_product in fbt_products -%}
+                    {%- assign fbt_variant = fbt_product.selected_or_first_available_variant -%}
+                    {%- if fbt_variant.available == false -%}
+                      {%- assign fbt_all_available = false -%}
+                    {%- endif -%}
+                    {%- assign fbt_total_price = fbt_total_price | plus: fbt_variant.price -%}
+                    {%- if fbt_variant.compare_at_price and fbt_variant.compare_at_price > fbt_variant.price -%}
+                      {%- assign fbt_total_compare = fbt_total_compare | plus: fbt_variant.compare_at_price -%}
+                    {%- else -%}
+                      {%- assign fbt_total_compare = fbt_total_compare | plus: fbt_variant.price -%}
+                    {%- endif -%}
+                    {%- if forloop.first -%}
+                      {%- assign fbt_variant_ids = fbt_variant.id -%}
+                    {%- else -%}
+                      {%- assign fbt_variant_ids = fbt_variant_ids | append: ',' | append: fbt_variant.id -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+
+                  {%- assign fbt_discount = block.settings.discount_percentage -%}
+                  {%- if fbt_discount > 0 -%}
+                    {%- assign fbt_multiplier = 100 | minus: fbt_discount -%}
+                    {%- assign fbt_discounted = fbt_total_price | times: fbt_multiplier | divided_by: 100 -%}
+                    {%- assign fbt_has_discount = true -%}
+                  {%- else -%}
+                    {%- assign fbt_discounted = fbt_total_price -%}
+                    {%- assign fbt_has_discount = false -%}
+                  {%- endif -%}
+
+                  {%- assign fbt_show_compare = false -%}
+                  {%- if fbt_has_discount and fbt_discounted < fbt_total_price -%}
+                    {%- assign fbt_show_compare = true -%}
+                    {%- assign fbt_display_price = fbt_discounted -%}
+                    {%- assign fbt_compare_price = fbt_total_price -%}
+                  {%- elsif fbt_total_compare > fbt_total_price -%}
+                    {%- assign fbt_show_compare = true -%}
+                    {%- assign fbt_display_price = fbt_total_price -%}
+                    {%- assign fbt_compare_price = fbt_total_compare -%}
+                  {%- else -%}
+                    {%- assign fbt_display_price = fbt_total_price -%}
+                  {%- endif -%}
+
+                  <frequently-bought-together class="frequently-bought-together frequently-bought-together--inline" {{ block.shopify_attributes }}>
+                    <h2 class="frequently-bought-together__heading">
+                      {{ block.settings.heading | escape }}
+                    </h2>
+
+                    <div class="frequently-bought-together__inner">
+                      <div class="frequently-bought-together__products">
+                        {%- for fbt_product in fbt_products -%}
+                          {%- if forloop.first == false -%}
+                            <span class="frequently-bought-together__separator" aria-hidden="true">+</span>
+                          {%- endif -%}
+                          <a
+                            href="{{ fbt_product.url }}"
+                            class="frequently-bought-together__item"
+                            title="{{ fbt_product.title | escape }}"
+                          >
+                            {%- if fbt_product.featured_image -%}
+                              <img
+                                src="{{ fbt_product.featured_image | image_url: width: 200 }}"
+                                alt="{{ fbt_product.featured_image.alt | escape }}"
+                                loading="lazy"
+                                width="200"
+                                height="200"
+                                class="frequently-bought-together__item-image"
+                              >
+                            {%- else -%}
+                              {{ 'product-1' | placeholder_svg_tag: 'frequently-bought-together__item-image' }}
+                            {%- endif -%}
+                            <span class="frequently-bought-together__item-title">
+                              {{ fbt_product.title }}
+                            </span>
+                          </a>
+                        {%- endfor -%}
+                      </div>
+
+                      <div class="frequently-bought-together__summary">
+                        <div class="frequently-bought-together__price-row">
+                          <span class="frequently-bought-together__price-label">Total Price:</span>
+                          <span class="frequently-bought-together__price-sale">
+                            {{ fbt_display_price | money_with_currency }}
+                          </span>
+                          {%- if fbt_show_compare -%}
+                            <s class="frequently-bought-together__price-compare">
+                              {{ fbt_compare_price | money_with_currency }}
+                            </s>
+                          {%- endif -%}
+                        </div>
+
+                        <button
+                          type="button"
+                          class="frequently-bought-together__button"
+                          data-bundle-add
+                          data-variant-ids='[{{ fbt_variant_ids }}]'
+                          {% unless fbt_all_available %}aria-disabled="true"{% endunless %}
+                        >
+                          <span class="frequently-bought-together__button-label">
+                            {%- if fbt_all_available -%}
+                              {%- assign fbt_btn_label = block.settings.button_label | default: 'Add Bundle' -%}
+                              {%- if fbt_discount > 0 -%}
+                                {{ fbt_btn_label | escape }} ({{ fbt_discount }}% OFF)
+                              {%- else -%}
+                                {{ fbt_btn_label | escape }}
+                              {%- endif -%}
+                            {%- else -%}
+                              {{ 'products.product.sold_out' | t }}
+                            {%- endif -%}
+                          </span>
+                          {%- render 'loading-spinner' -%}
+                        </button>
+
+                        <div class="frequently-bought-together__error" role="alert"></div>
+
+                        {%- if block.settings.discount_percentage > 0 -%}
+                          <p class="frequently-bought-together__discount-note">
+                            {{ block.settings.discount_percentage }}% bundle discount applied at checkout
+                            {%- if block.settings.discount_code != blank -%}
+                              with code <strong>{{ block.settings.discount_code }}</strong>
+                            {%- endif -%}
+                          </p>
+                        {%- endif -%}
+                      </div>
+                    </div>
+                  </frequently-bought-together>
+
+                  <script src="{{ 'frequently-bought-together.js' | asset_url }}" defer="defer"></script>
+                {%- endif -%}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -1457,6 +1594,49 @@
           "id": "enable_quick_add",
           "label": "t:sections.main-product.blocks.complementary_products.settings.enable_quick_add.label",
           "default": false
+        }
+      ]
+    },
+    {
+      "type": "bought_together",
+      "name": "Bought Together",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Frequently Bought Together"
+        },
+        {
+          "type": "product_list",
+          "id": "bundle_products",
+          "label": "Bundle products",
+          "limit": 4,
+          "info": "Select up to 4 products to show as a bundle."
+        },
+        {
+          "type": "range",
+          "id": "discount_percentage",
+          "label": "Bundle discount (%)",
+          "min": 0,
+          "max": 30,
+          "step": 5,
+          "default": 0,
+          "unit": "%",
+          "info": "Display-only. Pair with a Shopify automatic discount or discount code."
+        },
+        {
+          "type": "text",
+          "id": "discount_code",
+          "label": "Discount code (optional)",
+          "info": "If using a discount code, enter it here."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Add Bundle"
         }
       ]
     },

@@ -1,0 +1,156 @@
+{{ 'section-skin-concerns.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- if section.blocks.size > 0 -%}
+  <div class="skin-concerns section-{{ section.id }}-padding">
+    <div class="skin-concerns__inner">
+      {%- for block in section.blocks -%}
+        <a
+          href="{{ block.settings.link | default: '#' }}"
+          class="skin-concerns__item"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.image != blank -%}
+            <img
+              src="{{ block.settings.image | image_url: width: 800 }}"
+              srcset="{{ block.settings.image | image_url: width: 400 }} 400w,
+                      {{ block.settings.image | image_url: width: 600 }} 600w,
+                      {{ block.settings.image | image_url: width: 800 }} 800w"
+              sizes="(max-width: 749px) 100vw, (max-width: 989px) 50vw, 25vw"
+              alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+              loading="lazy"
+              class="skin-concerns__item-image"
+              width="800"
+              height="{{ 800 | divided_by: block.settings.image.aspect_ratio | round }}"
+            >
+          {%- elsif block.settings.asset_image != blank -%}
+            <img
+              src="{{ block.settings.asset_image | asset_url }}"
+              alt="{{ block.settings.title | escape }}"
+              loading="lazy"
+              class="skin-concerns__item-image"
+              width="800"
+              height="1000"
+            >
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'skin-concerns__item-image' }}
+          {%- endif -%}
+
+          <div class="skin-concerns__item-content">
+            <h3 class="skin-concerns__item-title">{{ block.settings.title | escape }}</h3>
+            <span class="skin-concerns__item-link">Shop Now</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Skin Concerns",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "concern_card",
+      "name": "Concern Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Skin Concern"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Recommended: 800×1000px portrait. Overrides asset image if set."
+        },
+        {
+          "type": "text",
+          "id": "asset_image",
+          "label": "Asset image filename (fallback)",
+          "info": "Enter the filename from assets/ (e.g. my-image.png). Used if no image is picked above."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Skin Concerns",
+      "blocks": [
+        {
+          "type": "concern_card",
+          "settings": {
+            "title": "Dry Skin",
+            "asset_image": "collection-dry-skin-woman-with-dry-skin.png"
+          }
+        },
+        {
+          "type": "concern_card",
+          "settings": {
+            "title": "Dull Skin",
+            "asset_image": "collection-dull-skin-woman-with-dull-skin.png"
+          }
+        },
+        {
+          "type": "concern_card",
+          "settings": {
+            "title": "Fine Lines & Wrinkles",
+            "asset_image": "collection-fine-lines-man-with-fine-lines-and-wrinkles.png"
+          }
+        },
+        {
+          "type": "concern_card",
+          "settings": {
+            "title": "Hyperpigmentation",
+            "asset_image": "collection-hyperpigmentation-woman-with-Hyperpigmentation.png"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

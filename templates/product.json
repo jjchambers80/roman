@@ -54,6 +54,14 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "bought_together": {
+          "type": "bought_together",
+          "settings": {
+            "heading": "Frequently Bought Together",
+            "discount_percentage": 10,
+            "button_label": "Add Bundle"
+          }
         }
       },
       "block_order": [
@@ -64,7 +72,8 @@
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share"
+        "share",
+        "bought_together"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -99,10 +108,25 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "product-tabs": {
+      "type": "product-tabs",
+      "blocks": {
+        "tab_overview": {
+          "type": "tab",
+          "settings": {
+            "tab_label": "Overview",
+            "content_source": "description"
+          }
+        }
+      },
+      "block_order": ["tab_overview"],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
-  "order": [
-    "main",
-    "related-products"
-  ]
+  "order": ["main", "related-products", "product-tabs"]
 }

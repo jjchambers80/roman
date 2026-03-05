@@ -1,0 +1,247 @@
+{{ 'section-landing-morning.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%}
+  Evening Defense System Landing Page
+  A single section with hero + 3 product feature rows
+  Reuses the same CSS as the Morning Defense landing page
+{%- endcomment -%}
+
+{%- comment -%} ===== Bundle variant collection ===== {%- endcomment -%}
+{%- assign bundle_products = section.settings.bundle_products -%}
+{%- assign fbt_total_price = 0 -%}
+{%- assign fbt_total_compare = 0 -%}
+{%- assign fbt_all_available = true -%}
+{%- assign fbt_variant_ids = '' -%}
+
+{%- for bp in bundle_products -%}
+  {%- assign bp_variant = bp.selected_or_first_available_variant -%}
+  {%- if bp_variant.available == false -%}
+    {%- assign fbt_all_available = false -%}
+  {%- endif -%}
+  {%- assign fbt_total_price = fbt_total_price | plus: bp_variant.price -%}
+  {%- if bp_variant.compare_at_price and bp_variant.compare_at_price > bp_variant.price -%}
+    {%- assign fbt_total_compare = fbt_total_compare | plus: bp_variant.compare_at_price -%}
+  {%- else -%}
+    {%- assign fbt_total_compare = fbt_total_compare | plus: bp_variant.price -%}
+  {%- endif -%}
+  {%- if forloop.first -%}
+    {%- assign fbt_variant_ids = bp_variant.id -%}
+  {%- else -%}
+    {%- assign fbt_variant_ids = fbt_variant_ids | append: ',' | append: bp_variant.id -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign fbt_discount = section.settings.discount_percentage -%}
+{%- if fbt_discount > 0 -%}
+  {%- assign fbt_multiplier = 100 | minus: fbt_discount -%}
+  {%- assign fbt_discounted = fbt_total_price | times: fbt_multiplier | divided_by: 100 -%}
+  {%- assign fbt_has_discount = true -%}
+{%- else -%}
+  {%- assign fbt_discounted = fbt_total_price -%}
+  {%- assign fbt_has_discount = false -%}
+{%- endif -%}
+
+{%- assign fbt_show_compare = false -%}
+{%- if fbt_has_discount and fbt_discounted < fbt_total_price -%}
+  {%- assign fbt_show_compare = true -%}
+  {%- assign fbt_display_price = fbt_discounted -%}
+  {%- assign fbt_compare_price = fbt_total_price -%}
+{%- elsif fbt_total_compare > fbt_total_price -%}
+  {%- assign fbt_show_compare = true -%}
+  {%- assign fbt_display_price = fbt_total_price -%}
+  {%- assign fbt_compare_price = fbt_total_compare -%}
+{%- else -%}
+  {%- assign fbt_display_price = fbt_total_price -%}
+{%- endif -%}
+
+{%- comment -%} Build button label with optional discount {%- endcomment -%}
+{%- assign btn_label = section.settings.button_label | default: 'Add Bundle' -%}
+{%- if fbt_discount > 0 -%}
+  {%- assign btn_label = btn_label | append: ' (' | append: fbt_discount | append: '% OFF)' -%}
+{%- endif -%}
+
+{%- comment -%} ===== HERO BANNER ===== {%- endcomment -%}
+<frequently-bought-together class="landing-hero-bundle-wrapper">
+<div class="landing-hero">
+  <div class="landing-hero__inner">
+    <div class="landing-hero__content">
+      <h1 class="landing-hero__heading">Evening Defense System</h1>
+      <p class="landing-hero__text">
+        Wind down with a three-step nighttime ritual that calms, repairs, and restores. Our ultra-mild Gentle Toner, Vitamin&nbsp;C &amp; Ferulic Acid Rejuvenating Serum, and HA&nbsp;Peptide Eye Crème work in harmony to flush the day's stress from your skin, supercharge overnight renewal, and deeply replenish the delicate eye area—so you wake up with a complexion that looks rested, radiant, and visibly renewed.
+      </p>
+
+      {%- if bundle_products.size > 0 -%}
+        <div class="landing-hero__bundle">
+          <button
+            type="button"
+            class="landing-hero__cta landing-hero__cta--button"
+            data-bundle-add
+            data-variant-ids='[{{ fbt_variant_ids }}]'
+            {% unless fbt_all_available %}aria-disabled="true"{% endunless %}
+          >
+            <span class="landing-hero__cta-label">
+              {%- if fbt_all_available -%}
+                {{ btn_label }}
+              {%- else -%}
+                Sold Out
+              {%- endif -%}
+            </span>
+            <div class="loading__spinner hidden">
+              {%- render 'loading-spinner' -%}
+            </div>
+          </button>
+
+          <div class="landing-hero__price-row">
+            <span class="landing-hero__price-sale">{{ fbt_display_price | money_with_currency }}</span>
+            {%- if fbt_show_compare -%}
+              <s class="landing-hero__price-compare">{{ fbt_compare_price | money_with_currency }}</s>
+            {%- endif -%}
+          </div>
+
+          {%- if fbt_discount > 0 -%}
+            <p class="landing-hero__discount-note">
+              {{ fbt_discount }}% bundle discount applied automatically at checkout
+            </p>
+          {%- endif -%}
+
+          <div class="frequently-bought-together__error" role="alert"></div>
+        </div>
+      {%- else -%}
+        <a href="#product-1" class="landing-hero__cta">Explore the Routine</a>
+      {%- endif -%}
+    </div>
+    <div class="landing-hero__media">
+      <img
+        src="{{ 'eventing-routine.png' | asset_url }}"
+        alt="Roman Skin Evening Defense System bundle"
+        loading="eager"
+        fetchpriority="high"
+        class="landing-hero__image"
+        width="900"
+        height="900"
+      >
+    </div>
+  </div>
+</div>
+
+</frequently-bought-together>
+
+{%- comment -%} ===== PRODUCT 1: GENTLE TONER (image left) ===== {%- endcomment -%}
+<div id="product-1" class="landing-product">
+  <div class="landing-product__inner">
+    <div class="landing-product__media">
+      <img
+        src="{{ 'ROMAN-GENTLE-TONER.webp' | asset_url }}"
+        alt="Roman Skin Gentle Toner"
+        loading="lazy"
+        class="landing-product__image"
+        width="800"
+        height="800"
+      >
+    </div>
+    <div class="landing-product__content">
+      <span class="landing-product__eyebrow">Step 1 — Tone & Calm</span>
+      <h2 class="landing-product__heading">Gentle Toner</h2>
+      <p class="landing-product__text">
+        The perfect evening reset begins here. This ultra-mild botanical toner sweeps away every trace of the day—cleanser residue, makeup, hard-water minerals—while flooding skin with a soothing wave of active nourishment. pH-balanced and completely free of color, fragrance, and parabens, it's built for even the most reactive complexions. Think of it as a deep breath for your skin: calm, balanced, and ready to absorb everything that follows.
+      </p>
+      <p class="landing-product__usage">
+        After cleansing, apply toner with a cotton pad to hydrate skin and remove residue. Follow with appropriate protective treatment for skin type.
+      </p>
+      <a href="/products/gentle-toner" class="landing-product__cta">View Product</a>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} ===== PRODUCT 2: REJUVENATING SERUM (image right) ===== {%- endcomment -%}
+<div class="landing-product landing-product--alt landing-product--image-right">
+  <div class="landing-product__inner">
+    <div class="landing-product__media">
+      <img
+        src="{{ 'ROMAN-REJUVENATING-SERUM-WITH-FERULIC-ACID.webp' | asset_url }}"
+        alt="Roman Skin Rejuvenating Serum with Ferulic Acid"
+        loading="lazy"
+        class="landing-product__image"
+        width="800"
+        height="800"
+      >
+    </div>
+    <div class="landing-product__content">
+      <span class="landing-product__eyebrow">Step 2 — Repair & Defend</span>
+      <h2 class="landing-product__heading">Rejuvenating Serum with Ferulic Acid</h2>
+      <p class="landing-product__text">
+        While you sleep, your skin fights back—give it the ammunition. This potent cocktail of Vitamin&nbsp;C and Ferulic Acid penetrates instantly, creating a silky, nourished canvas that works overtime to undo the damage of ambient pollution, UV stress, and free radicals. Apple-source Malic Acid sparks cellular renewal beneath the surface, so every morning you wake up to skin that's visibly brighter, smoother, and more resilient than the night before.
+      </p>
+      <p class="landing-product__usage">
+        Apply a thin layer to entire face, neck, and chest. Avoid eye area. Allow 3–5 minutes for absorption, then follow with moisturizer. May be applied twice daily.
+      </p>
+      <a href="/products/rejuvenating-serum-with-ferulic-acid" class="landing-product__cta">View Product</a>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} ===== PRODUCT 3: EYE CRÈME (image left) ===== {%- endcomment -%}
+<div class="landing-product">
+  <div class="landing-product__inner">
+    <div class="landing-product__media">
+      <img
+        src="{{ 'peptide-moisturizer.png' | asset_url }}"
+        alt="Roman Skin Multi-Peptide Moisture Crème"
+        loading="lazy"
+        class="landing-product__image"
+        width="800"
+        height="800"
+      >
+    </div>
+    <div class="landing-product__content">
+      <span class="landing-product__eyebrow">Step 3 — Revitalize Eyes</span>
+      <h2 class="landing-product__heading">Multi-Peptide Moisture Crème</h2>
+      <p class="landing-product__text">
+        Support skin with this luxurious Creme offering the transformative power of Hexa and Tetrapeptides that help renew the look of skin. Moisture-rich Sodium Hyaluronate and Aloe Vera encourage glowing skin that is superbly hydrated. Natural-source lipids help to revive the complexion and combat dryness for skin that looks and feels softer and more supple.&nbsp;
+      </p>
+      <p class="landing-product__usage">
+        Directions: After cleansing and toning, warm a small amount between palms and smooth over face and neck.&nbsp;&nbsp;
+      </p>
+      <a href="/products/multi-peptide-moisture-creme" class="landing-product__cta">View Product</a>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'frequently-bought-together.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Evening Defense",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "product_list",
+      "id": "bundle_products",
+      "label": "Bundle products",
+      "limit": 3
+    },
+    {
+      "type": "range",
+      "id": "discount_percentage",
+      "label": "Bundle discount %",
+      "min": 0,
+      "max": 30,
+      "step": 5,
+      "default": 0,
+      "info": "Display-only. Pair with a Shopify automatic discount."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Add Bundle"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Evening Defense"
+    }
+  ]
+}
+{% endschema %}

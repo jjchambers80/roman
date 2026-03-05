@@ -1,0 +1,191 @@
+.frequently-bought-together {
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Inline variant: inside the product info column */
+.frequently-bought-together--inline {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.frequently-bought-together__heading {
+  font-size: calc(var(--font-heading-scale) * 1.4rem);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: 0.06rem;
+}
+
+.frequently-bought-together__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: nowrap;
+}
+
+.frequently-bought-together__products {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.frequently-bought-together__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  width: 8rem;
+  text-align: center;
+}
+
+.frequently-bought-together__item:hover
+  .frequently-bought-together__item-title {
+  text-decoration: underline;
+}
+
+.frequently-bought-together__item-image {
+  width: 8rem;
+  height: 8rem;
+  object-fit: contain;
+  border-radius: 0.4rem;
+  background: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.08);
+}
+
+.frequently-bought-together__item-title {
+  font-size: 1.1rem;
+  margin-top: 0.4rem;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.frequently-bought-together__separator {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(var(--color-foreground), 0.55);
+  flex-shrink: 0;
+  line-height: 1;
+  padding-bottom: 2rem;
+}
+
+.frequently-bought-together__summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.frequently-bought-together__price-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.frequently-bought-together__price-label {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+
+.frequently-bought-together__price-sale {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: rgb(var(--color-foreground));
+}
+
+.frequently-bought-together__price-compare {
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.55);
+  text-decoration: line-through;
+}
+
+.frequently-bought-together__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.04rem;
+  cursor: pointer;
+  border: 0.1rem solid rgba(var(--color-foreground), 1);
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  padding: 1.2rem 2.5rem;
+  border-radius: 100rem;
+  min-width: 16rem;
+  text-align: center;
+  transition: opacity 0.2s ease;
+  position: relative;
+}
+
+.frequently-bought-together__button:hover {
+  opacity: 0.85;
+}
+
+.frequently-bought-together__button[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.frequently-bought-together__button .loading__spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.frequently-bought-together__button.loading
+  .frequently-bought-together__button-label {
+  visibility: hidden;
+}
+
+.frequently-bought-together__error {
+  color: rgb(var(--color-error, 200, 50, 50));
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.frequently-bought-together__error:not(:empty) {
+  display: block;
+}
+
+.frequently-bought-together__discount-note {
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.6);
+  margin: 0;
+}
+
+/* Responsive: stack on mobile */
+@media screen and (max-width: 749px) {
+  .frequently-bought-together__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .frequently-bought-together__products {
+    overflow-x: auto;
+    max-width: 100%;
+    padding-bottom: 0.5rem;
+  }
+
+  .frequently-bought-together__summary {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .frequently-bought-together__button {
+    width: 100%;
+  }
+}
