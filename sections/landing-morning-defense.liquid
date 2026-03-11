@@ -2,7 +2,7 @@
 
 {%- comment -%}
   Morning Defense System Landing Page
-  A single section with hero + 3 product feature rows
+  A single section with hero + 4 product feature rows
 {%- endcomment -%}
 
 {%- comment -%} ===== Bundle variant collection ===== {%- endcomment -%}
@@ -66,7 +66,7 @@
     <div class="landing-hero__content">
       <h1 class="landing-hero__heading">Morning Defense System</h1>
       <p class="landing-hero__text">
-        Start every morning with a three-step ritual that cleanses, shields, and revitalizes. Our peptide-powered Balancing Cleanser, Vitamin&nbsp;C Illuminating Serum, and HA&nbsp;Peptide Eye Crème work in concert to protect against daily aggressors, restore radiance, and deeply hydrate the delicate eye area—so your skin faces the day fortified, luminous, and visibly firmer.
+        Start every morning with a four-step ritual that cleanses, tones, shields, and revitalizes. Our peptide-powered Balancing Cleanser, ultra-mild Gentle Toner, Vitamin&nbsp;C Illuminating Serum, and Multi-Peptide Moisture Crème work in concert to protect against daily aggressors, restore radiance, and deeply hydrate—so your skin faces the day fortified, luminous, and visibly firmer.
       </p>
 
       {%- if bundle_products.size > 0 -%}
@@ -111,7 +111,7 @@
     </div>
     <div class="landing-hero__media">
       <img
-        src="{{ 'morning-routine.png' | asset_url }}"
+        src="{{ 'morning-routine-1.png' | asset_url }}"
         alt="Roman Skin Morning Defense System bundle"
         loading="eager"
         fetchpriority="high"
@@ -152,8 +152,41 @@
   </div>
 </div>
 
-{%- comment -%} ===== PRODUCT 2: SERUM (image right) ===== {%- endcomment -%}
+{%- comment -%} ===== PRODUCT 2: GENTLE TONER (image right) ===== {%- endcomment -%}
 <div class="landing-product landing-product--alt landing-product--image-right">
+  <div class="landing-product__inner">
+    <div class="landing-product__media">
+      <img
+        src="{{ 'gentle-toner (2).webp' | asset_url }}"
+        alt="Roman Skin Gentle Toner for Ultra-Sensitive Skin"
+        loading="lazy"
+        class="landing-product__image"
+        width="800"
+        height="800"
+      >
+    </div>
+    <div class="landing-product__content">
+      <span class="landing-product__eyebrow">Step 2 — Tone & Calm</span>
+      <div class="landing-product__skin-badge">
+        <span class="landing-product__badge-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </span>
+        Ultra-Sensitive &middot; Dry/Sensitive Skin
+      </div>
+      <h2 class="landing-product__heading">Gentle Toner</h2>
+      <p class="landing-product__text">
+        The quiet reset your skin has been craving. This ultra-mild botanical toner doesn't just hydrate—it whispers calm into every pore. pH-balanced and entirely free of color, fragrance, and parabens, it delivers a concentrated burst of soothing botanicals that fortify your moisture barrier without a trace of irritation. Think of it as a deep breath for reactive skin: balancing, nourishing, and impossibly gentle.
+      </p>
+      <p class="landing-product__usage">
+        After cleansing, sweep across face and décolleté with a cotton pad. Removes residual cleanser, makeup, and hard-water minerals while infusing skin with active botanical nourishment. Follow with your targeted serum.
+      </p>
+      <a href="/products/gentle-toner" class="landing-product__cta">View Product</a>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} ===== PRODUCT 3: SERUM (image left) ===== {%- endcomment -%}
+<div class="landing-product">
   <div class="landing-product__inner">
     <div class="landing-product__media">
       <img
@@ -166,7 +199,7 @@
       >
     </div>
     <div class="landing-product__content">
-      <span class="landing-product__eyebrow">Step 2 — Protect & Illuminate</span>
+      <span class="landing-product__eyebrow">Step 3 — Protect & Illuminate</span>
       <h2 class="landing-product__heading">Illuminating Daily Serum with Vitamin C</h2>
       <p class="landing-product__text">
         Your daily armor against environmental stress. This peptide-enriched antioxidant serum harnesses the power of Ameliox™&nbsp;Complex, Astaxanthin, Ferulic Acid, Kakadu Plum, and Emblica to neutralize free radicals and amplify your skin's natural glow. Texture refines, luminosity builds, and your complexion stays protected from morning to night.
@@ -179,8 +212,8 @@
   </div>
 </div>
 
-{%- comment -%} ===== PRODUCT 3: EYE CRÈME (image left) ===== {%- endcomment -%}
-<div class="landing-product">
+{%- comment -%} ===== PRODUCT 4: MOISTURE CRÈME (image right) ===== {%- endcomment -%}
+<div class="landing-product landing-product--alt landing-product--image-right">
   <div class="landing-product__inner">
     <div class="landing-product__media">
       <img
@@ -193,13 +226,13 @@
       >
     </div>
     <div class="landing-product__content">
-      <span class="landing-product__eyebrow">Step 3 — Revitalize Eyes</span>
+      <span class="landing-product__eyebrow">Step 4 — Hydrate & Revitalize</span>
       <h2 class="landing-product__heading">Multi-Peptide Moisture Crème</h2>
       <p class="landing-product__text">
-        Support skin with this luxurious Creme offering the transformative power of Hexa and Tetrapeptides that help renew the look of skin. Moisture-rich Sodium Hyaluronate and Aloe Vera encourage glowing skin that is superbly hydrated. Natural-source lipids help to revive the complexion and combat dryness for skin that looks and feels softer and more supple.&nbsp;
+        Support skin with this luxurious Crème offering the transformative power of Hexa and Tetrapeptides that help renew the look of skin. Moisture-rich Sodium Hyaluronate and Aloe Vera encourage glowing skin that is superbly hydrated. Natural-source lipids help to revive the complexion and combat dryness for skin that looks and feels softer and more supple.
       </p>
       <p class="landing-product__usage">
-        Directions: After cleansing and toning, warm a small amount between palms and smooth over face and neck.&nbsp;&nbsp;
+        After cleansing and toning, warm a small amount between palms and smooth over face and neck.
       </p>
       <a href="/products/multi-peptide-moisture-creme" class="landing-product__cta">View Product</a>
     </div>
@@ -218,7 +251,7 @@
       "type": "product_list",
       "id": "bundle_products",
       "label": "Bundle products",
-      "limit": 3
+      "limit": 4
     },
     {
       "type": "range",

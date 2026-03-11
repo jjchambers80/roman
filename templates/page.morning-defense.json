@@ -14,13 +14,16 @@
       "settings": {
         "bundle_products": [
           "balancing-skin-cleanser-for-all-skin-types",
+          "gentle-toner",
           "illuminating-daily-serum-with-vitamin-c",
           "multi-peptide-moisture-creme"
         ],
-        "discount_percentage": 15,
+        "discount_percentage": 10,
         "button_label": "Add Bundle"
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

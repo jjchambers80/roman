@@ -73,12 +73,7 @@
           }
         }
       },
-      "block_order": [
-        "roman",
-        "guinot",
-        "physiodermie",
-        "janeirdale"
-      ],
+      "block_order": ["roman", "guinot", "physiodermie", "janeirdale"],
       "settings": {
         "hero_heading": "",
         "hero_subtitle": "",
@@ -88,7 +83,5 @@
       }
     }
   },
-  "order": [
-    "brands"
-  ]
+  "order": ["brands"]
 }

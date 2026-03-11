@@ -2,7 +2,7 @@
 
 {%- comment -%}
   Evening Defense System Landing Page
-  A single section with hero + 3 product feature rows
+  A single section with hero + 4 product feature rows
   Reuses the same CSS as the Morning Defense landing page
 {%- endcomment -%}
 
@@ -67,7 +67,7 @@
     <div class="landing-hero__content">
       <h1 class="landing-hero__heading">Evening Defense System</h1>
       <p class="landing-hero__text">
-        Wind down with a three-step nighttime ritual that calms, repairs, and restores. Our ultra-mild Gentle Toner, Vitamin&nbsp;C &amp; Ferulic Acid Rejuvenating Serum, and HA&nbsp;Peptide Eye Crème work in harmony to flush the day's stress from your skin, supercharge overnight renewal, and deeply replenish the delicate eye area—so you wake up with a complexion that looks rested, radiant, and visibly renewed.
+        Wind down with a four-step nighttime ritual that cleanses, calms, repairs, and deeply restores. Our ultra-mild Gentle Milk Cleanser, soothing Gentle Toner, HA&nbsp;&amp;&nbsp;Peptide Eye Cream, and luxurious Multi-Peptide Cream work in harmony to melt away the day, flood skin with active nourishment, and supercharge overnight renewal—so you wake up to a complexion that looks rested, radiant, and visibly renewed.
       </p>
 
       {%- if bundle_products.size > 0 -%}
@@ -112,8 +112,8 @@
     </div>
     <div class="landing-hero__media">
       <img
-        src="{{ 'eventing-routine.png' | asset_url }}"
-        alt="Roman Skin Evening Defense System bundle"
+        src="{{ 'evening-routine-1.png' | asset_url }}"
+        alt="Roman Skin Evening Defense System — four-step nighttime ritual"
         loading="eager"
         fetchpriority="high"
         class="landing-hero__image"
@@ -126,12 +126,43 @@
 
 </frequently-bought-together>
 
-{%- comment -%} ===== PRODUCT 1: GENTLE TONER (image left) ===== {%- endcomment -%}
+{%- comment -%} ===== STEP 1: GENTLE MILK CLEANSER (image left) ===== {%- endcomment -%}
 <div id="product-1" class="landing-product">
   <div class="landing-product__inner">
     <div class="landing-product__media">
       <img
-        src="{{ 'ROMAN-GENTLE-TONER.webp' | asset_url }}"
+        src="{{ 'gentle-milk-cleanser.webp' | asset_url }}"
+        alt="Roman Skin Gentle Milk Cleanser"
+        loading="lazy"
+        class="landing-product__image"
+        width="800"
+        height="800"
+      >
+    </div>
+    <div class="landing-product__content">
+      <span class="landing-product__eyebrow">Step 1 — Cleanse</span>
+      <h2 class="landing-product__heading">Gentle Milk Cleanser</h2>
+      <span class="landing-product__skin-badge">
+        <svg class="landing-product__badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Ultra-Sensitive &amp; Dry/Sensitive Skin
+      </span>
+      <p class="landing-product__text">
+        Your evening ritual starts with a clean slate. This creamy, ultra-mild cleansing milk dissolves dirt and makeup without stripping a single drop of moisture. A soothing botanical complex calms and nourishes on contact—completely free of fragrance, color, and parabens. The gentlest first step for skin that demands kindness.
+      </p>
+      <p class="landing-product__usage">
+        Massage a pea-size amount onto damp skin for one minute. Rinse with warm water.
+      </p>
+      <a href="/products/gentle-cleansing-milk" class="landing-product__cta">View Product</a>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} ===== STEP 2: GENTLE TONER (image right) ===== {%- endcomment -%}
+<div class="landing-product landing-product--alt landing-product--image-right">
+  <div class="landing-product__inner">
+    <div class="landing-product__media">
+      <img
+        src="{{ 'gentle-toner-bottle.webp' | asset_url }}"
         alt="Roman Skin Gentle Toner"
         loading="lazy"
         class="landing-product__image"
@@ -140,53 +171,30 @@
       >
     </div>
     <div class="landing-product__content">
-      <span class="landing-product__eyebrow">Step 1 — Tone & Calm</span>
+      <span class="landing-product__eyebrow">Step 2 — Tone &amp; Calm</span>
       <h2 class="landing-product__heading">Gentle Toner</h2>
+      <span class="landing-product__skin-badge">
+        <svg class="landing-product__badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Ultra-Sensitive &amp; Dry/Sensitive Skin
+      </span>
       <p class="landing-product__text">
-        The perfect evening reset begins here. This ultra-mild botanical toner sweeps away every trace of the day—cleanser residue, makeup, hard-water minerals—while flooding skin with a soothing wave of active nourishment. pH-balanced and completely free of color, fragrance, and parabens, it's built for even the most reactive complexions. Think of it as a deep breath for your skin: calm, balanced, and ready to absorb everything that follows.
+        A deep breath for freshly cleansed skin. This pH-balanced botanical toner sweeps away every last trace of residue while flooding the complexion with an intensive burst of calming nourishment. Color-, fragrance-, and paraben-free—built for even the most reactive skin. Balanced, hydrated, and primed for everything that follows.
       </p>
       <p class="landing-product__usage">
-        After cleansing, apply toner with a cotton pad to hydrate skin and remove residue. Follow with appropriate protective treatment for skin type.
+        Sweep over face and neck with a cotton pad after cleansing. Follow with treatment serum or cream.
       </p>
       <a href="/products/gentle-toner" class="landing-product__cta">View Product</a>
     </div>
   </div>
 </div>
 
-{%- comment -%} ===== PRODUCT 2: REJUVENATING SERUM (image right) ===== {%- endcomment -%}
-<div class="landing-product landing-product--alt landing-product--image-right">
-  <div class="landing-product__inner">
-    <div class="landing-product__media">
-      <img
-        src="{{ 'ROMAN-REJUVENATING-SERUM-WITH-FERULIC-ACID.webp' | asset_url }}"
-        alt="Roman Skin Rejuvenating Serum with Ferulic Acid"
-        loading="lazy"
-        class="landing-product__image"
-        width="800"
-        height="800"
-      >
-    </div>
-    <div class="landing-product__content">
-      <span class="landing-product__eyebrow">Step 2 — Repair & Defend</span>
-      <h2 class="landing-product__heading">Rejuvenating Serum with Ferulic Acid</h2>
-      <p class="landing-product__text">
-        While you sleep, your skin fights back—give it the ammunition. This potent cocktail of Vitamin&nbsp;C and Ferulic Acid penetrates instantly, creating a silky, nourished canvas that works overtime to undo the damage of ambient pollution, UV stress, and free radicals. Apple-source Malic Acid sparks cellular renewal beneath the surface, so every morning you wake up to skin that's visibly brighter, smoother, and more resilient than the night before.
-      </p>
-      <p class="landing-product__usage">
-        Apply a thin layer to entire face, neck, and chest. Avoid eye area. Allow 3–5 minutes for absorption, then follow with moisturizer. May be applied twice daily.
-      </p>
-      <a href="/products/rejuvenating-serum-with-ferulic-acid" class="landing-product__cta">View Product</a>
-    </div>
-  </div>
-</div>
-
-{%- comment -%} ===== PRODUCT 3: EYE CRÈME (image left) ===== {%- endcomment -%}
+{%- comment -%} ===== STEP 3: HA & PEPTIDE EYE CREAM (image left) ===== {%- endcomment -%}
 <div class="landing-product">
   <div class="landing-product__inner">
     <div class="landing-product__media">
       <img
-        src="{{ 'peptide-moisturizer.png' | asset_url }}"
-        alt="Roman Skin Multi-Peptide Moisture Crème"
+        src="{{ 'ha-peptide.webp' | asset_url }}"
+        alt="Roman Skin HA & Peptide Eye Cream"
         loading="lazy"
         class="landing-product__image"
         width="800"
@@ -195,12 +203,47 @@
     </div>
     <div class="landing-product__content">
       <span class="landing-product__eyebrow">Step 3 — Revitalize Eyes</span>
-      <h2 class="landing-product__heading">Multi-Peptide Moisture Crème</h2>
+      <h2 class="landing-product__heading">HA &amp; Peptide Eye Cream</h2>
+      <span class="landing-product__skin-badge">
+        <svg class="landing-product__badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        All Skin Types &amp; Mature Skin
+      </span>
       <p class="landing-product__text">
-        Support skin with this luxurious Creme offering the transformative power of Hexa and Tetrapeptides that help renew the look of skin. Moisture-rich Sodium Hyaluronate and Aloe Vera encourage glowing skin that is superbly hydrated. Natural-source lipids help to revive the complexion and combat dryness for skin that looks and feels softer and more supple.&nbsp;
+        The delicate eye area deserves its own overnight hero. Hyaluronic Acid and pseudo-Collagen deeply hydrate while revitalizing Peptides work beneath the surface to restore suppleness and vibrancy. Botanical extracts, vitamins, and natural illuminators brighten tired eyes—so mornings look rested, not rushed.
       </p>
       <p class="landing-product__usage">
-        Directions: After cleansing and toning, warm a small amount between palms and smooth over face and neck.&nbsp;&nbsp;
+        Tap 1–2 drops gently around the orbital bone, above and below the eye. Use AM &amp; PM.
+      </p>
+      <a href="/products/ha-peptide-eye-creme" class="landing-product__cta">View Product</a>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} ===== STEP 4: MULTI-PEPTIDE CREAM (image right) ===== {%- endcomment -%}
+<div class="landing-product landing-product--alt landing-product--image-right">
+  <div class="landing-product__inner">
+    <div class="landing-product__media">
+      <img
+        src="{{ 'multi-peptide-cream.webp' | asset_url }}"
+        alt="Roman Skin Multi-Peptide Cream"
+        loading="lazy"
+        class="landing-product__image"
+        width="800"
+        height="800"
+      >
+    </div>
+    <div class="landing-product__content">
+      <span class="landing-product__eyebrow">Step 4 — Restore &amp; Seal</span>
+      <h2 class="landing-product__heading">Multi-Peptide Cream</h2>
+      <span class="landing-product__skin-badge">
+        <svg class="landing-product__badge-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        All Skin Types
+      </span>
+      <p class="landing-product__text">
+        Seal in your entire evening ritual with this luxurious peptide-rich moisturizer. Hexa- and Tetrapeptides visibly renew skin's texture while Sodium Hyaluronate and Aloe Vera deliver deep, lasting hydration. Natural-source lipids revive the complexion and combat overnight dryness—wake up to skin that feels impossibly soft, supple, and luminous.
+      </p>
+      <p class="landing-product__usage">
+        Warm a small amount between palms and smooth over face and neck as the final step.
       </p>
       <a href="/products/multi-peptide-moisture-creme" class="landing-product__cta">View Product</a>
     </div>
@@ -219,7 +262,7 @@
       "type": "product_list",
       "id": "bundle_products",
       "label": "Bundle products",
-      "limit": 3
+      "limit": 4
     },
     {
       "type": "range",

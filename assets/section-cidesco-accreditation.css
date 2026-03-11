@@ -1,0 +1,400 @@
+/* ============================================================
+   CIDESCO Accreditation Section
+   Aesthetic: Editorial luxury — refined restraint with
+   classical typographic hierarchy and subtle gold accents.
+   ============================================================ */
+
+/* ---- Google Fonts Injection ---- */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap");
+
+/* ---- Section Shell ---- */
+.cidesco {
+  --cidesco-gold: #a08c5b;
+  --cidesco-gold-light: #c4b283;
+  --cidesco-ink: #1a1a18;
+  --cidesco-ink-soft: #3d3d38;
+  --cidesco-warm-bg: #faf8f4;
+  --cidesco-rule: rgba(160, 140, 91, 0.25);
+  --cidesco-serif: "Cormorant Garamond", "Georgia", serif;
+  --cidesco-sans: "Jost", "Futura", sans-serif;
+
+  background: var(--cidesco-warm-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle paper texture via radial noise */
+.cidesco::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse at 20% 50%,
+      rgba(160, 140, 91, 0.04) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse at 80% 30%,
+      rgba(160, 140, 91, 0.03) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
+}
+
+/* ---- Decorative Border Lines ---- */
+.cidesco__border-top,
+.cidesco__border-bottom {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--cidesco-rule) 20%,
+    var(--cidesco-gold-light) 50%,
+    var(--cidesco-rule) 80%,
+    transparent 100%
+  );
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ---- Main Container ---- */
+.cidesco__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media screen and (min-width: 750px) {
+  .cidesco__container {
+    grid-template-columns: 280px 1fr;
+    gap: 56px;
+    padding: 56px 40px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .cidesco__container {
+    grid-template-columns: 340px 1fr;
+    gap: 72px;
+    padding: 64px 48px;
+  }
+}
+
+/* ---- Seal / Logo Column ---- */
+.cidesco__seal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+@media screen and (min-width: 750px) {
+  .cidesco__seal {
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.cidesco__seal-ring {
+  position: absolute;
+  inset: -28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cidesco-gold);
+  animation: cidesco-ring-spin 60s linear infinite;
+}
+
+.cidesco__seal-svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes cidesco-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cidesco__logo-wrap {
+  position: relative;
+  z-index: 1;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cidesco__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(160, 140, 91, 0.15));
+}
+
+.cidesco__seal-label {
+  font-family: var(--cidesco-sans);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cidesco-gold);
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ---- Content Column ---- */
+.cidesco__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Kicker row */
+.cidesco__kicker-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.cidesco__kicker-line {
+  width: 32px;
+  height: 1px;
+  background: var(--cidesco-gold);
+  flex-shrink: 0;
+}
+
+.cidesco__kicker {
+  font-family: var(--cidesco-sans);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cidesco-gold);
+}
+
+/* Heading */
+.cidesco__heading {
+  font-family: var(--cidesco-serif);
+  font-size: 3.4rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--cidesco-ink);
+  margin: 0 0 28px;
+}
+
+@media screen and (min-width: 750px) {
+  .cidesco__heading {
+    font-size: 4.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .cidesco__heading {
+    font-size: 5.5rem;
+  }
+}
+
+/* Lead paragraph */
+.cidesco__lede {
+  font-family: var(--cidesco-serif);
+  font-size: 2.2rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--cidesco-ink-soft);
+  margin: 0 0 32px;
+  max-width: 820px;
+  border-left: 2px solid var(--cidesco-gold-light);
+  padding-left: 20px;
+}
+
+@media screen and (min-width: 750px) {
+  .cidesco__lede {
+    font-size: 2.5rem;
+  }
+}
+
+/* Body text */
+.cidesco__body {
+  margin: 0 0 32px;
+}
+
+.cidesco__body p {
+  font-family: var(--cidesco-sans);
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--cidesco-ink-soft);
+  margin: 0;
+  max-width: 840px;
+}
+
+/* ---- Training Pillars Grid ---- */
+.cidesco__pillars {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+@media screen and (min-width: 600px) {
+  .cidesco__pillars {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.cidesco__pillar {
+  display: flex;
+  gap: 18px;
+  padding: 24px 0;
+  border-top: 1px solid var(--cidesco-rule);
+  align-items: flex-start;
+}
+
+.cidesco__pillar:last-child {
+  border-bottom: 1px solid var(--cidesco-rule);
+}
+
+@media screen and (min-width: 600px) {
+  .cidesco__pillar:nth-child(odd) {
+    padding-right: 24px;
+  }
+  .cidesco__pillar:nth-child(even) {
+    padding-left: 24px;
+    border-left: 1px solid var(--cidesco-rule);
+  }
+  /* Only first two have top border on desktop 2-col */
+  .cidesco__pillar:nth-child(n + 3) {
+    border-top: 1px solid var(--cidesco-rule);
+  }
+  .cidesco__pillar:nth-last-child(-n + 2) {
+    border-bottom: 1px solid var(--cidesco-rule);
+  }
+}
+
+.cidesco__pillar-marker {
+  font-family: var(--cidesco-serif);
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--cidesco-gold-light);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 28px;
+  padding-top: 2px;
+}
+
+.cidesco__pillar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cidesco__pillar-title {
+  font-family: var(--cidesco-sans);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cidesco-ink);
+}
+
+.cidesco__pillar-text {
+  font-family: var(--cidesco-sans);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--cidesco-ink-soft);
+}
+
+/* ---- Footnote ---- */
+.cidesco__footnote {
+  font-family: var(--cidesco-serif);
+  font-size: 1.9rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--cidesco-gold);
+  margin: 0;
+  max-width: 780px;
+  padding-top: 4px;
+}
+
+/* ---- Entrance Animations ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .cidesco__seal,
+  .cidesco__kicker-row,
+  .cidesco__heading,
+  .cidesco__lede,
+  .cidesco__body,
+  .cidesco__pillar,
+  .cidesco__footnote {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: cidesco-fade-in 0.7s ease forwards;
+  }
+
+  .cidesco__seal {
+    animation-delay: 0.1s;
+  }
+  .cidesco__kicker-row {
+    animation-delay: 0.15s;
+  }
+  .cidesco__heading {
+    animation-delay: 0.25s;
+  }
+  .cidesco__lede {
+    animation-delay: 0.35s;
+  }
+  .cidesco__body {
+    animation-delay: 0.45s;
+  }
+  .cidesco__pillar:nth-child(1) {
+    animation-delay: 0.5s;
+  }
+  .cidesco__pillar:nth-child(2) {
+    animation-delay: 0.6s;
+  }
+  .cidesco__pillar:nth-child(3) {
+    animation-delay: 0.7s;
+  }
+  .cidesco__pillar:nth-child(4) {
+    animation-delay: 0.8s;
+  }
+  .cidesco__footnote {
+    animation-delay: 0.9s;
+  }
+
+  .cidesco__kicker-line {
+    transform-origin: left;
+    animation: cidesco-line-grow 0.6s ease 0.2s forwards;
+    transform: scaleX(0);
+    opacity: 1;
+  }
+
+  @keyframes cidesco-fade-in {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes cidesco-line-grow {
+    to {
+      transform: scaleX(1);
+    }
+  }
+}

@@ -6,6 +6,70 @@
   border-top: none;
 }
 
+/* Custom Social Icons */
+.footer__custom-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
+  padding-bottom: 3rem;
+}
+
+.footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(var(--color-foreground));
+  opacity: 0.75;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.footer__social-link:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.footer__social-link--tiktok {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.footer__social-link--tiktok:hover {
+  opacity: 0.6;
+}
+
+.footer__tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  font-size: 1.2rem;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.footer__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgb(var(--color-foreground));
+}
+
+.footer__social-link--tiktok:hover .footer__tooltip {
+  opacity: 1;
+}
+
 .footer__content-top {
   padding-bottom: 5rem;
   display: block;

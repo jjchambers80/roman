@@ -45,7 +45,7 @@
             "button_link_1": "/collections/all",
             "button_style_secondary_1": false,
             "button_label_2": "EXPLORE ROUTINES",
-            "button_link_2": "/collections",
+            "button_link_2": "/pages/routines",
             "button_style_secondary_2": true
           }
         }
@@ -60,14 +60,6 @@
     "trust_strip": {
       "type": "trust-strip",
       "blocks": {
-        "cidesco": {
-          "type": "trust_item",
-          "settings": {
-            "label": "CIDESCO Certified",
-            "icon": "none",
-            "asset_image": "CIDESCO-logo.webp"
-          }
-        },
         "experience": {
           "type": "trust_item",
           "settings": {
@@ -101,19 +93,58 @@
           }
         }
       },
-      "block_order": [
-        "cidesco",
-        "experience",
-        "clinical",
-        "ingredients",
-        "formulas"
-      ],
+      "block_order": ["experience", "clinical", "ingredients", "formulas"],
       "settings": {
         "background_color": "#f0ede8",
         "text_color": "#2c2c2c",
         "icon_color": "#81806e",
         "padding_top": 20,
         "padding_bottom": 20
+      }
+    },
+    "cidesco_accreditation": {
+      "type": "cidesco-accreditation",
+      "blocks": {
+        "pillar_1": {
+          "type": "pillar",
+          "settings": {
+            "title": "Comprehensive Education",
+            "description": "Skin anatomy, advanced electrical facials, chemical peels, deep pore cleansing, body massage & waxing"
+          }
+        },
+        "pillar_2": {
+          "type": "pillar",
+          "settings": {
+            "title": "Global Recognition",
+            "description": "Certified therapists operating in 40+ countries across luxury spas, resorts & cruise lines"
+          }
+        },
+        "pillar_3": {
+          "type": "pillar",
+          "settings": {
+            "title": "Scientific Approach",
+            "description": "Curriculum rooted in skin science—advanced treatments, barrier analysis & clinical consultations"
+          }
+        },
+        "pillar_4": {
+          "type": "pillar",
+          "settings": {
+            "title": "Rigorous Examination",
+            "description": "730–860 hours of training plus theoretical exams, practical assessments & documented case histories"
+          }
+        }
+      },
+      "block_order": ["pillar_1", "pillar_2", "pillar_3", "pillar_4"],
+      "settings": {
+        "logo_asset": "CIDESCO-logo.webp",
+        "seal_label": "ZURICH, SWITZERLAND · EST. 1946",
+        "kicker": "THE GOLD STANDARD",
+        "heading": "CIDESCO Certified Excellence",
+        "lede": "Betty Romàn holds the CIDESCO Diploma—the highest international qualification in skin care and esthetics, recognized across 40+ countries as the definitive mark of clinical mastery.",
+        "body_text": "Established in 1946 by the Comité International d'Esthétiques et de Cosmétologie in Zurich, Switzerland, CIDESCO certification demands 730–860 hours of rigorous training encompassing advanced skin analysis, facial treatments, chemical and enzyme peels, body therapy, and spa sciences—culminating in both theoretical and practical examinations. It is the credential held by the world's leading senior estheticians, spa directors, and formulation consultants.",
+        "footnote": "Every Romàn Skin formula reflects this depth of clinical knowledge—scientifically grounded, rigorously tested, and designed for visible, lasting results.",
+        "padding_top": 52,
+        "padding_bottom": 52
       }
     },
     "skin_concerns": {
@@ -426,6 +457,7 @@
     "best_sellers",
     "testimonials",
     "image_with_text_G4iWXR",
+    "cidesco_accreditation",
     "featured_collection",
     "image_with_text_DTGUyK",
     "ingredient_icons",

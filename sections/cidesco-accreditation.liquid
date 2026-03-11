@@ -1,0 +1,212 @@
+{{ 'section-cidesco-accreditation.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section
+  class="cidesco section-{{ section.id }}-padding"
+  aria-label="CIDESCO Accreditation"
+>
+  {%- comment -%} Decorative border line {%- endcomment -%}
+  <div class="cidesco__border-top" aria-hidden="true"></div>
+
+  <div class="cidesco__container">
+    {%- comment -%} ═══ LEFT: Seal & Emblem ═══ {%- endcomment -%}
+    <div class="cidesco__seal">
+      <div class="cidesco__seal-ring" aria-hidden="true">
+        <svg class="cidesco__seal-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+          <circle cx="100" cy="100" r="88" fill="none" stroke="currentColor" stroke-width="0.25" opacity="0.15"/>
+        </svg>
+      </div>
+      <div class="cidesco__logo-wrap">
+        {%- if section.settings.logo_asset != blank -%}
+          <img
+            class="cidesco__logo"
+            src="{{ section.settings.logo_asset | asset_url }}"
+            alt="CIDESCO International Certification Seal"
+            width="120"
+            height="120"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
+      <span class="cidesco__seal-label">{{ section.settings.seal_label }}</span>
+    </div>
+
+    {%- comment -%} ═══ RIGHT: Copy Content ═══ {%- endcomment -%}
+    <div class="cidesco__content">
+      <div class="cidesco__kicker-row">
+        <span class="cidesco__kicker-line" aria-hidden="true"></span>
+        <span class="cidesco__kicker">{{ section.settings.kicker }}</span>
+      </div>
+
+      <h2 class="cidesco__heading">{{ section.settings.heading }}</h2>
+
+      <p class="cidesco__lede">{{ section.settings.lede }}</p>
+
+      <div class="cidesco__body">
+        <p>{{ section.settings.body_text }}</p>
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="cidesco__pillars" role="list">
+          {%- for block in section.blocks -%}
+            <li class="cidesco__pillar" {{ block.shopify_attributes }}>
+              <span class="cidesco__pillar-marker" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              <div class="cidesco__pillar-content">
+                <strong class="cidesco__pillar-title">{{ block.settings.title }}</strong>
+                <span class="cidesco__pillar-text">{{ block.settings.description }}</span>
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.footnote != blank -%}
+        <p class="cidesco__footnote">{{ section.settings.footnote }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="cidesco__border-bottom" aria-hidden="true"></div>
+</section>
+
+{% schema %}
+{
+  "name": "CIDESCO Accreditation",
+  "tag": "section",
+  "class": "cidesco-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_asset",
+      "label": "Logo asset filename",
+      "default": "CIDESCO-logo.webp",
+      "info": "From assets/ folder (e.g. CIDESCO-logo.webp)"
+    },
+    {
+      "type": "text",
+      "id": "seal_label",
+      "label": "Seal caption",
+      "default": "ZURICH, SWITZERLAND · EST. 1946"
+    },
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "THE GOLD STANDARD"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "CIDESCO Certified Excellence"
+    },
+    {
+      "type": "textarea",
+      "id": "lede",
+      "label": "Lead paragraph",
+      "default": "Betty Romàn holds the CIDESCO Diploma—the highest international qualification in skin care and esthetics, recognized across 40+ countries as the definitive mark of clinical mastery."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "Established in 1946 by the Comité International d'Esthétiques et de Cosmétologie in Zurich, Switzerland, CIDESCO certification demands 730–860 hours of rigorous training encompassing advanced skin analysis, facial treatments, chemical and enzyme peels, body therapy, and spa sciences—culminating in both theoretical and practical examinations. It is the credential held by the world's leading senior estheticians, spa directors, and formulation consultants."
+    },
+    {
+      "type": "textarea",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "Every Romàn Skin formula reflects this depth of clinical knowledge—scientifically grounded, rigorously tested, and designed for visible, lasting results."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Training Pillar",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Pillar"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Description text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CIDESCO Accreditation",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Comprehensive Education",
+            "description": "Skin anatomy, advanced electrical facials, chemical peels, deep pore cleansing, body massage & waxing"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Global Recognition",
+            "description": "Certified therapists operating in 40+ countries across luxury spas, resorts & cruise lines"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Scientific Approach",
+            "description": "Curriculum rooted in skin science—advanced treatments, barrier analysis & clinical consultations"
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Rigorous Examination",
+            "description": "730–860 hours of training plus theoretical exams, practical assessments & documented case histories"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

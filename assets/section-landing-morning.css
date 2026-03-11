@@ -215,6 +215,29 @@
   margin: 0;
 }
 
+.landing-product__skin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #737762;
+  background: rgba(115, 119, 98, 0.08);
+  border: 1px solid rgba(115, 119, 98, 0.18);
+  border-radius: 2rem;
+  width: fit-content;
+}
+
+.landing-product__badge-icon {
+  display: inline-flex;
+  align-items: center;
+  color: #737762;
+  flex-shrink: 0;
+}
+
 .landing-product__heading {
   font-size: 2.8rem;
   font-weight: 700;

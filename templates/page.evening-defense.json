@@ -13,11 +13,12 @@
       "type": "landing-evening-defense",
       "settings": {
         "bundle_products": [
+          "gentle-cleansing-milk",
           "gentle-toner",
-          "rejuvenating-serum-with-ferulic-acid",
-          "ha-peptide-eye-creme"
+          "ha-peptide-eye-creme",
+          "multi-peptide-moisture-creme"
         ],
-        "discount_percentage": 15,
+        "discount_percentage": 10,
         "button_label": "Add Bundle"
       }
     }
