@@ -1,0 +1,25 @@
+ROMAN SKIN CARE — WHOLESALE TO RETAIL PRICE ANALYSIS,,,,,,,,,,,,,,,,,,,,,,
+NOTE: Wholesale Cost column is ESTIMATED at 45% of MSRP (standard prestige skincare keystone). Replace with your actual negotiated wholesale price. Freight is estimated at $2.00/unit — adjust to your actual shipping cost.,,,,,,,,,,,,,,,,,,,,,,
+As of: 2026-04-07,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+SKU / Handle,Product Name,Brand,Category,Product Type,Shopify Status,Units In Stock,Wholesale Cost (Est.),Freight / Handling (Est.),Total Landed Cost,MSRP (Current Retail),Your Retail Price,Gross Profit $,Gross Margin %,Markup % on Cost,Keystone Pricing? (≥100% Markup),Min Retail Price @ 40% Margin,Break-Even Price (= Landed Cost),10% Off Sale Price,Sale Gross Margin % (10% Off),Still Profitable at Sale?,Notes
+balancing-skin-cleanser-for-all-skin-types,Balancing Skin Cleanser for All Skin Types,Roman Skin,Facial Cleansers,Cleanser,Active,-1,19.35,2.00,21.35,43.00,43.00,21.65,50.35%,101.41%,YES,35.58,21.35,38.70,44.83%,YES,"Gentle foaming wash; antioxidant fruit oils; all skin types"
+hydrating-essence-with-hyaluronic-acid,Hydrating Essence with Hyaluronic Acid,Roman Skin,Face Serums / Toners,Serum / Toner,Active,0,23.40,2.00,25.40,52.00,52.00,26.60,51.15%,104.72%,YES,42.33,25.40,46.80,45.73%,YES,"Marine + HA-rich toner; Copper Peptide; Allantoin; Panthenol"
+ha-peptide-eye-creme,HA & Peptide Eye Crème,Roman Skin,Eye Treatments,Treatment,Active,0,42.75,2.00,44.75,95.00,95.00,50.25,52.89%,112.29%,YES,74.58,44.75,85.50,47.66%,YES,"HA + pseudo-Collagen; Peptide complex; illuminators; AM & PM use"
+illuminating-daily-serum-with-vitamin-c,Illuminating Daily Serum with Vitamin C,Roman Skin,Face Serums,Serum,Active,0,65.25,2.00,67.25,145.00,145.00,77.75,53.62%,115.61%,YES,112.08,67.25,130.50,48.47%,YES,"Ameliox Complex; Astaxanthin; Ferulic Acid; Kakadu Plum; anti-aging"
+rejuvenating-serum-with-ferulic-acid,Rejuvenating Serum with Ferulic Acid,Roman Skin,Face Serums,Serum,Unlisted,0,49.50,2.00,51.50,110.00,110.00,58.50,53.18%,113.59%,YES,85.83,51.50,99.00,47.98%,YES,"Vitamin C + Ferulic Acid; Malic Acid; pollution defense; daily primer"
+hyaluronic-serum-with-vitamin-e,Hyaluronic Serum with Vitamin E,Roman Skin,Face Serums,Serum,Active,0,42.75,2.00,44.75,95.00,95.00,50.25,52.89%,112.29%,YES,74.58,44.75,85.50,47.66%,YES,"HA + Vitamin E; hygroscopic actives; all-in-one hydrator; all skin types"
+revitalizing-serum-with-growth-factor,Revitalizing Serum with Botanical Growth Factors,Roman Skin,Face Serums,Serum,Draft,0,69.75,2.00,71.75,155.00,155.00,83.25,53.71%,116.03%,YES,119.58,71.75,139.50,48.57%,YES,"5 growth factors; HA; Passionfruit + Lemon Acids; AM & PM"
+gentle-cleansing-milk,Gentle Cleansing Milk,Roman Skin,Facial Cleansers,Cleanser,Active,0,19.35,2.00,21.35,43.00,43.00,21.65,50.35%,101.41%,YES,35.58,21.35,38.70,44.83%,YES,"Creamy emulsifying milk; Avocado + Shea oils; ultra-sensitive skin"
+,,,,,,,,,,,,,,,,,,,,,,
+SUMMARY METRICS,,,,,,,,,,,,,,,,,,,,,,
+,,Total Units,Avg Wholesale,Avg Landed,Avg MSRP,Avg Retail,,Avg GP $,Avg GM %,Avg Markup %,All Keystone?,,,,,,,
+,,0 (need to update),41.64,43.64,92.00,92.00,,46.36,52.27%,109.67%,ALL YES,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,
+PRICING REFERENCE KEY,,,,,,,,,,,,,,,,,,,,,,
+Gross Margin % = (Retail Price - Landed Cost) / Retail Price × 100,,,,,,,,,,,,,,,,,,,,,,
+Markup % = (Retail Price - Landed Cost) / Landed Cost × 100,,,,,,,,,,,,,,,,,,,,,,
+Keystone = Markup of 100% or more (Retail ≥ 2× landed cost),,,,,,,,,,,,,,,,,,,,,,
+Min Retail @ 40% Margin = Landed Cost ÷ (1 - 0.40),,,,,,,,,,,,,,,,,,,,,,
+Break-Even Price = Total Landed Cost (0% margin),,,,,,,,,,,,,,,,,,,,,,
+10% Off Sale Price = MSRP × 0.90,,,,,,,,,,,,,,,,,,,,,,

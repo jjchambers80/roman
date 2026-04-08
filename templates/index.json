@@ -229,27 +229,27 @@
         "review_1": {
           "type": "testimonial",
           "settings": {
-            "quote": "After just 2 weeks with the Peptide Firming Serum, my jawline looks noticeably tighter and my skin has a smoothness I haven't seen in years. This is the real deal.",
-            "author": "Marie L., Charlotte",
-            "detail": "Verified Buyer · Peptide Firming Serum",
+            "quote": "One of my favorite products is the Roman Skin product serum. I've seen a noticeable difference in the dark spots on my face after using the Illuminating Daily Serum with Vitamin C.",
+            "author": "Melinda L.",
+            "detail": "Verified Buyer · Illuminating Daily Serum with Vitamin C",
             "rating": 5
           }
         },
         "review_2": {
           "type": "testimonial",
           "settings": {
-            "quote": "I have reactive, sensitive skin and most serums irritate me. Within 3 weeks of using the full routine, my redness calmed and my esthetician said my barrier looked stronger than ever.",
-            "author": "Catherine D., Raleigh",
-            "detail": "Verified Client · Complete Routine Set",
+            "quote": "I used it last night, it smells amazing and my skin felt great! I'm so excited!! Thank you so much!",
+            "author": "Janette, Redondo Beach CA",
+            "detail": "Verified Buyer",
             "rating": 5
           }
         },
         "review_3": {
           "type": "testimonial",
           "settings": {
-            "quote": "I spent years searching for European spa-quality formulas I could use at home. By week 4, my dark spots faded and my skin had a radiance my friends started asking about.",
-            "author": "Jennifer R., Atlanta",
-            "detail": "Verified Buyer · Vitamin C Brightening Serum",
+            "quote": "I use the illuminating serum with Vit C as part of my anti-aging regimen. All of the products do an amazing job, but this one specifically also helps with evening out brown spots and tightening the skin. Highly recommend!",
+            "author": "Joanne L.",
+            "detail": "Verified Buyer · Illuminating Serum with Vitamin C · 3/2026",
             "rating": 5
           }
         }
