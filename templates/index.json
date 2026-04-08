@@ -52,7 +52,7 @@
       },
       "block_order": ["kicker", "heading", "subheading", "text", "buttons"],
       "settings": {
-        "asset_image": "product-ROMAN-Daily-serum.png",
+        "asset_image": "product-daily-serum.png",
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -136,7 +136,7 @@
       },
       "block_order": ["pillar_1", "pillar_2", "pillar_3", "pillar_4"],
       "settings": {
-        "logo_asset": "CIDESCO-logo.webp",
+        "logo_asset": "logo-cidesco.webp",
         "seal_label": "ZURICH, SWITZERLAND · EST. 1946",
         "kicker": "THE GOLD STANDARD",
         "heading": "CIDESCO Certified Excellence",
@@ -154,7 +154,7 @@
           "type": "concern_card",
           "settings": {
             "title": "Dry Skin",
-            "asset_image": "collection-dry-skin-woman-with-dry-skin.png",
+            "asset_image": "collection-dry-skin.png",
             "link": "shopify://collections/dryness-dehydration"
           }
         },
@@ -162,7 +162,7 @@
           "type": "concern_card",
           "settings": {
             "title": "Dull Skin",
-            "asset_image": "collection-dull-skin-woman-with-dull-skin.png",
+            "asset_image": "collection-dull-skin.png",
             "link": "shopify://collections/dull-uneven-skin"
           }
         },
@@ -170,7 +170,7 @@
           "type": "concern_card",
           "settings": {
             "title": "Fine Lines & Wrinkles",
-            "asset_image": "collection-fine-lines-man-with-fine-lines-and-wrinkles.png",
+            "asset_image": "collection-fine-lines.png",
             "link": "shopify://collections/fine-lines-wrinkles"
           }
         },
@@ -178,7 +178,7 @@
           "type": "concern_card",
           "settings": {
             "title": "Hyperpigmentation",
-            "asset_image": "collection-hyperpigmentation-woman-with-Hyperpigmentation.png",
+            "asset_image": "collection-hyperpigmentation.png",
             "link": "shopify://collections/hyperpigmentation"
           }
         }
@@ -360,7 +360,7 @@
       },
       "block_order": ["heading_VAJEhM", "text_fhh3RL"],
       "settings": {
-        "asset_image": "roman-skin-care-products-herbs.png",
+        "asset_image": "marketing-products-herbs.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",

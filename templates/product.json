@@ -45,10 +45,6 @@
             "show_gift_card_recipient": true
           }
         },
-        "description": {
-          "type": "description",
-          "settings": {}
-        },
         "share": {
           "type": "share",
           "settings": {
@@ -59,7 +55,13 @@
           "type": "bought_together",
           "settings": {
             "heading": "Frequently Bought Together",
+            "bundle_products": [
+              "gentle-toner",
+              "balancing-skin-cleanser-for-all-skin-types",
+              "multi-peptide-moisture-creme"
+            ],
             "discount_percentage": 10,
+            "discount_code": "",
             "button_label": "Add Bundle"
           }
         }
@@ -71,7 +73,6 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description",
         "share",
         "bought_together"
       ],
@@ -116,11 +117,15 @@
           "type": "tab",
           "settings": {
             "tab_label": "Overview",
-            "content_source": "description"
+            "content_source": "description",
+            "metafield_content": "",
+            "custom_content": ""
           }
         }
       },
-      "block_order": ["tab_overview"],
+      "block_order": [
+        "tab_overview"
+      ],
       "settings": {
         "color_scheme": "scheme-2",
         "padding_top": 36,
@@ -128,5 +133,9 @@
       }
     }
   },
-  "order": ["main", "related-products", "product-tabs"]
+  "order": [
+    "main",
+    "related-products",
+    "product-tabs"
+  ]
 }
