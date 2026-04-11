@@ -1,2 +1,5 @@
 .history/*
 *.ai
+.env
+.env.local
+node_modules/
