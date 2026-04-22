@@ -2,4 +2,6 @@
 *.ai
 .env
 .env.local
+graphify-out/
+brain/
 node_modules/
