@@ -20,6 +20,10 @@
   }
 }
 
+.contact__intro {
+  margin-bottom: 2.5rem;
+}
+
 .contact__button {
   margin-top: 3rem;
 }

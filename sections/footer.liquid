@@ -113,6 +113,14 @@
                             </a>
                           </li>
                         {%- endfor -%}
+                        <li>
+                          <a
+                            href="{{ routes.root_url }}pages/contact"
+                            class="link link--text list-menu__item list-menu__item--link{% if request.page_type == 'page' and page.handle == 'contact' %} list-menu__item--active{% endif %}"
+                          >
+                            Contact
+                          </a>
+                        </li>
                       </ul>
                     {%- endif -%}
                   {%- when 'brand_information' -%}

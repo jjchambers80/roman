@@ -23,6 +23,12 @@
     {%- else -%}
       <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
     {%- endif -%}
+
+    <div class="contact__intro rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <p>We'd love to hear from you! Whether you have a question about a product, need skincare advice, or want help with an order — our team is here to help.</p>
+      <p><strong>Hours of operation:</strong> Monday – Friday, 9 AM – 6 PM Eastern Standard Time.<br>All inquiries will be responded to within <strong>2 business days</strong>.</p>
+    </div>
+
     {%- liquid
       assign contact_form_class = 'isolate'
       if settings.animations_reveal_on_scroll
