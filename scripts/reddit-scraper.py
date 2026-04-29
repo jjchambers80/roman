@@ -18,7 +18,7 @@ import time
 import requests
 from datetime import datetime
 from pathlib import Path
-from typing import List, Dict, Optional
+from typing import List, Dict
 
 # Configuration
 SUBREDDIT = "SkincareAddiction"
@@ -166,7 +166,7 @@ def fetch_comments_for_post(post_id: str) -> List[Dict]:
 
 
 def save_json(data: List[Dict], filename: str, output_dir: Path) -> None:
-    """Save data to JSON file."""
+    """Save data to JSON file with UTF-8 encoding."""
     output_dir.mkdir(parents=True, exist_ok=True)
     filepath = output_dir / filename
 
