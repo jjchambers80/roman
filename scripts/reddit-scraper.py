@@ -13,12 +13,30 @@ Output:
     - brain/roman/skincare-research/raw-comments-YYYY-MM-DD.json
 """
 
+import atexit
 import json
+import os
 import time
+import uuid
 import requests
 from datetime import datetime
 from pathlib import Path
 from typing import List, Dict
+from dotenv import load_dotenv
+from posthog import Posthog
+
+load_dotenv()
+
+_posthog = Posthog(
+    os.environ.get("POSTHOG_PROJECT_TOKEN", ""),
+    host=os.environ.get("POSTHOG_HOST", "https://us.i.posthog.com"),
+    enable_exception_autocapture=True,
+) if os.environ.get("POSTHOG_PROJECT_TOKEN") else None
+
+if _posthog:
+    atexit.register(_posthog.shutdown)
+
+_DISTINCT_ID = f"script-{uuid.uuid5(uuid.NAMESPACE_DNS, 'reddit-scraper')}"
 
 # Configuration
 SUBREDDIT = "SkincareAddiction"
@@ -100,6 +118,12 @@ def fetch_posts(limit: int = 100) -> List[Dict]:
 
         except requests.RequestException as e:
             print(f"ERROR fetching posts: {e}")
+            if _posthog:
+                _posthog.capture(
+                    distinct_id=_DISTINCT_ID,
+                    event="reddit_posts_fetch_failed",
+                    properties={"error": str(e), "posts_fetched_so_far": len(posts)},
+                )
             break
 
     print(f"Total posts fetched: {len(posts)}\n")
@@ -161,6 +185,12 @@ def fetch_comments_for_post(post_id: str) -> List[Dict]:
 
     except requests.RequestException as e:
         print(f"  ERROR fetching comments for post {post_id}: {e}")
+        if _posthog:
+            _posthog.capture(
+                distinct_id=_DISTINCT_ID,
+                event="reddit_comments_fetch_failed",
+                properties={"error": str(e), "post_id": post_id},
+            )
 
     return comments
 
@@ -230,6 +260,18 @@ def main():
     print(f"Comments: {len(all_comments)}")
     print(f"Output directory: {output_dir}")
     print()
+
+    if _posthog:
+        _posthog.capture(
+            distinct_id=_DISTINCT_ID,
+            event="reddit_scrape_completed",
+            properties={
+                "posts_count": len(posts),
+                "comments_count": len(all_comments),
+                "subreddit": SUBREDDIT,
+                "output_dir": str(output_dir),
+            },
+        )
 
 
 if __name__ == "__main__":

@@ -7,12 +7,29 @@ Reads from: brain/roman/skincare-research/raw-comments-*.json
 Writes to: brain/roman/skincare-research/cleaned/
 """
 
+import atexit
 import json
 import re
 import os
+import uuid
 from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
+from dotenv import load_dotenv
+from posthog import Posthog
+
+load_dotenv()
+
+_posthog = Posthog(
+    os.environ.get("POSTHOG_PROJECT_TOKEN", ""),
+    host=os.environ.get("POSTHOG_HOST", "https://us.i.posthog.com"),
+    enable_exception_autocapture=True,
+) if os.environ.get("POSTHOG_PROJECT_TOKEN") else None
+
+if _posthog:
+    atexit.register(_posthog.shutdown)
+
+_DISTINCT_ID = f"script-{uuid.uuid5(uuid.NAMESPACE_DNS, 'clean-reddit-data')}"
 
 
 def clean_text(text):
@@ -201,6 +218,18 @@ def main():
     print(f"Date-organized files:  {date_files_count}")
     print(f"\nOutput directory: brain/roman/skincare-research/cleaned/")
     print("=" * 60)
+
+    if _posthog:
+        _posthog.capture(
+            distinct_id=_DISTINCT_ID,
+            event="reddit_data_cleaned",
+            properties={
+                "initial_count": initial_count,
+                "final_count": final_count,
+                "removed_count": removed_count,
+                "date_files_count": date_files_count,
+            },
+        )
 
     # Sample validation
     if cleaned_comments:
