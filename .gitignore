@@ -5,3 +5,8 @@
 graphify-out/
 brain/
 node_modules/
+.mcp.json
+.DS_Store
+tmux-client-*.log
+.playwright-mcp/
+.serena/
