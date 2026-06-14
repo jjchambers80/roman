@@ -8,7 +8,8 @@ Roman Skin Care is a Shopify storefront (`roman-skin.myshopify.com`) built on a 
 
 ## Store & Environment
 
-- **Shopify store**: `roman-skin.myshopify.com`
+- **Shopify store**: `roman-skin.myshopify.com` (Roman Skin Care private label)
+- **Second store**: `roman-skin-body.myshopify.com` (Roman Skin & Body studio — running Debut theme)
 - **Admin API version**: `2026-04`
 - **Theme base**: Dawn v15.2.0 (Shopify official)
 - **Credentials**: stored in `.env` (gitignored) — never hardcode tokens
@@ -79,16 +80,46 @@ shopify theme pull
 
 ### Admin API scripts (Node.js)
 
-Scripts live in `scripts/` and use the Shopify REST Admin API:
+Scripts live in `scripts/` and talk to the Shopify REST Admin API through the **shared client** in `scripts/shopify.js`. Do not hand-roll `fetch` + `sleep()` throttling — import the client.
 
 ```bash
 # Sync product prices from CSV
 node scripts/sync-prices.js
 ```
 
-- All scripts use `dotenv` — `.env` must be present in project root
-- API rate limit: 2 req/sec on standard plan — scripts use `sleep()` between calls
-- API base URL pattern: `https://${STORE}/admin/api/${API_VERSION}/`
+**Shared client (`scripts/shopify.js`)** — wraps `@shopify/admin-api-client`. Loads `.env`, validates `SHOPIFY_STORE` / `SHOPIFY_ACCESS_TOKEN`, and returns a `client` with automatic retry/backoff on 429 (rate limit) and 5xx. Use it for every new admin script:
+
+```js
+const { client } = require("./shopify");
+
+// GET — path relative to /admin/api/<version>/, no .json suffix
+const res = await client.get("products", {
+  searchParams: { handle, fields: "id,title,variants" },
+});
+const { products } = await res.json();
+
+// PUT/POST — body goes under `data`
+await client.put(`variants/${id}`, { data: { variant: { id, price } } });
+```
+
+- `.env` must be present in project root — the client exits with an error if store/token are missing
+- **No manual rate limiting.** Retry/backoff is built in (`retries: 2`); never add `sleep()` between calls
+- Paths omit the leading `/admin/api/<version>/` and the trailing `.json`
+- `client`, `STORE`, `TOKEN`, `API_VERSION` are all exported from `scripts/shopify.js`
+
+### Continuous Integration (GitHub Actions)
+
+Two workflows run automatically — **do not break them**:
+
+| Workflow | File | Trigger | What it does |
+| --- | --- | --- | --- |
+| **Theme Check** | `.github/workflows/theme-check.yml` | push to `main`, all PRs | Lints Liquid via `shopify/theme-check-action` against `.theme-check.yml` (`theme-check:recommended`) |
+| **Lighthouse CI** | `.github/workflows/lighthouse.yml` | PRs only | `shopify/lighthouse-ci-action` runs perf/a11y/SEO budgets and **fails the PR** below threshold |
+
+- **Run Theme Check locally before pushing**: `shopify theme check` (or `npx @shopify/cli theme check`). It reads `.theme-check.yml`
+- `.theme-check.yml` ignores non-theme dirs (`scripts/`, `brain/`, `node_modules/`, etc.) — keep that ignore list current when adding tooling folders
+- Lighthouse budgets: perf ≥ 0.80, a11y ≥ 0.90, SEO ≥ 0.90. Tune in `lighthouse.yml` as the store improves; raising them is good, lowering them needs justification
+- Lighthouse needs repo **secrets**: `SHOP_STORE`, `SHOP_CLIENT_ID`, `SHOP_CLIENT_SECRET`, `LHCI_GITHUB_APP_TOKEN` — until those are set, the Lighthouse job will fail on PRs (pending)
 
 ---
 
@@ -127,7 +158,7 @@ node scripts/sync-prices.js
 
 ### Subscribe & Save (parked — not in active development)
 
-Spec: `docs/superpowers/specs/2026-04-08-subscribe-and-save-design.md`
+Spec: `brain/roman/specs/2026-04-08-subscribe-and-save-design.md`
 
 - Hybrid approach: custom theme UI + free subscription app backend (Seal Subscriptions or Appstle)
 - Theme reads `product.selling_plan_groups` Liquid object
@@ -147,6 +178,7 @@ Spec: `docs/superpowers/specs/2026-04-08-subscribe-and-save-design.md`
 | `assets/product-form.js`                       | Add-to-cart logic, variant selection, selling plan handling        |
 | `assets/cart-drawer.js`                        | Slide-out cart drawer                                              |
 | `assets/pubsub.js`                             | Pub/sub event system                                               |
+| `scripts/shopify.js`                           | Shared Admin REST client (retry/backoff) — import in every admin script |
 | `scripts/sync-prices.js`                       | Bulk price sync from `roman-skin-wholesale-retail-price-sheet.csv` |
 | `config/settings_schema.json`                  | Theme editor — add new global settings here                        |
 
@@ -226,7 +258,7 @@ Escalate ONLY when:
 A persistent knowledge graph of this Shopify theme lives in `graphify-out/`. Use it to answer structural questions cheaply instead of reading dozens of files.
 
 **Graph location:** `graphify-out/graph.json` · `graphify-out/graph.html` (open in browser)
-**Covers:** `assets/*.js`, `scripts/*.js`, `docs/` — 606 nodes · 703 edges · 117 communities
+**Covers:** `assets/*.js`, `scripts/*.js`, `brain/roman/` — 606 nodes · 703 edges · 117 communities
 **God nodes** (most connected): `PredictiveSearch`, `FacetFiltersForm`, `SlideshowComponent`, `CartItems`, `CartDrawer`
 
 ### When to use the graph
@@ -262,6 +294,48 @@ G = json_graph.node_link_graph(json.loads(Path('graphify-out/graph.json').read_t
 "
 ```
 
+## MemPalace — Conversation Memory
+
+MemPalace is a local-first AI memory system that stores conversation history verbatim and retrieves it with semantic search. It is already initialized for this project.
+
+**Palace location:** `~/.mempalace/` (local, nothing leaves the machine)
+**Docs:** [mempalaceofficial.com](https://mempalaceofficial.com) · [GitHub](https://github.com/MemPalace/mempalace)
+
+### When to use MemPalace
+
+| Situation | Action |
+| --------- | ------ |
+| Starting a new session on this project | `mempalace wake-up` — loads prior context |
+| "Did we already decide X?" / "Why did we do Y?" | `mempalace search "query"` |
+| After a productive session (decisions made, features built) | `mempalace mine .` |
+| After a long Claude Code conversation | `mempalace mine ~/.claude/projects/ --mode convos` |
+
+### Key commands
+
+```bash
+# Load context at the start of every session
+mempalace wake-up
+
+# Search past decisions and conversations
+mempalace search "subscribe and save implementation"
+mempalace search "why we changed the hero section"
+
+# Mine the project files into the palace (run after significant changes)
+mempalace mine /Users/jjchambers/Documents/projects/roman/
+
+# Mine Claude Code conversation history
+mempalace mine ~/.claude/projects/ --mode convos
+```
+
+### Rules
+
+- **Always run `mempalace wake-up` at the start of a session** before reading files or proposing changes — it surfaces prior decisions instantly
+- Search MemPalace before searching the `brain/roman/` vault — MemPalace covers conversations, the brain vault covers structured notes
+- Re-mine the project after completing a feature or making architecture changes so the palace stays current
+- Do not mine secrets or `.env` files — the palace is local but still treat it as non-sensitive storage only
+
+---
+
 ## Security
 
 - Validate at system boundaries only (user input, Shopify webhook payloads, external API responses)
@@ -273,6 +347,132 @@ G = json_graph.node_link_graph(json.loads(Path('graphify-out/graph.json').read_t
 
 When you need to understand the codebase, docs, or any files in this project:
 
-1. Query the knowledge graph first for JS/docs questions: `/graphify query "your question"`
-2. For Liquid sections/snippets/templates, read the files directly — they are not in the graph
-3. Use `CLAUDE.md` (this file) as your primary orientation guide for project structure
+1. Run `mempalace wake-up` first to surface any prior session context
+2. Query the knowledge graph for JS/docs questions: `/graphify query "your question"`
+3. For Liquid sections/snippets/templates, read the files directly — they are not in the graph
+4. Use `CLAUDE.md` (this file) as your primary orientation guide for project structure
+
+---
+
+## Obsidian Skills (`kepano/obsidian-skills`)
+
+Five agent skills are globally installed via `npx skills` from [github.com/kepano/obsidian-skills](https://github.com/kepano/obsidian-skills). Always load the relevant skill before working on any task covered below.
+
+| Skill | Load when… |
+| ----- | ---------- |
+| `obsidian-markdown` | Creating or editing any `.md` file in `brain/roman/` — wikilinks, callouts, frontmatter, embeds, tags |
+| `obsidian-cli` | Interacting with the brain vault from the command line — reading, creating, searching, appending notes, managing tasks or properties |
+| `obsidian-bases` | Creating or editing `.base` files — database-like views, filters, formulas, summaries |
+| `json-canvas` | Creating or editing `.canvas` files — visual canvases, mind maps, flowcharts |
+| `defuddle` | Fetching a URL to read or summarize — strips clutter from web pages before processing |
+
+### Usage rules
+
+- **Always load the skill before acting** — these skills contain exact syntax and workflow rules that differ from standard Markdown/CLI conventions
+- Use `obsidian-markdown` any time you write a note into `brain/roman/`, even for simple updates — Obsidian syntax has gotchas (block IDs, callout fold syntax, embed paths)
+- Use `obsidian-cli` instead of reading files raw when Obsidian is open — it's faster and vault-aware
+- Use `defuddle` instead of raw `fetch` for any non-`.md` URL — it saves significant tokens by stripping nav and boilerplate
+- `obsidian-bases` and `json-canvas` are rarely needed on this project but load them if the user mentions `.base` or `.canvas` files
+
+### Quick reference — obsidian-cli
+
+```bash
+obsidian read file="My Note"
+obsidian create name="New Note" content="# Hello" template="Template" silent
+obsidian append file="My Note" content="New line"
+obsidian search query="search term" limit=10
+obsidian daily:append content="- [ ] New task"
+obsidian property:set name="status" value="done" file="My Note"
+obsidian backlinks file="My Note"
+```
+
+## Caveman — Token-Efficient Communication
+
+Caveman is a Claude Code skill that reduces output tokens by ~75% while preserving technical accuracy. Activate it to make responses terse, fragment-friendly, and maximum-grunt — ideal for long sessions or complex debugging where verbosity burns context.
+
+### Modes
+
+| Mode | Best for | Characteristics |
+|------|----------|-----------------|
+| **Lite** | Light compression | Remove filler; keep grammar; professional but concise |
+| **Full** | Default; heavy compression | Drop articles, fragments OK, short synonyms; "classic caveman" |
+| **Ultra** | Maximum compression | Telegraphic; abbreviate everything |
+| **Wenyan** | Literary/poetic compression | Classical Chinese; three levels (lite/full/ultra); maximum token efficiency |
+
+### When to use
+
+- Long refactoring or debugging sessions where context window matters
+- PR reviews where you want comments to be short + specific (`/caveman-review`)
+- Commit messages under 50 chars (`/caveman-commit`)
+- Session startup to compress CLAUDE.md itself (`/caveman-compress`)
+
+### Commands
+
+| Command | Purpose |
+|---------|---------|
+| `/caveman` | Toggle caveman mode on/off or switch modes (lite/full/ultra) |
+| `/caveman-review` | Generate single-line PR comments with specific issues + fixes |
+| `/caveman-commit` | Generate Conventional Commits ≤50 characters |
+| `/caveman-compress` | Compress memory/docs files for faster loading (~46% token reduction) |
+| `/caveman-help` | Quick reference card |
+
+### Rules
+
+- **Code/commits/PRs always normal** — caveman is for communication only; code blocks, commits, and pull requests use standard grammar
+- **Security warnings always normal** — anything irreversible or dangerous reverts to full clarity
+- **Fragment order matters** — if a multi-step sequence could misread as fragments, revert to normal
+- **Auto-clarity:** when user asks for clarification or repeats a question, drop caveman for that response; resume after
+- **Persistent until stopped** — once activated, stays on until `/caveman stop` or "normal mode"
+
+### Installation
+
+Caveman is installed globally; load via `/caveman` to activate. Supports Claude Code, Codex, Gemini CLI, Cursor, Windsurf, Cline, Copilot, and 40+ agents.
+
+---
+
+## Brain — Living Documentation (`brain/roman/`)
+
+`brain/roman/` is the **single source of truth** for all project documentation — specs, setup guides, feature notes, decisions, and reference files. It is an Obsidian vault; these files are gitignored and for operational context only, not source control. **Never create documentation files anywhere else in the repo (e.g. `docs/`). Always write and organize documentation here.**
+
+### When to write to the brain
+
+| Situation | Write a note |
+|-----------|-------------|
+| Completing a setup step (CLI auth, API config, etc.) | `setup/<topic>.md` |
+| Configuring a store setting or integration | `config/<topic>.md` |
+| Implementing a new feature or section | `features/<feature-name>.md` |
+| Discovering a non-obvious behaviour or gotcha | `notes/<topic>.md` |
+| Making a decision about approach or architecture | `decisions/<topic>.md` |
+| Writing a feature spec or design document | `specs/<topic>.md` |
+| Reference data (product info, price sheets, etc.) | `brain/roman/` root or relevant subfolder |
+
+### Folder structure
+
+```
+brain/roman/
+  setup/          — one-time environment and store setup steps
+  config/         — store settings, integrations, app configurations
+  features/       — implementation notes per feature
+  decisions/      — why we chose a particular approach
+  notes/          — gotchas, observations, reference snippets
+  specs/          — feature specs and design documents
+```
+
+### Format conventions
+
+- Filename: `kebab-case.md`
+- Start every note with a `# Title` and a one-line summary
+- Include **date**, **status** (`complete` / `in-progress` / `parked`), and **store** (`roman-skin` / `roman-skin-body` / `both`) in a front-matter-style header block:
+
+```
+Date: YYYY-MM-DD
+Status: complete
+Store: roman-skin
+```
+
+- Link related notes with `[[note-name]]` (Obsidian wikilinks)
+- Keep notes factual and concise — this is a reference, not a journal
+
+### What has been documented so far
+
+- Nothing yet — start writing as we complete work.
