@@ -51,7 +51,22 @@
                   <div class="rte">{{ product.description }}</div>
                 {%- endif -%}
               {%- when 'metafield' -%}
-                {%- if block.settings.metafield_content != blank -%}
+                {%- assign mf_key = block.settings.metafield_auto_key -%}
+                {%- case mf_key -%}
+                  {%- when 'tab_description' -%}
+                    {%- assign mf_value = product.metafields.custom.tab_description.value -%}
+                  {%- when 'tab_usage' -%}
+                    {%- assign mf_value = product.metafields.custom.tab_usage.value -%}
+                  {%- when 'tab_ingredients' -%}
+                    {%- assign mf_value = product.metafields.custom.tab_ingredients.value -%}
+                  {%- else -%}
+                    {%- assign mf_value = blank -%}
+                {%- endcase -%}
+                {%- if mf_value != blank -%}
+                  <div class="rte">
+                    <p>{{ mf_value | newline_to_br }}</p>
+                  </div>
+                {%- elsif block.settings.metafield_content != blank -%}
                   <div class="rte">{{ block.settings.metafield_content }}</div>
                 {%- endif -%}
               {%- when 'custom' -%}
@@ -113,6 +128,12 @@
           "default": "Tab"
         },
         {
+          "type": "text",
+          "id": "metafield_auto_key",
+          "label": "Metafield key",
+          "info": "When source is 'Metafield', reads product.metafields.custom.[key]. E.g. tab_description"
+        },
+        {
           "type": "select",
           "id": "content_source",
           "label": "Content source",
@@ -155,21 +176,21 @@
         {
           "type": "tab",
           "settings": {
-            "tab_label": "Overview",
+            "tab_label": "Description",
             "content_source": "description"
           }
         },
         {
           "type": "tab",
           "settings": {
-            "tab_label": "How to Use",
+            "tab_label": "Usage",
             "content_source": "custom"
           }
         },
         {
           "type": "tab",
           "settings": {
-            "tab_label": "Supplement Facts",
+            "tab_label": "Ingredients",
             "content_source": "custom"
           }
         }

@@ -27,6 +27,12 @@
     <div class="contact__intro rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <p>We'd love to hear from you! Whether you have a question about a product, need skincare advice, or want help with an order — our team is here to help.</p>
       <p><strong>Hours of operation:</strong> Monday – Friday, 9 AM – 6 PM Eastern Standard Time.<br>All inquiries will be responded to within <strong>2 business days</strong>.</p>
+      <address class="contact__business-info" style="font-style:normal; margin-top:1.2rem; line-height:1.7;">
+        <strong>Roman Skin and Body Care Inc.</strong><br>
+        <a href="tel:+19194639575">(919) 463-9575</a><br>
+        102 Commonwealth Court, Suite E<br>
+        Cary, NC 27511
+      </address>
     </div>
 
     {%- liquid
@@ -132,6 +138,17 @@
           {{- 'templates.contact.form.comment' | t -}}
         </label>
       </div>
+      <div class="contact__accepts-marketing">
+        <label class="contact__accepts-marketing-label">
+          <input
+            type="checkbox"
+            name="contact[accepts_marketing]"
+            id="ContactForm-accepts-marketing"
+            value="true"
+          >
+          Email me about offers and new products
+        </label>
+      </div>
       <div class="contact__button">
         <button type="submit" class="button">
           {{ 'templates.contact.form.send' | t }}
@@ -140,6 +157,34 @@
     {%- endform -%}
   </div>
 </div>
+
+{%- form 'customer', id: 'ContactPageNewsletterForm', style: 'display:none' -%}
+  <input type="hidden" name="contact[tags]" value="newsletter">
+  <input type="hidden" name="contact[email]" id="ContactPageNewsletter-email" value="">
+{%- endform -%}
+
+<iframe name="newsletter-submit-frame" style="display:none" aria-hidden="true"></iframe>
+
+<script>
+(function () {
+  var form = document.getElementById('ContactForm');
+  var checkbox = document.getElementById('ContactForm-accepts-marketing');
+  if (!form || !checkbox) return;
+
+  var newsletterForm = document.getElementById('ContactPageNewsletterForm');
+  newsletterForm.target = 'newsletter-submit-frame';
+
+  form.addEventListener('submit', function () {
+    if (!checkbox.checked) return;
+
+    var email = document.getElementById('ContactForm-email').value.trim();
+    if (!email) return;
+
+    document.getElementById('ContactPageNewsletter-email').value = email;
+    newsletterForm.submit();
+  });
+})();
+</script>
 
 {% schema %}
 {

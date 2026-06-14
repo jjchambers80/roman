@@ -1,0 +1,19 @@
+<script>window.location.replace("{{ section.settings.redirect_url }}");</script>
+<noscript>
+  <meta http-equiv="refresh" content="0;url={{ section.settings.redirect_url }}">
+</noscript>
+<p>This page has moved. <a href="{{ section.settings.redirect_url }}">Click here</a> if you are not redirected automatically.</p>
+
+{% schema %}
+{
+  "name": "Policy Redirect",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "url",
+      "id": "redirect_url",
+      "label": "Redirect URL"
+    }
+  ]
+}
+{% endschema %}

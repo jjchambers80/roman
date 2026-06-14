@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "articles": {
+      "type": "articles-landing",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": ["articles"]
+}

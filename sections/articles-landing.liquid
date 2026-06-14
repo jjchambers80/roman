@@ -1,0 +1,157 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-articles-landing.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- comment -%} ======================================================
+  ARTICLES LANDING — aggregates all category blogs into one view
+  with search, category tab navigation, and a latest-first grid.
+======================================================= {%- endcomment -%}
+
+<div class="articles-landing section-{{ section.id }}-padding">
+
+  {%- comment -%} ── HERO HEADER ─────────────────────────────────── {%- endcomment -%}
+  <div class="articles-landing__hero">
+    <div class="articles-landing__hero-inner page-width">
+      <p class="articles-landing__kicker">Expert Advice</p>
+      <h1 class="articles-landing__heading{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        Skin Care Articles
+      </h1>
+      <p class="articles-landing__subheading">
+        Evidence-based guidance from Betty Román &amp; the Romàn Skin team.
+      </p>
+
+      {%- comment -%} Search bar {%- endcomment -%}
+      <form class="articles-landing__search" action="/search" method="get" role="search">
+        <input type="hidden" name="type" value="article">
+        <div class="articles-landing__search-inner">
+          <label for="ArticleSearch" class="visually-hidden">Search articles</label>
+          <input
+            type="search"
+            id="ArticleSearch"
+            name="q"
+            class="articles-landing__search-input"
+            placeholder="Search skin care topics…"
+            autocomplete="off"
+          >
+          <button type="submit" class="articles-landing__search-btn" aria-label="Search">
+            <span class="svg-wrapper">
+              {{- 'icon-search.svg' | inline_asset_content -}}
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {%- comment -%} ── CATEGORY TABS ───────────────────────────────── {%- endcomment -%}
+  <div class="articles-landing__tabs-wrap">
+    <div class="page-width">
+      <nav class="articles-landing__tabs" role="navigation" aria-label="Article categories">
+        <a href="/pages/articles" class="articles-tab articles-tab--active" aria-current="page">All</a>
+        <a href="/blogs/skin-tips" class="articles-tab">Skin Tips</a>
+        <a href="/blogs/ingredients" class="articles-tab">Ingredients</a>
+        <a href="/blogs/anti-aging" class="articles-tab">Anti-Aging</a>
+        <a href="/blogs/routines" class="articles-tab">Routines</a>
+      </nav>
+    </div>
+  </div>
+
+  {%- comment -%} ── ARTICLE GRID ─────────────────────────────────
+    Combines all four blogs, sorts by published_at descending.
+    Shopify Liquid concat + sort handles the merge natively.
+  {%- endcomment -%}
+  <div class="page-width">
+    {%- liquid
+      assign all_articles = blogs['skin-tips'].articles | concat: blogs['ingredients'].articles | concat: blogs['anti-aging'].articles | concat: blogs['routines'].articles | sort: 'published_at' | reverse
+    -%}
+
+    {%- if all_articles.size > 0 -%}
+      <div class="articles-landing__grid">
+        {%- for article in all_articles limit: 12 -%}
+          <div
+            class="articles-landing__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+          >
+            {%- render 'article-card',
+              article: article,
+              media_height: 'medium',
+              show_image: true,
+              show_date: true,
+              show_author: true,
+              show_excerpt: true
+            -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Browse by category footer links {%- endcomment -%}
+      <div class="articles-landing__browse">
+        <p class="articles-landing__browse-label">Browse by category</p>
+        <div class="articles-landing__browse-links">
+          <a href="/blogs/skin-tips" class="articles-browse-link">Skin Tips →</a>
+          <a href="/blogs/ingredients" class="articles-browse-link">Ingredients →</a>
+          <a href="/blogs/anti-aging" class="articles-browse-link">Anti-Aging →</a>
+          <a href="/blogs/routines" class="articles-browse-link">Routines →</a>
+        </div>
+      </div>
+
+    {%- else -%}
+      {%- comment -%} Empty state – shown before any articles are published {%- endcomment -%}
+      <div class="articles-landing__empty">
+        <p>Articles coming soon. Check back for expert skin care guidance.</p>
+      </div>
+    {%- endif -%}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Articles Landing",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Articles Landing"
+    }
+  ]
+}
+{% endschema %}

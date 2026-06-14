@@ -1,6 +1,7 @@
 {{ 'component-article-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+{{ 'section-articles-landing.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -15,6 +16,18 @@
     }
   }
 {%- endstyle -%}
+
+{%- comment -%} ── Category navigation bar ─────────────────────── {%- endcomment -%}
+<div class="blog-category-nav page-width">
+  <a href="/pages/articles" class="blog-category-nav__back">← All Articles</a>
+  <nav class="blog-category-nav__tabs" role="navigation" aria-label="Article categories">
+    <a href="/pages/articles" class="blog-tab">All</a>
+    <a href="/blogs/skin-tips" class="blog-tab{% if blog.handle == 'skin-tips' %} blog-tab--active{% endif %}">Skin Tips</a>
+    <a href="/blogs/ingredients" class="blog-tab{% if blog.handle == 'ingredients' %} blog-tab--active{% endif %}">Ingredients</a>
+    <a href="/blogs/anti-aging" class="blog-tab{% if blog.handle == 'anti-aging' %} blog-tab--active{% endif %}">Anti-Aging</a>
+    <a href="/blogs/routines" class="blog-tab{% if blog.handle == 'routines' %} blog-tab--active{% endif %}">Routines</a>
+  </nav>
+</div>
 
 {%- paginate blog.articles by 6 -%}
   <div class="main-blog page-width section-{{ section.id }}-padding">

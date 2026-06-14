@@ -1,5 +1,30 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%} BlogPosting structured data — improves Google rich results and AI citation {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ article.title | json }},
+  "datePublished": "{{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+  "dateModified": "{{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+  "author": {
+    "@type": "Person",
+    "name": {{ article.author | json }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Romàn Skin Care",
+    "url": {{ request.origin | json }}
+  },
+  "url": {{ request.origin | append: article.url | json }},
+  "description": {{ article.excerpt_or_content | strip_html | truncatewords: 40 | json }}
+  {%- if article.image -%}
+  ,"image": "https:{{ article.image | image_url: width: 1200 }}"
+  {%- endif -%}
+}
+</script>
+
 <article class="article-template">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
@@ -83,13 +108,13 @@
   {%- endfor -%}
 
   <div class="article-template__back element-margin-top center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-    <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
+    <a href="/pages/articles" class="article-template__link link animate-arrow">
       <span class="icon-wrap">
         <span class="svg-wrapper">
           {{- 'icon-arrow.svg' | inline_asset_content -}}
         </span>
       </span>
-      {{ 'blogs.article.back_to_blog' | t: title: blog.title | escape }}
+      All Articles
     </a>
   </div>
   {%- if blog.comments_enabled? -%}

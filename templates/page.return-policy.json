@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "redirect": {
+      "type": "page-policy-redirect",
+      "settings": {
+        "redirect_url": "/policies/refund-policy"
+      }
+    }
+  },
+  "order": ["redirect"]
+}

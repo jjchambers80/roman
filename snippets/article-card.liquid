@@ -85,7 +85,28 @@
                 <span class="circle-divider">{{ article.published_at | time_tag: format: 'date' }}</span>
               {%- endif -%}
               {%- if show_author -%}
-                <span>{{ article.author }}</span>
+                {%- liquid
+                  assign author_avatar_url = nil
+                  case article.author
+                    when 'Betty Román'
+                      assign author_avatar_url = 'avatar-betty-roman.png' | asset_url
+                    when 'Daniela'
+                      assign author_avatar_url = 'avatar-daniela.png' | asset_url
+                  endcase
+                -%}
+                <span class="article-card__author-byline">
+                  {%- if author_avatar_url -%}
+                    <img
+                      src="{{ author_avatar_url }}"
+                      alt="{{ article.author | escape }}"
+                      class="article-card__author-avatar"
+                      width="24"
+                      height="24"
+                      loading="lazy"
+                    >
+                  {%- endif -%}
+                  <span>{{ article.author }}</span>
+                </span>
               {%- endif -%}
             </div>
             {%- if show_excerpt -%}
