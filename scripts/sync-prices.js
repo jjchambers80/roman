@@ -1,32 +1,12 @@
-require("dotenv").config({
-  path: require("path").join(__dirname, "..", ".env"),
-});
 const fs = require("fs");
 const path = require("path");
 const { parse } = require("csv-parse/sync");
-
-const STORE = process.env.SHOPIFY_STORE;
-const TOKEN = process.env.SHOPIFY_ACCESS_TOKEN;
-const API_VERSION = "2026-04";
-const BASE_URL = `https://${STORE}/admin/api/${API_VERSION}`;
-
-let HEADERS = {
-  "Content-Type": "application/json",
-  "X-Shopify-Access-Token": TOKEN,
-};
-
-// Throttle: Shopify allows 2 req/sec on standard plan
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+const { client } = require("./shopify");
 
 async function getProductByHandle(handle) {
-  const res = await fetch(
-    `${BASE_URL}/products.json?handle=${handle}&fields=id,title,variants`,
-    {
-      headers: HEADERS,
-    },
-  );
+  const res = await client.get("products", {
+    searchParams: { handle, fields: "id,title,variants" },
+  });
   if (!res.ok)
     throw new Error(`GET product failed: ${res.status} ${await res.text()}`);
   const data = await res.json();
@@ -34,12 +14,8 @@ async function getProductByHandle(handle) {
 }
 
 async function updateVariantPrice(variantId, price) {
-  const res = await fetch(`${BASE_URL}/variants/${variantId}.json`, {
-    method: "PUT",
-    headers: HEADERS,
-    body: JSON.stringify({
-      variant: { id: variantId, price: price.toFixed(2) },
-    }),
+  const res = await client.put(`variants/${variantId}`, {
+    data: { variant: { id: variantId, price: price.toFixed(2) } },
   });
   if (!res.ok)
     throw new Error(`PUT variant failed: ${res.status} ${await res.text()}`);
@@ -47,13 +23,6 @@ async function updateVariantPrice(variantId, price) {
 }
 
 async function main() {
-  if (!STORE || !TOKEN) {
-    console.error(
-      "ERROR: SHOPIFY_STORE and SHOPIFY_ACCESS_TOKEN must be set in .env",
-    );
-    process.exit(1);
-  }
-
   const csvPath = path.join(
     __dirname,
     "..",
@@ -111,8 +80,6 @@ async function main() {
     } catch (err) {
       console.log(`ERROR: ${err.message}`);
     }
-
-    await sleep(600); // ~1.6 req/sec, safely under rate limit
   }
 
   console.log("\nDone.\n");

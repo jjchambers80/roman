@@ -1,25 +1,23 @@
-const TOKEN = 'shpat_REDACTED_ROTATE_ME';
-const BASE = 'https://roman-skin.myshopify.com/admin/api/2026-04';
-const H = { 'X-Shopify-Access-Token': TOKEN };
+const { client } = require("./shopify");
 
 const checks = [
-  ['read_products',     '/products.json?limit=1&fields=id'],
-  ['read_orders',       '/orders.json?limit=1&fields=id&status=any'],
-  ['read_customers',    '/customers.json?limit=1&fields=id'],
-  ['read_inventory',    '/inventory_levels.json?limit=1'],
-  ['read_draft_orders', '/draft_orders.json?limit=1&fields=id'],
-  ['read_price_rules',  '/price_rules.json?limit=1&fields=id'],
-  ['read_discounts',    '/discounts.json?limit=1'],
-  ['read_themes',       '/themes.json?fields=id'],
-  ['read_content',      '/pages.json?limit=1&fields=id'],
-  ['read_locations',    '/locations.json?fields=id'],
-  ['read_shipping',     '/shipping_zones.json'],
-  ['read_reports',      '/reports.json?limit=1&fields=id'],
+  ['read_products',     'products',        { limit: 1, fields: 'id' }],
+  ['read_orders',       'orders',          { limit: 1, fields: 'id', status: 'any' }],
+  ['read_customers',    'customers',       { limit: 1, fields: 'id' }],
+  ['read_inventory',    'inventory_levels',{ limit: 1 }],
+  ['read_draft_orders', 'draft_orders',    { limit: 1, fields: 'id' }],
+  ['read_price_rules',  'price_rules',     { limit: 1, fields: 'id' }],
+  ['read_discounts',    'discounts',       { limit: 1 }],
+  ['read_themes',       'themes',          { fields: 'id' }],
+  ['read_content',      'pages',           { limit: 1, fields: 'id' }],
+  ['read_locations',    'locations',       { fields: 'id' }],
+  ['read_shipping',     'shipping_zones',  {}],
+  ['read_reports',      'reports',         { limit: 1, fields: 'id' }],
 ];
 
 (async () => {
-  for (const [label, path] of checks) {
-    const r = await fetch(BASE + path, { headers: H });
+  for (const [label, path, searchParams] of checks) {
+    const r = await client.get(path, { searchParams });
     console.log((r.ok ? '✅' : '❌') + ' ' + label + ' (' + r.status + ')');
   }
 })();

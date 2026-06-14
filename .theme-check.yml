@@ -1,0 +1,13 @@
+extends: theme-check:recommended
+
+# Repo root is the theme; ignore non-theme directories
+ignore:
+  - node_modules/
+  - scripts/
+  - brain/
+  - keyword-research/
+  - graphify-out/
+  - .github/
+  - .serena/
+  - .playwright-mcp/
+  - docs/
