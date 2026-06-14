@@ -1,5 +1,9 @@
 {
   "servers": {
+    "google-ads-keywords": {
+      "command": "node",
+      "args": ["${workspaceFolder}/scripts/mcp-google-ads.js"]
+    },
     "shopify": {
       "command": "npx",
       "args": ["-y", "@shopify/dev-mcp@latest"],
@@ -8,6 +12,10 @@
         "SHOPIFY_CLIENT_SECRET": "2a0f0946d1e8bb08108a9ed270b6b30f",
         "SHOPIFY_STORE": "roman-skin.myshopify.com"
       }
+    },
+    "posthog": {
+      "command": "npx",
+      "args": ["-y", "@posthog/mcp"]
     }
   }
 }

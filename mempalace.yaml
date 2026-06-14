@@ -1,0 +1,28 @@
+wing: roman
+rooms:
+- name: snippets
+  description: Files from snippets/
+- name: sections
+  description: Files from sections/
+- name: locales
+  description: Files from locales/
+- name: keyword_research
+  description: Files from keyword-research/
+- name: configuration
+  description: Files from config/
+- name: layout
+  description: Files from layout/
+- name: graphify_out
+  description: Files from graphify-out/
+- name: scripts
+  description: Files from scripts/
+- name: brain
+  description: Files from brain/
+- name: templates
+  description: Files from templates/
+- name: design
+  description: Files from assets/
+- name: documentation
+  description: Files from docs/
+- name: general
+  description: Files that don't fit other rooms

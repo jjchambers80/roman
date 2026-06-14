@@ -1,8 +1,10 @@
 {
+  "enabledMcpjsonServers": ["posthog"],
   "permissions": {
     "allow": [
       "Bash(shopify theme:*)",
-      "Bash(/Users/jjchambers/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/skills/brainstorming/scripts/start-server.sh --project-dir /Users/jjchambers/Documents/projects/roman)"
+      "Bash(/Users/jjchambers/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/skills/brainstorming/scripts/start-server.sh --project-dir /Users/jjchambers/Documents/projects/roman)",
+      "Bash(bash /Users/jjchambers/Documents/projects/roman/scripts/update-skincare-research.sh)"
     ]
   }
 }
