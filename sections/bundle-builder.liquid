@@ -25,6 +25,17 @@
   data-progress-unlocked-template="{{ 'bundle.progress_unlocked' | t: percent: '__PERCENT__' | escape }}"
   data-continue-template="{{ 'bundle.continue_button' | t: count: '__COUNT__' | escape }}"
   data-adding-to-cart="{{ 'bundle.adding_to_cart' | t | escape }}"
+  data-preview-empty-title="Select a product"
+  data-preview-empty-subtitle="Unlock discounts"
+  data-preview-start-title="Build your Roman bundle"
+  data-preview-active-title="Bundle started"
+  data-preview-complete-title="Best bundle discount unlocked"
+  data-preview-selected-eyebrow="In your bundle"
+  data-preview-empty-eyebrow-template="Slot __SLOT__"
+  data-preview-slot-copy="Choose any Roman product"
+  data-preview-next-slot-copy="Keep building your routine"
+  data-preview-unlock-template="Unlock __PERCENT__ off here"
+  data-preview-best-template="Best value: __PERCENT__ off"
 >
   <div class="bundle-builder__header page-width">
     {%- if section.settings.heading != blank -%}
@@ -42,32 +53,99 @@
       {%- endfor -%}
     </div>
 
-    <div class="bundle-builder__footer" data-bundle-footer>
+    <aside class="bundle-builder__footer" data-bundle-footer aria-label="Bundle cart preview">
       <div class="bundle-builder__footer-inner">
-        <div class="bundle-builder__progress">
-          <div class="bundle-builder__progress-track">
-            <div class="bundle-builder__progress-fill" data-bundle-progress-fill style="width: 0%"></div>
-          </div>
+        <div class="bundle-builder__status">
+          <p class="bundle-builder__status-title" data-bundle-status-title></p>
           <p class="bundle-builder__progress-text" data-bundle-progress-text></p>
         </div>
 
-        <div class="bundle-builder__summary" data-bundle-summary hidden>
-          <ul class="bundle-builder__line-items" data-bundle-line-items></ul>
+        <div class="bundle-builder__summary" data-bundle-summary>
+          <ul class="bundle-builder__line-items" data-bundle-line-items aria-live="polite">
+            {%- for slot in (1..5) -%}
+              {%- liquid
+                assign placeholder_copy = 'Choose any Roman product'
+                if slot == 3
+                  assign placeholder_copy = 'Unlock 15% off here'
+                elsif slot == 4
+                  assign placeholder_copy = 'Unlock 20% off here'
+                elsif slot == 5
+                  assign placeholder_copy = 'Best value: 25% off'
+                elsif slot > 1
+                  assign placeholder_copy = 'Keep building your routine'
+                endif
+              -%}
+              <li class="bundle-builder__line-item bundle-builder__line-item--placeholder" aria-hidden="true">
+                <div class="bundle-builder__line-media">
+                  <span class="bundle-builder__placeholder-bottle" aria-hidden="true"></span>
+                </div>
+                <div class="bundle-builder__line-body">
+                  <p class="bundle-builder__line-eyebrow">Slot {{ slot }}</p>
+                  <p class="bundle-builder__line-title">Select a product</p>
+                  <p class="bundle-builder__line-placeholder-copy">{{ placeholder_copy }}</p>
+                </div>
+              </li>
+            {%- endfor -%}
+          </ul>
         </div>
 
-        <button
-          type="button"
-          class="bundle-builder__continue"
-          data-bundle-continue
-          disabled
-        ></button>
+        <div class="bundle-builder__checkout">
+          <div class="bundle-builder__tier-meter" aria-hidden="true">
+            <div class="bundle-builder__progress-track">
+              <div class="bundle-builder__progress-fill" data-bundle-progress-fill style="width: 0%"></div>
+            </div>
+            <div
+              class="bundle-builder__tier-marker bundle-builder__tier-marker--start"
+              data-bundle-tier-marker
+              data-min="0"
+              style="--tier-position: 0%"
+            >
+              <span class="bundle-builder__tier-bubble">Start</span>
+            </div>
+            <div
+              class="bundle-builder__tier-marker"
+              data-bundle-tier-marker
+              data-min="3"
+              style="--tier-position: 60%"
+            >
+              <span class="bundle-builder__tier-bubble">15% off</span>
+            </div>
+            <div
+              class="bundle-builder__tier-marker"
+              data-bundle-tier-marker
+              data-min="4"
+              style="--tier-position: 80%"
+            >
+              <span class="bundle-builder__tier-bubble">20% off</span>
+            </div>
+            <div
+              class="bundle-builder__tier-marker"
+              data-bundle-tier-marker
+              data-min="5"
+              style="--tier-position: 100%"
+            >
+              <span class="bundle-builder__tier-bubble">25% off</span>
+            </div>
+          </div>
+
+          <p class="bundle-builder__fine-print">One-time order. Discount applies automatically in cart.</p>
+
+          <button
+            type="button"
+            class="bundle-builder__continue"
+            data-bundle-continue
+            disabled
+          >
+            <span data-bundle-continue-label>Continue</span>
+            <span class="bundle-builder__continue-prices" data-bundle-continue-prices></span>
+          </button>
+        </div>
       </div>
-    </div>
+    </aside>
   </div>
 </bundle-builder>
 
-{%- assign bundle_js = 'bundle-builder.js' | asset_url -%}
-<script src="{{ bundle_js }}" defer="defer"></script>
+<script src="{{ 'bundle-builder.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
 {

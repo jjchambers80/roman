@@ -5,13 +5,21 @@
 {% endcomment %}
 {%- liquid
   assign variant = product.selected_or_first_available_variant
+  assign variant_title = ''
+  assign compare_at_price = variant.compare_at_price | default: variant.price
+
+  unless variant.title == 'Default Title'
+    assign variant_title = variant.title
+  endunless
 -%}
 <div
   class="bundle-item"
   data-bundle-item
   data-variant-id="{{ variant.id }}"
   data-title="{{ product.title | escape }}"
+  data-variant-title="{{ variant_title | escape }}"
   data-price="{{ variant.price }}"
+  data-compare-at-price="{{ compare_at_price }}"
   data-image="{{ product.featured_media | image_url: width: 400 }}"
 >
   <div class="bundle-item__media">
