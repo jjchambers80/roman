@@ -35,31 +35,33 @@
     {%- endif -%}
   </div>
 
-  <div class="bundle-builder__grid page-width">
-    {%- for product in bundle_collection.products -%}
-      {% render 'bundle-builder-item', product: product %}
-    {%- endfor -%}
-  </div>
+  <div class="bundle-builder__layout page-width">
+    <div class="bundle-builder__grid">
+      {%- for product in bundle_collection.products -%}
+        {% render 'bundle-builder-item', product: product %}
+      {%- endfor -%}
+    </div>
 
-  <div class="bundle-builder__footer" data-bundle-footer>
-    <div class="bundle-builder__footer-inner page-width">
-      <div class="bundle-builder__progress">
-        <div class="bundle-builder__progress-track">
-          <div class="bundle-builder__progress-fill" data-bundle-progress-fill style="width: 0%"></div>
+    <div class="bundle-builder__footer" data-bundle-footer>
+      <div class="bundle-builder__footer-inner">
+        <div class="bundle-builder__progress">
+          <div class="bundle-builder__progress-track">
+            <div class="bundle-builder__progress-fill" data-bundle-progress-fill style="width: 0%"></div>
+          </div>
+          <p class="bundle-builder__progress-text" data-bundle-progress-text></p>
         </div>
-        <p class="bundle-builder__progress-text" data-bundle-progress-text></p>
-      </div>
 
-      <div class="bundle-builder__summary" data-bundle-summary hidden>
-        <ul class="bundle-builder__line-items" data-bundle-line-items></ul>
-      </div>
+        <div class="bundle-builder__summary" data-bundle-summary hidden>
+          <ul class="bundle-builder__line-items" data-bundle-line-items></ul>
+        </div>
 
-      <button
-        type="button"
-        class="bundle-builder__continue"
-        data-bundle-continue
-        disabled
-      ></button>
+        <button
+          type="button"
+          class="bundle-builder__continue"
+          data-bundle-continue
+          disabled
+        ></button>
+      </div>
     </div>
   </div>
 </bundle-builder>
