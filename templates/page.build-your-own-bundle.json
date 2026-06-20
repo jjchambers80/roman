@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "bundle-builder",
+      "settings": {
+        "heading": "Build Your Own Bundle",
+        "subheading": "<p>Mix and match your favorites. The more you add, the more you save.<\/p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -291,7 +291,18 @@
       "subtext": "404"
     }
   },
-  "sections": {
+    "bundle": {
+    "add_to_bundle": "Add to Bundle",
+    "remove": "Remove",
+    "empty": "Add items below to build your bundle",
+    "progress_zero": "Add 3 items to unlock 15% off",
+    "progress_one_more": "Add 1 more item to unlock {{ percent }}% off",
+    "progress_more": "Add {{ count }} more items to unlock {{ percent }}% off",
+    "progress_unlocked": "{{ percent }}% off unlocked!",
+    "continue_button": "Continue — {{ count }} items",
+    "adding_to_cart": "Adding to cart…"
+  },
+"sections": {
     "header": {
       "announcement": "Объявление",
       "menu": "Меню",

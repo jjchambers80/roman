@@ -1,0 +1,101 @@
+{% comment %}
+  Roman Skin Care — Build Your Own Bundle
+  Tiered-discount bundle builder: customer picks items from a collection,
+  client-side JS tracks count, sticky footer shows progress + coaching copy,
+  CONTINUE batches a cart/add.js call then redirects through the matching
+  discount code's auto-apply URL. No subscriptions, no app dependency.
+{% endcomment %}
+{{ 'component-bundle-builder.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign bundle_collection = section.settings.collection
+  if bundle_collection == blank
+    assign bundle_collection = collections['all-products']
+  endif
+-%}
+
+<bundle-builder
+  class="bundle-builder"
+  data-add-label="{{ 'bundle.add_to_bundle' | t | escape }}"
+  data-remove-label="{{ 'bundle.remove' | t | escape }}"
+  data-empty-text="{{ 'bundle.empty' | t | escape }}"
+  data-progress-zero="{{ 'bundle.progress_zero' | t | escape }}"
+  data-progress-one-more-template="{{ 'bundle.progress_one_more' | t: percent: '__PERCENT__' | escape }}"
+  data-progress-more-template="{{ 'bundle.progress_more' | t: count: '__COUNT__', percent: '__PERCENT__' | escape }}"
+  data-progress-unlocked-template="{{ 'bundle.progress_unlocked' | t: percent: '__PERCENT__' | escape }}"
+  data-continue-template="{{ 'bundle.continue_button' | t: count: '__COUNT__' | escape }}"
+  data-adding-to-cart="{{ 'bundle.adding_to_cart' | t | escape }}"
+>
+  <div class="bundle-builder__header page-width">
+    {%- if section.settings.heading != blank -%}
+      <h1 class="bundle-builder__heading">{{ section.settings.heading }}</h1>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <div class="bundle-builder__subheading">{{ section.settings.subheading }}</div>
+    {%- endif -%}
+  </div>
+
+  <div class="bundle-builder__grid page-width">
+    {%- for product in bundle_collection.products -%}
+      {% render 'bundle-builder-item', product: product %}
+    {%- endfor -%}
+  </div>
+
+  <div class="bundle-builder__footer" data-bundle-footer>
+    <div class="bundle-builder__footer-inner page-width">
+      <div class="bundle-builder__progress">
+        <div class="bundle-builder__progress-track">
+          <div class="bundle-builder__progress-fill" data-bundle-progress-fill style="width: 0%"></div>
+        </div>
+        <p class="bundle-builder__progress-text" data-bundle-progress-text></p>
+      </div>
+
+      <div class="bundle-builder__summary" data-bundle-summary hidden>
+        <ul class="bundle-builder__line-items" data-bundle-line-items></ul>
+      </div>
+
+      <button
+        type="button"
+        class="bundle-builder__continue"
+        data-bundle-continue
+        disabled
+      ></button>
+    </div>
+  </div>
+</bundle-builder>
+
+{%- assign bundle_js = 'bundle-builder.js' | asset_url -%}
+<script src="{{ bundle_js }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Bundle Builder",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Build Your Own Bundle"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Mix and match your favorites. The more you add, the more you save.</p>"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Bundle-eligible collection",
+      "info": "Defaults to the All Products collection if left blank."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Builder"
+    }
+  ]
+}
+{% endschema %}

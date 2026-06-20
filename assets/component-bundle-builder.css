@@ -1,0 +1,228 @@
+/* Build Your Own Bundle — sticky footer, progress bar, grid */
+
+.bundle-builder {
+  display: block;
+  padding-bottom: 12rem; /* clears sticky footer */
+}
+
+.bundle-builder__header {
+  text-align: center;
+  padding: 4rem 1.6rem 2.4rem;
+}
+
+.bundle-builder__heading {
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #1a1a1a;
+  margin: 0 0 1.2rem;
+}
+
+.bundle-builder__subheading {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  color: #5a5a5a;
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.bundle-builder__subheading p {
+  margin: 0;
+}
+
+.bundle-builder__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+  padding: 1.6rem;
+}
+
+@media (min-width: 750px) {
+  .bundle-builder__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.4rem;
+    padding: 2rem;
+  }
+}
+
+/* --- Item card --- */
+.bundle-item {
+  background: #f9f8f6;
+  border: 1px solid #e5e5e5;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.bundle-item__media {
+  margin-bottom: 1rem;
+}
+
+.bundle-item__image,
+.bundle-item__media .placeholder-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.bundle-item__title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 0.4rem;
+  line-height: 1.3;
+}
+
+.bundle-item__price {
+  font-size: 1.3rem;
+  color: #5a5a5a;
+  margin: 0 0 1rem;
+}
+
+.bundle-item__stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  border: 1px solid #737762;
+}
+
+.bundle-item__stepper-btn {
+  background: none;
+  border: none;
+  color: #737762;
+  font-size: 1.6rem;
+  line-height: 1;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.bundle-item__stepper-btn:hover {
+  background: #737762;
+  color: #fff;
+}
+
+.bundle-item__qty {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* --- Sticky footer --- */
+.bundle-builder__footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #e5e5e5;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.06);
+  z-index: 10;
+}
+
+.bundle-builder__footer-inner {
+  padding: 1.2rem 1.6rem;
+}
+
+.bundle-builder__progress-track {
+  height: 0.6rem;
+  background: #e5e5e5;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+
+.bundle-builder__progress-fill {
+  height: 100%;
+  background: #737762;
+  transition: width 0.2s ease;
+}
+
+.bundle-builder__progress-text {
+  font-size: 1.3rem;
+  color: #4a4a4a;
+  margin: 0.6rem 0 0;
+  text-align: center;
+}
+
+.bundle-builder__summary {
+  margin-top: 1rem;
+}
+
+.bundle-builder__line-items {
+  list-style: none;
+  display: flex;
+  gap: 0.8rem;
+  overflow-x: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.bundle-builder__line-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: #4a4a4a;
+  max-width: 6rem;
+  text-align: center;
+}
+
+.bundle-builder__line-item img {
+  border-radius: 0.3rem;
+  object-fit: cover;
+}
+
+.bundle-builder__continue {
+  display: block;
+  width: 100%;
+  margin-top: 1.2rem;
+  background: #737762;
+  color: #fff;
+  border: 1px solid #737762;
+  padding: 1.4rem 3.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  font-family: inherit;
+}
+
+.bundle-builder__continue:hover:not(:disabled) {
+  background: #5e6150;
+  border-color: #5e6150;
+}
+
+.bundle-builder__continue:disabled {
+  background: #c7c9bf;
+  border-color: #c7c9bf;
+  cursor: not-allowed;
+}
+
+@media (min-width: 750px) {
+  .bundle-builder__footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: center;
+    gap: 2.4rem;
+    padding: 1.6rem 2rem;
+  }
+
+  .bundle-builder__progress-text {
+    text-align: left;
+  }
+
+  .bundle-builder__summary {
+    margin-top: 0;
+  }
+
+  .bundle-builder__continue {
+    width: auto;
+    margin-top: 0;
+  }
+}

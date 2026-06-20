@@ -1,0 +1,48 @@
+{% comment %}
+  Renders a single product card inside the Build Your Own Bundle grid.
+  Accepts:
+  - product: {Object} Product Liquid object (required)
+{% endcomment %}
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+-%}
+<div
+  class="bundle-item"
+  data-bundle-item
+  data-variant-id="{{ variant.id }}"
+  data-title="{{ product.title | escape }}"
+  data-price="{{ variant.price }}"
+  data-image="{{ product.featured_media | image_url: width: 400 }}"
+>
+  <div class="bundle-item__media">
+    {%- if product.featured_media -%}
+      <img
+        src="{{ product.featured_media | image_url: width: 400 }}"
+        alt="{{ product.title | escape }}"
+        loading="lazy"
+        width="{{ product.featured_media.width }}"
+        height="{{ product.featured_media.height }}"
+        class="bundle-item__image"
+      >
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'bundle-item__image placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <h3 class="bundle-item__title">{{ product.title | escape }}</h3>
+  <p class="bundle-item__price">{{ variant.price | money }}</p>
+  <div class="bundle-item__stepper" data-bundle-stepper>
+    <button
+      type="button"
+      class="bundle-item__stepper-btn"
+      data-bundle-decrement
+      aria-label="{{ 'bundle.remove' | t }}"
+    >&minus;</button>
+    <span class="bundle-item__qty" data-bundle-qty>0</span>
+    <button
+      type="button"
+      class="bundle-item__stepper-btn"
+      data-bundle-increment
+      aria-label="{{ 'bundle.add_to_bundle' | t }}"
+    >&plus;</button>
+  </div>
+</div>
