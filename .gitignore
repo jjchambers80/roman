@@ -4,7 +4,12 @@
 .env.local
 graphify-out/
 brain/
+/claude-obsidian/
+/.obsidian/
 node_modules/
+/assets/video/
+/assets/roman-commercial-clips/
+/assets/product-images/
 .mcp.json
 .DS_Store
 tmux-client-*.log

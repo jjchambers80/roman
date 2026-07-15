@@ -1,0 +1,5 @@
+# Local media/working files — not theme assets (too large, cause 413 on push)
+assets/video/*
+assets/roman-commercial-clips/*
+assets/roman-commercial-clips/**/*
+assets/product-images/*
