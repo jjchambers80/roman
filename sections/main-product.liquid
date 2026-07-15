@@ -125,12 +125,17 @@
                 </div>
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
-                  {%- render 'price',
-                    product: product,
-                    use_variant: true,
-                    show_badges: true,
-                    price_class: 'price--large'
-                  -%}
+                  <div class="product__price-row">
+                    {%- if product.metafields.custom.product_size.value != blank -%}
+                      <span class="product__size">{{ product.metafields.custom.product_size.value | escape }} &middot;</span>
+                    {%- endif -%}
+                    {%- render 'price',
+                      product: product,
+                      use_variant: true,
+                      show_badges: true,
+                      price_class: 'price--large'
+                    -%}
+                  </div>
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
@@ -490,6 +495,15 @@
 
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+              {%- when 'benefits' -%}
+                {%- assign product_benefits = product.metafields.custom.product_benefits.value -%}
+                {%- if product_benefits != blank -%}
+                  <ul class="product__benefits quick-add-hidden" {{ block.shopify_attributes }}>
+                    {%- for benefit in product_benefits -%}
+                      <li>{{ benefit | escape }}</li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -1059,6 +1073,12 @@
           "default": "circle"
         }
       ]
+    },
+    {
+      "type": "benefits",
+      "name": "Product benefits",
+      "limit": 1,
+      "settings": []
     },
     {
       "type": "buy_buttons",

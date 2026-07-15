@@ -38,6 +38,10 @@
           "type": "quantity_selector",
           "settings": {}
         },
+        "benefits": {
+          "type": "benefits",
+          "settings": {}
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -100,6 +104,7 @@
         "price",
         "variant_picker",
         "quantity_selector",
+        "benefits",
         "buy_buttons",
         "share",
         "bought_together",
