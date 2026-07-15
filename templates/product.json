@@ -70,6 +70,7 @@
           "settings": {
             "heading": "Description",
             "icon": "none",
+            "open_by_default": true,
             "content_source": "metafield",
             "metafield_auto_key": "tab_description"
           }
@@ -159,11 +160,26 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "commercial-video": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "video_url": "https://youtu.be/WuzpLwTIsLE",
+        "cover_image": "shopify://shop_images/roman-commercial-poster.jpg",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 28,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
     "1777831556ef440bf8",
-    "related-products"
+    "related-products",
+    "commercial-video"
   ]
 }

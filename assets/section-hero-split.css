@@ -48,8 +48,8 @@
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #737762;
-  border: 1.5px solid #737762;
+  color: #6D796E;
+  border: 1.5px solid #6D796E;
   border-radius: 30px;
   padding: 0.6rem 2rem;
   margin-bottom: 2.4rem;
@@ -73,7 +73,7 @@
   display: block;
   font-size: 6.4rem;
   font-weight: 800;
-  color: #737762;
+  color: #6D796E;
 }
 
 /* -- Subheading -- */
@@ -96,7 +96,7 @@
 }
 
 .hero-split__text-highlight {
-  color: #737762;
+  color: #6D796E;
   font-weight: 600;
 }
 
@@ -119,8 +119,8 @@
 }
 
 .hero-split__buttons .button--primary {
-  background-color: #737762;
-  border-color: #737762;
+  background-color: #6D796E;
+  border-color: #6D796E;
   color: #fff;
 }
 
@@ -130,12 +130,12 @@
 }
 
 .hero-split__buttons .button--secondary {
-  border-color: #737762;
-  color: #737762;
+  border-color: #6D796E;
+  color: #6D796E;
 }
 
 .hero-split__buttons .button--secondary:hover {
-  background-color: #737762;
+  background-color: #6D796E;
   color: #fff;
 }
 

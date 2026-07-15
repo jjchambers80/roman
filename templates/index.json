@@ -42,7 +42,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "SHOP BEST SELLERS",
-            "button_link_1": "/collections/all",
+            "button_link_1": "/pages/build-your-own-bundle",
             "button_style_secondary_1": false,
             "button_label_2": "EXPLORE ROUTINES",
             "button_link_2": "/pages/routines",
@@ -52,7 +52,7 @@
       },
       "block_order": ["kicker", "heading", "subheading", "text", "buttons"],
       "settings": {
-        "asset_image": "product-daily-serum.png",
+        "asset_image": "routine-evening-1.png",
         "padding_top": 0,
         "padding_bottom": 0
       }

@@ -1,0 +1,65 @@
+{% comment %}
+  Renders a sticky add-to-cart component that appears when the main
+  buy button scrolls out of view.
+  - Desktop: card in the bottom-right corner with image, title, price, button.
+  - Mobile: full-width button bar fixed to the bottom of the screen.
+
+  Accepts:
+  - product: {Object} product object.
+  - section_id: {String} id of the product section.
+
+  Usage:
+  {% render 'sticky-atc', product: product, section_id: section.id %}
+{% endcomment %}
+
+{%- if product != blank -%}
+  {{ 'component-sticky-atc.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'sticky-atc.js' | asset_url }}" defer="defer"></script>
+
+  {%- liquid
+    assign sticky_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image
+  -%}
+
+  <sticky-atc
+    class="sticky-atc"
+    data-section-id="{{ section_id }}"
+    aria-hidden="true"
+  >
+    <div class="sticky-atc__card color-{{ section.settings.color_scheme }} gradient">
+      {%- if sticky_image -%}
+        <div class="sticky-atc__media">
+          <img
+            src="{{ sticky_image | image_url: width: 120 }}"
+            alt="{{ sticky_image.alt | default: product.title | escape }}"
+            width="60"
+            height="60"
+            loading="lazy"
+          >
+        </div>
+      {%- endif -%}
+      <div class="sticky-atc__details">
+        <p class="sticky-atc__title">{{ product.title | escape }}</p>
+        <p class="sticky-atc__price">{{ product.selected_or_first_available_variant.price | money }}</p>
+      </div>
+      <button
+        type="button"
+        class="sticky-atc__button button button--primary"
+        {% if product.selected_or_first_available_variant.available == false
+          or product.selected_or_first_available_variant == null
+        %}
+          disabled
+        {% endif %}
+      >
+        <span>
+          {%- if product.selected_or_first_available_variant == null -%}
+            {{ 'products.product.unavailable' | t }}
+          {%- elsif product.selected_or_first_available_variant.available == false -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- else -%}
+            {{ 'products.product.add_to_cart' | t }}
+          {%- endif -%}
+        </span>
+      </button>
+    </div>
+  </sticky-atc>
+{%- endif -%}

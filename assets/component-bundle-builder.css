@@ -3,7 +3,7 @@
 .bundle-builder {
   --bundle-ink: #1a1a1a;
   --bundle-muted: #5a5a5a;
-  --bundle-olive: #737762;
+  --bundle-olive: #6D796E;
   --bundle-olive-dark: #5e6150;
   --bundle-paper: #ffffff;
   --bundle-linen: #f9f8f6;
@@ -174,7 +174,7 @@
 
 .bundle-builder__status {
   background:
-    linear-gradient(115deg, var(--bundle-olive-dark) 0%, var(--bundle-olive) 66%, #858976 100%);
+    linear-gradient(115deg, var(--bundle-olive-dark) 0%, var(--bundle-olive) 66%, #6D796E 100%);
   color: var(--bundle-paper);
   padding: 1.1rem 1.4rem;
 }
@@ -512,5 +512,15 @@
 
   .bundle-builder__line-items {
     max-height: calc(100vh - 29rem);
+  }
+}
+
+@media (max-width: 989px) {
+  .bundle-builder__summary[data-bundle-count="0"] {
+    display: none;
+  }
+
+  .bundle-builder__line-item--placeholder {
+    display: none;
   }
 }
