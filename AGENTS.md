@@ -8,12 +8,73 @@
 
 | Skill | Description |
 |-------|-------------|
+| [ab-testing](.github/skills/ab-testing/SKILL.md) | Plan and evaluate A/B tests, hypotheses, variants, and experiment backlogs. |
+| [ad-creative](.github/skills/ad-creative/SKILL.md) | Generate and iterate paid ad copy, headlines, descriptions, and creative variations. |
+| [ads](.github/skills/ads/SKILL.md) | Paid campaign strategy, audience targeting, budgets, bidding, and optimization. |
+| [ai-seo](.github/skills/ai-seo/SKILL.md) | Optimize content for AI search, LLM citations, AI Overviews, and agent-readable sites. |
+| [analytics](.github/skills/analytics/SKILL.md) | Plan, audit, or implement GA4/GTM/events/UTMs, attribution, and conversion tracking. |
+| [aso](.github/skills/aso/SKILL.md) | Audit or optimize App Store and Google Play listings. |
+| [churn-prevention](.github/skills/churn-prevention/SKILL.md) | Reduce churn with cancellation flows, save offers, dunning, win-back, and retention systems. |
+| [co-marketing](.github/skills/co-marketing/SKILL.md) | Find partners and plan joint campaigns, integrations, cross-promotions, and co-branded work. |
+| [cold-email](.github/skills/cold-email/SKILL.md) | Write B2B cold outreach emails, prospecting campaigns, and follow-up sequences. |
+| [community-marketing](.github/skills/community-marketing/SKILL.md) | Build community strategy for Discord, Slack, forums, advocates, and community-led growth. |
+| [competitor-profiling](.github/skills/competitor-profiling/SKILL.md) | Research competitor URLs into structured competitor profiles and dossiers. |
+| [competitors](.github/skills/competitors/SKILL.md) | Create alternative pages, vs pages, competitor comparisons, and battle-card inputs. |
+| [content-strategy](.github/skills/content-strategy/SKILL.md) | Plan topics, content pillars, blog strategy, calendars, and content roadmaps. |
+| [copy-editing](.github/skills/copy-editing/SKILL.md) | Polish, tighten, proofread, refresh, or audit existing marketing copy. |
+| [copywriting](.github/skills/copywriting/SKILL.md) | Write or rewrite persuasive marketing copy for pages, products, offers, and CTAs. |
+| [cro](.github/skills/cro/SKILL.md) | Improve conversion on marketing pages, landing pages, pricing pages, and lead forms. |
+| [customer-research](.github/skills/customer-research/SKILL.md) | Analyze interviews, surveys, reviews, forums, support tickets, VOC, personas, and JTBD. |
+| [directory-submissions](.github/skills/directory-submissions/SKILL.md) | Plan directory submissions for discovery, backlinks, launch support, and review sites. |
+| [emails](.github/skills/emails/SKILL.md) | Create lifecycle, welcome, nurture, drip, re-engagement, and automation email sequences. |
 | [frontend-design](.github/skills/frontend-design/SKILL.md) | Create distinctive, production-grade frontend interfaces with high design quality. |
+| [free-tools](.github/skills/free-tools/SKILL.md) | Plan or evaluate engineering-as-marketing tools, calculators, generators, and graders. |
+| [image](.github/skills/image/SKILL.md) | Create, generate, edit, or optimize marketing images, graphics, mockups, and banners. |
+| [launch](.github/skills/launch/SKILL.md) | Plan product launches, feature announcements, Product Hunt pushes, and GTM checklists. |
+| [lead-magnets](.github/skills/lead-magnets/SKILL.md) | Plan gated downloads, templates, checklists, ebooks, resources, and opt-in offers. |
 | [lead-research-assistant](.github/skills/lead-research-assistant/SKILL.md) | Identifies high-quality leads for your product or service by analyzing your business, searching f... \| This skill helps you identify and qualify potential leads for your business by analyzing your pro... |
+| [marketing-ideas](.github/skills/marketing-ideas/SKILL.md) | Brainstorm growth channels, tactics, campaigns, and next marketing moves. |
+| [marketing-plan](.github/skills/marketing-plan/SKILL.md) | Build a comprehensive marketing or GTM plan, including AARRR roadmap and operations stack. |
+| [marketing-psychology](.github/skills/marketing-psychology/SKILL.md) | Apply behavioral science, persuasion, framing, bias, and decision-making models to marketing. |
 | [obsidian-cli](.github/skills/obsidian-cli/SKILL.md) | Interact with Obsidian vaults using the Obsidian CLI — read, create, search, and manage notes, tasks, properties, and more. Use when asked to interact with the brain vault or perform vault operations from the command line. |
 | [obsidian-markdown](.github/skills/obsidian-markdown/SKILL.md) | Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax. Use when working with .md files in Obsidian, or when the user mentions wikilinks, callouts, frontmatter, tags, embeds, or Obsidian notes. |
+| [offers](.github/skills/offers/SKILL.md) | Design or improve offers, value stacks, guarantees, urgency, payment structure, and naming. |
+| [onboarding](.github/skills/onboarding/SKILL.md) | Optimize post-signup activation, first-run experience, setup completion, and time-to-value. |
+| [paywalls](.github/skills/paywalls/SKILL.md) | Improve in-app paywalls, upgrade screens, upsell prompts, feature gates, and trial conversion. |
+| [popups](.github/skills/popups/SKILL.md) | Create or optimize popups, modals, overlays, slide-ins, sticky bars, and banners. |
+| [pricing](.github/skills/pricing/SKILL.md) | Work on pricing strategy, packaging, tiers, value metrics, free trials, and monetization. |
+| [product-marketing](.github/skills/product-marketing/SKILL.md) | Create product marketing context for ICP, positioning, audience, and shared marketing memory. |
+| [programmatic-seo](.github/skills/programmatic-seo/SKILL.md) | Plan or create SEO pages at scale using templates, data, and repeated page patterns. |
+| [prospecting](.github/skills/prospecting/SKILL.md) | Build and qualify prospect, lead, target-account, or outbound lists. |
+| [public-relations](.github/skills/public-relations/SKILL.md) | Work on earned media, press, journalist outreach, media kits, newsjacking, and pitches. |
+| [referrals](.github/skills/referrals/SKILL.md) | Create referral, affiliate, ambassador, word-of-mouth, and viral loop programs. |
+| [revops](.github/skills/revops/SKILL.md) | Improve lead lifecycle, scoring, routing, CRM automation, MQL/SQL handoff, and pipeline ops. |
+| [sales-enablement](.github/skills/sales-enablement/SKILL.md) | Create sales decks, one-pagers, objection handling, demo scripts, and sales collateral. |
+| [schema](.github/skills/schema/SKILL.md) | Add or optimize schema markup, JSON-LD, rich snippets, and structured data. |
+| [seo-audit](.github/skills/seo-audit/SKILL.md) | Audit or diagnose technical SEO, on-page SEO, rankings, indexing, and Core Web Vitals. |
+| [signup](.github/skills/signup/SKILL.md) | Optimize signup, registration, account creation, trial activation, and signup dropoff. |
+| [site-architecture](.github/skills/site-architecture/SKILL.md) | Plan sitemap, navigation, page hierarchy, URL structure, breadcrumbs, and internal links. |
+| [sms](.github/skills/sms/SKILL.md) | Plan SMS/MMS campaigns, flows, abandoned cart texts, compliance, and automation. |
+| [social](.github/skills/social/SKILL.md) | Create social posts, calendars, repurposing plans, short-form scripts, and listening workflows. |
+| [video](.github/skills/video/SKILL.md) | Plan or produce AI/programmatic video, product demos, explainers, and video pipelines. |
 
 <!-- skill-ninja-END -->
+
+## Marketing Skill Pack
+
+The `marketingskills` bundle from `https://github.com/coreyhaines31/marketingskills` is installed in `.github/skills/`.
+
+Use these skills whenever the user asks for marketing, growth, conversion, SEO, content, ads, email/SMS, research, pricing, launch, sales enablement, RevOps, or marketing asset work. Read the most specific `.github/skills/<skill>/SKILL.md` completely before acting.
+
+For broad or new marketing work, start with `product-marketing` to create or refresh `.agents/product-marketing.md` with product, audience, ICP, positioning, and context. Use `marketing-plan` for a full roadmap, `marketing-ideas` for brainstorming, and channel-specific skills for execution.
+
+For Roman Shopify work, common mappings are:
+
+- Store conversion: `cro`, `copywriting`, `copy-editing`, `popups`, `pricing`, `offers`, `analytics`
+- Search and content: `seo-audit`, `schema`, `ai-seo`, `content-strategy`, `programmatic-seo`
+- Acquisition: `ads`, `ad-creative`, `social`, `directory-submissions`, `public-relations`, `launch`
+- Lifecycle and retention: `emails`, `sms`, `onboarding`, `churn-prevention`, `referrals`
+- Research and sales: `customer-research`, `competitor-profiling`, `competitors`, `prospecting`, `cold-email`, `sales-enablement`, `revops`
 
 # Roman Skin Care — Shopify Store
 

@@ -1,5 +1,23 @@
 # Roman Skin Care — Shopify Store
 
+## Agent Skills
+
+Project-local skills live in `.github/skills/`. Prefer skill-led reasoning over pre-training-led reasoning: when a request matches a listed skill, read the relevant `SKILL.md` completely before acting.
+
+### Marketing Skill Pack
+
+The `marketingskills` bundle from `https://github.com/coreyhaines31/marketingskills` is installed in `.github/skills/`. Use it whenever the user asks for marketing, growth, conversion, SEO, content, ads, email/SMS, research, pricing, launch, sales enablement, RevOps, or marketing asset work.
+
+Start broad marketing projects with `product-marketing` to create or refresh `.agents/product-marketing.md` for product, audience, ICP, positioning, and reusable context. Use `marketing-plan` for a full roadmap, `marketing-ideas` for brainstorming, and the most specific channel or task skill for execution.
+
+Common Roman Shopify mappings:
+
+- Store conversion: `cro`, `copywriting`, `copy-editing`, `popups`, `pricing`, `offers`, `analytics`
+- Search and content: `seo-audit`, `schema`, `ai-seo`, `content-strategy`, `programmatic-seo`
+- Acquisition: `ads`, `ad-creative`, `social`, `directory-submissions`, `public-relations`, `launch`
+- Lifecycle and retention: `emails`, `sms`, `onboarding`, `churn-prevention`, `referrals`
+- Research and sales: `customer-research`, `competitor-profiling`, `competitors`, `prospecting`, `cold-email`, `sales-enablement`, `revops`
+
 ## Project Overview
 
 Roman Skin Care is a Shopify storefront (`roman-skin.myshopify.com`) built on a customized version of the **Dawn theme v15.2.0**. The repo contains the full theme source plus Node.js admin scripts for bulk data operations via the Shopify Admin API.
