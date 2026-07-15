@@ -34,6 +34,10 @@
             "swatch_shape": "circle"
           }
         },
+        "product_guidance": {
+          "type": "product_guidance",
+          "settings": {}
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -109,6 +113,7 @@
         "share",
         "bought_together",
         "accordion_description",
+        "product_guidance",
         "accordion_usage",
         "accordion_ingredients"
       ],

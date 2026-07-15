@@ -274,6 +274,34 @@ product-info {
   font-weight: 700;
 }
 
+.product__guidance-list {
+  display: grid;
+  gap: 1rem;
+  margin: 0 0 1.2rem;
+}
+
+.product__guidance-list dt {
+  margin-bottom: 0.2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+}
+
+.product__guidance-list dd {
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.45;
+}
+
+.product__guidance-note {
+  margin: 0;
+  padding-top: 1.2rem;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  font-size: 1.4rem;
+  line-height: 1.45;
+}
+
 .product__text {
   margin-bottom: 0;
 }
