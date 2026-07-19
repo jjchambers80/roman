@@ -71,6 +71,16 @@ if (!customElements.get("frequently-bought-together")) {
               return;
             }
 
+            if (this.dataset.experienceVersion && this.dataset.experienceVersion !== "default") {
+              document.dispatchEvent(new CustomEvent("pdp:bundle-added", { detail: {
+                item_count: Number(this.bundleButton.dataset.itemCount),
+                displayed_value: Number(this.bundleButton.dataset.bundleValue) / 100,
+                discount_percentage: Number(this.bundleButton.dataset.discountPercentage),
+                product_handle: this.dataset.productHandle,
+                experience_version: this.dataset.experienceVersion,
+              }}));
+            }
+
             if (!this.cart) {
               window.location = window.routes.cart_url;
               return;

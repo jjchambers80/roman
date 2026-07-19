@@ -23,7 +23,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Do you offer free shipping?",
-            "answer": "<p>Free shipping may be available during select promotions. If applicable, it will be clearly displayed at checkout.<\/p>",
+            "answer": "<p>Free standard shipping is available on U.S. orders over $99, before taxes and after discounts.<\/p>",
             "category": "orders_shipping"
           }
         },
@@ -39,7 +39,7 @@
           "type": "faq_item",
           "settings": {
             "question": "What is your return policy?",
-            "answer": "<p>We accept returns within 30 days of the delivery date. To be eligible for a return, the item must be unused, unopened, in its original packaging, and in the same condition that you received it.<\/p><p>Opened or used skincare products are not eligible for return for health and safety reasons.<\/p><p>Gift cards and final sale or clearance items are non-returnable.<\/p>",
+            "answer": "<p>Products purchased directly from RomanSkinCare.com are covered by our 60-Day Satisfaction Guarantee. Contact us within 60 days of delivery to request a return. Opened products are eligible when at least 50% remains.<\/p><p>Returns are limited to one satisfaction return per product, per household. Sets and bundles must be returned together. Original and return shipping charges are not refundable unless the item arrived damaged, defective, or incorrect.<\/p><p>Gift cards and final-sale items are non-returnable. We may limit or refuse requests involving suspected misuse, fraud, or excessive returns.<\/p>",
             "category": "returns_refunds"
           }
         },
@@ -47,7 +47,7 @@
           "type": "faq_item",
           "settings": {
             "question": "How do I start a return?",
-            "answer": "<p>To initiate a return, please contact us using the Contact page with your order number and reason for return. We will provide detailed return instructions.<\/p>",
+            "answer": "<p>Contact us using the Contact page within 60 days of delivery and include your order number and the product you would like to return. We will provide return authorization and instructions. Your return must be shipped within 14 days of authorization.<\/p>",
             "category": "returns_refunds"
           }
         },

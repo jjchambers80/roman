@@ -1,0 +1,61 @@
+/* Development-only alternate template. Preview with ?view=balancing-cleanser. */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "eyebrow": {"type":"text","settings":{"text":"Daily foaming cleanser · 8 fl oz / 250 mL","text_style":"uppercase"}},
+        "share": {"type":"share","settings":{"share_label":"Share"}},
+        "title": {"type":"title","settings":{}},
+        "value": {"type":"value_proposition","settings":{"text":"A fresh foaming cleanse with green tea, rooibos, and fruit oils that leaves skin feeling clean, comfortable, and ready for the next step."}},
+        "benefits": {"type":"benefits","settings":{}},
+        "price": {"type":"price","settings":{}},
+        "variant_picker": {"type":"variant_picker","settings":{"picker_type":"button","swatch_shape":"circle"}},
+        "buy_buttons": {"type":"buy_buttons","settings":{"show_price_in_cta":true,"always_visible_mobile":true,"show_dynamic_checkout":true,"show_gift_card_recipient":false}},
+        "reassurance": {"type":"purchase_reassurance","settings":{}},
+        "accordion_description": {"type":"collapsible_tab","settings":{"heading":"Description","icon":"none","open_by_default":true,"content_source":"metafield","metafield_auto_key":"tab_description"}},
+        "accordion_usage": {"type":"collapsible_tab","settings":{"heading":"Usage","icon":"none","content_source":"metafield","metafield_auto_key":"tab_usage"}},
+        "accordion_ingredients": {"type":"collapsible_tab","settings":{"heading":"Ingredients","icon":"none","content_source":"metafield","metafield_auto_key":"tab_ingredients"}}
+      },
+      "block_order": ["eyebrow","share","title","value","benefits","price","variant_picker","buy_buttons","reassurance","accordion_description","accordion_usage","accordion_ingredients"],
+      "settings": {"experience_version":"balancing_cleanser_v1","enable_sticky_info":true,"color_scheme":"scheme-1","media_size":"large","constrain_to_viewport":true,"media_fit":"contain","gallery_layout":"thumbnail","media_position":"left","image_zoom":"lightbox","mobile_thumbnails":"hide","hide_variants":true,"enable_video_looping":false,"padding_top":0,"padding_bottom":16}
+    },
+    "formula": {
+      "type":"pdp-formula",
+      "blocks": {
+        "formula_1":{"type":"ingredient","settings":{"heading":"Green tea + rooibos","text":"Botanical support for a balanced-looking complexion"}},
+        "formula_2":{"type":"ingredient","settings":{"heading":"Cranberry + rosehip + seabuckthorn oils","text":"Help maintain softness and moisture"}},
+        "formula_3":{"type":"ingredient","settings":{"heading":"Fresh foaming format","text":"Cleanses to a fresh, supple finish without a creamy residue"}},
+        "formula_4":{"type":"ingredient","settings":{"heading":"Fragrance-aware guidance","text":"Contains fragrance and geraniol; patch test first if skin is reactive or fragrance-sensitive"}}
+      },
+      "block_order":["formula_1","formula_2","formula_3","formula_4"],
+      "settings":{"heading":"Why this formula","subheading":"A foaming cleanser with antioxidant-rich botanicals, fruit oils, and clear sensitivity guidance.","color_scheme":"scheme-1","padding_top":52,"padding_bottom":52}
+    },
+    "bundle": {"type":"pdp-frequently-bought-together","settings":{"heading":"Frequently Bought Together","bundle_products":["gentle-toner","illuminating-daily-serum-with-vitamin-c","multi-peptide-moisture-creme"],"discount_percentage":10,"discount_code":"","button_label":"Add Bundle","experience_version":"balancing_cleanser_v1","padding_top":40,"padding_bottom":40}},
+    "results": {
+      "type":"testimonials",
+      "blocks": {
+        "lucia":{"type":"testimonial","settings":{"quote":"The cleanser gives me a fresh feeling without the tight finish I dislike. It pairs nicely with my toner and serum. My routine feels more consistent with this cleanser in it.","author":"Lucia Nguyen","detail":"Judge.me review · Balancing Foaming Cleanser · May 21, 2023","rating":5}},
+        "hazel":{"type":"testimonial","settings":{"quote":"I like how the green tea and rooibos formula leaves my face feeling balanced. It has been easy to work into my twice-daily routine. The finish feels soft and balanced.","author":"Hazel Sanchez","detail":"Judge.me review · Balancing Foaming Cleanser · November 6, 2022","rating":4}}
+      },
+      "block_order": ["lucia","hazel"],
+      "settings":{"heading":"Real Results, Real Clients","subheading":"Cleanser-specific experiences published in Judge.me","disclaimer":"Individual experiences may vary.","background_color":"#ffffff","card_background":"#f9f8f5","heading_color":"#2c2c2c","text_color":"#4a4a4a","star_color":"#81806e","padding_top":52,"padding_bottom":52}
+    },
+    "faq": {
+      "type":"roman-faq-accordion",
+      "blocks": {
+        "q1":{"type":"faq_item","settings":{"question":"Which skin types is this cleanser intended for?","answer":"<p>It is intended for normal, combination, oily, and mature skin.</p>","category":"products_usage"}},
+        "q2":{"type":"faq_item","settings":{"question":"Is it a fit for dry, reactive, or fragrance-sensitive skin?","answer":"<p>The formula contains fragrance, geraniol, and multiple cleansing agents. Patch test first if your skin is dry, reactive, or fragrance-sensitive, and choose a creamier cleanser if skin feels tight after rinsing.</p>","category":"products_usage"}},
+        "q3":{"type":"faq_item","settings":{"question":"How should I use it?","answer":"<p>Wet hands, face and décolleté; gently massage the foaming cleanser onto skin in a gentle sweeping motion. Rinse with warm water to remove.</p>","category":"products_usage"}},
+        "q4":{"type":"faq_item","settings":{"question":"What finish should I expect?","answer":"<p>A fresh, clean, supple, and balanced-looking finish—not a creamy residue. Individual skin responses can vary.</p>","category":"products_usage"}},
+        "q5":{"type":"faq_item","settings":{"question":"Does it contain fragrance?","answer":"<p>Yes. Fragrance (Parfum) and Geraniol appear in the current ingredient list.</p>","category":"products_usage"}}
+      },
+      "block_order":["q1","q2","q3","q4","q5"],
+      "settings":{"heading":"Frequently Asked Questions","subheading":"<p>Practical guidance for choosing and using this foaming cleanser.</p>","allow_multiple_open":false,"enable_faq_schema":true,"show_cta":false,"cta_heading":"Still have questions?","cta_body":"<p>We're here to help.</p>","cta_button_label":"Contact Customer Care","cta_button_link":""}
+    },
+    "reviews": {"type":"apps","blocks":{"judge_me":{"type":"shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{"review_data":"product_reviews","max_width":1200,"show_shop_reviews":false,"empty_state":"empty_widget"}}},"block_order":["judge_me"],"settings":{"include_margins":true}},
+    "related-products": {"type":"related-products","settings":{"heading":"You may also like","heading_size":"h2","products_to_show":4,"columns_desktop":4,"color_scheme":"scheme-1","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"columns_mobile":"2","padding_top":36,"padding_bottom":28}},
+    "commercial-video": {"type":"video","settings":{"heading":"","heading_size":"h2","video_url":"https://youtu.be/WuzpLwTIsLE","cover_image":"shopify://shop_images/roman-commercial-poster.jpg","description":"","full_width":false,"color_scheme":"scheme-1","padding_top":28,"padding_bottom":52}}
+  },
+  "order":["main","formula","bundle","results","faq","reviews","related-products","commercial-video"]
+}

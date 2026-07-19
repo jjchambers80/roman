@@ -1,0 +1,4 @@
+interface:
+  display_name: "Roman PDP Image System"
+  short_description: "Create faithful Roman PDP product image cards"
+  default_prompt: "Use $roman-pdp-image-system to create a white-background enhanced PDP image from a verified Roman packshot and competitor reference."

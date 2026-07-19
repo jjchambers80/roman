@@ -1,0 +1,80 @@
+/* Development-only alternate template. Preview with ?view=illuminating-vitamin-c. */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "eyebrow": {"type":"text","settings":{"text":"Daily antioxidant serum · 1 fl oz / 30 mL","text_style":"uppercase"}},
+        "share": {"type":"share","settings":{"share_label":"Share"}},
+        "title": {"type":"title","settings":{}},
+        "value": {"type":"value_proposition","settings":{"text":"Brighten the look of dull, uneven skin with vitamin C, ferulic acid, peptides, and multi-source antioxidants—without adding a heavy layer to your routine."}},
+        "benefits": {"type":"benefits","settings":{}},
+        "price": {"type":"price","settings":{}},
+        "variant_picker": {"type":"variant_picker","settings":{"picker_type":"button","swatch_shape":"circle"}},
+        "buy_buttons": {"type":"buy_buttons","settings":{"show_price_in_cta":true,"always_visible_mobile":true,"show_dynamic_checkout":true,"show_gift_card_recipient":false}},
+        "reassurance": {"type":"purchase_reassurance","settings":{}},
+        "gallery_ingredients": {"type":"gallery_image","settings":{"image":"shopify://shop_images/illuminating-daily-serum-with-vitamin-c-03-ingredients.png","asset_filename":"","alt":"Ingredient roles in Roman Skin Illuminating Vitamin C Serum"}},
+        "gallery_texture": {"type":"gallery_image","settings":{"image":"","asset_filename":"","alt":"Roman Skin Illuminating Vitamin C Serum texture and dropper"}},
+        "gallery_application": {"type":"gallery_image","settings":{"image":"","asset_filename":"","alt":"Applying Roman Skin Illuminating Vitamin C Serum to face and décolleté"}},
+        "gallery_routine": {"type":"gallery_image","settings":{"image":"shopify://shop_images/illuminating-daily-serum-with-vitamin-c-06-routine.png","asset_filename":"","alt":"How to layer Roman Skin Illuminating Vitamin C Serum in a morning routine"}},
+        "accordion_description": {"type":"collapsible_tab","settings":{"heading":"Description","icon":"none","open_by_default":true,"content_source":"metafield","metafield_auto_key":"tab_description"}},
+        "accordion_usage": {"type":"collapsible_tab","settings":{"heading":"Usage","icon":"none","content_source":"metafield","metafield_auto_key":"tab_usage"}},
+        "accordion_ingredients": {"type":"collapsible_tab","settings":{"heading":"Ingredients","icon":"none","content_source":"metafield","metafield_auto_key":"tab_ingredients"}}
+      },
+      "block_order": ["eyebrow","share","title","value","benefits","price","variant_picker","buy_buttons","reassurance","gallery_ingredients","gallery_texture","gallery_application","gallery_routine","accordion_description","accordion_usage","accordion_ingredients"],
+      "settings": {"experience_version":"vitamin_c_v1","enable_sticky_info":true,"color_scheme":"scheme-1","media_size":"large","constrain_to_viewport":true,"media_fit":"contain","gallery_layout":"thumbnail","media_position":"left","image_zoom":"lightbox","mobile_thumbnails":"hide","hide_variants":true,"enable_video_looping":false,"padding_top":0,"padding_bottom":16}
+    },
+    "formula": {
+      "type":"pdp-formula",
+      "blocks": {
+        "formula_1":{"type":"ingredient","settings":{"heading":"Vitamin C + ferulic acid","text":"Antioxidant and radiance support"}},
+        "formula_2":{"type":"ingredient","settings":{"heading":"Kakadu plum + emblica","text":"Botanical antioxidant support"}},
+        "formula_3":{"type":"ingredient","settings":{"heading":"Peptides","text":"Support smoother-, renewed-looking skin"}},
+        "formula_4":{"type":"ingredient","settings":{"heading":"Hyaluronic acid + vitamin E","text":"Moisture support"}}
+      },
+      "block_order":["formula_1","formula_2","formula_3","formula_4"],
+      "settings":{"heading":"Why this formula","subheading":"A considered blend of antioxidants, peptides, and moisture-supporting ingredients.","color_scheme":"scheme-1","padding_top":52,"padding_bottom":52}
+    },
+    "results": {
+      "type":"testimonials",
+      "blocks": {
+        "melinda":{"type":"testimonial","settings":{"quote":"One of my favorite products is the Roman Skin product serum. I've seen a noticeable difference in the dark spots on my face after using the Illuminating Daily Serum with Vitamin C.","author":"Melinda L.","detail":"Verified Buyer · Illuminating Daily Serum with Vitamin C","rating":0}},
+        "joanne":{"type":"testimonial","settings":{"quote":"I use the illuminating serum with Vit C as part of my anti-aging regimen. All of the products do an amazing job, but this one specifically also helps with evening out brown spots and tightening the skin. Highly recommend!","author":"Joanne L.","detail":"Verified Buyer · Illuminating Serum with Vitamin C · 3/2026","rating":0}}
+      },
+      "block_order":["melinda","joanne"],
+      "settings":{"heading":"Real Results, Real Clients","subheading":"Serum-specific experiences from Roman Skin clients","disclaimer":"Individual experiences may vary.","background_color":"#ffffff","card_background":"#f9f8f5","heading_color":"#2c2c2c","text_color":"#4a4a4a","star_color":"#81806e","padding_top":52,"padding_bottom":52}
+    },
+    "value": {
+      "type":"pdp-value",
+      "blocks": {
+        "v1":{"type":"value","settings":{"heading":"Targeted antioxidant blend","text":"Vitamin C, ferulic acid, and botanical antioxidants support radiance and help defend against everyday environmental stressors."}},
+        "v2":{"type":"value","settings":{"heading":"Full-size format","text":"A 1 fl oz / 30 mL dropper bottle designed for measured daily use."}},
+        "v3":{"type":"value","settings":{"heading":"AM or PM versatility","text":"A light-layering serum that can fit into a morning or evening routine."}},
+        "v4":{"type":"value","settings":{"heading":"Professional expertise","text":"Created by Betty Romàn, a CIDESCO-certified esthetician with 30+ years of skincare experience."}},
+        "v5":{"type":"value","settings":{"heading":"60-day promise","text":"Time to try the formula and decide whether it earns a place in your routine."}}
+      },
+      "block_order":["v1","v2","v3","v4","v5"],
+      "settings":{"heading":"Why it earns a place in your routine","subheading":"A premium formula should make its role, format, and support clear.","color_scheme":"scheme-2","padding_top":52,"padding_bottom":52}
+    },
+    "bundle": {"type":"pdp-frequently-bought-together","settings":{"heading":"Frequently Bought Together","bundle_products":["gentle-toner","balancing-skin-cleanser-for-all-skin-types","multi-peptide-moisture-creme"],"discount_percentage":10,"discount_code":"","button_label":"Add Bundle","experience_version":"vitamin_c_v1","padding_top":40,"padding_bottom":40}},
+    "faq": {
+      "type":"roman-faq-accordion",
+      "blocks": {
+        "q1":{"type":"faq_item","settings":{"question":"Which form of vitamin C does it use?","answer":"<p>The current ingredient list identifies Sodium Ascorbyl Phosphate as the form of vitamin C.</p>","category":"products_usage"}},
+        "q2":{"type":"faq_item","settings":{"question":"Is it appropriate for sensitive skin?","answer":"<p>Skin responses vary. Patch test first and introduce the serum gradually. Stop use if irritation occurs.</p>","category":"products_usage"}},
+        "q3":{"type":"faq_item","settings":{"question":"Can it be used with retinoids or exfoliating acids?","answer":"<p>Introduce one active at a time and alternate routines if needed. If you use a prescription or have ongoing sensitivity, ask your dermatologist or prescriber for personalized guidance.</p>","category":"products_usage"}},
+        "q4":{"type":"faq_item","settings":{"question":"Where does it fit in an AM routine?","answer":"<p>Cleanse, tone, apply serum, moisturize, then finish with sunscreen.</p>","category":"products_usage"}},
+        "q5":{"type":"faq_item","settings":{"question":"Should sunscreen follow it?","answer":"<p>Yes. Apply a broad-spectrum SPF as the final step of your morning routine.</p>","category":"products_usage"}},
+        "q6":{"type":"faq_item","settings":{"question":"What does the texture feel like?","answer":"<p>The dropper format dispenses a small amount for light layering. Apply 2–3 drops and allow the serum to absorb before the next step in your routine.</p>","category":"products_usage"}},
+        "q7":{"type":"faq_item","settings":{"question":"Is there fragrance?","answer":"<p>No added fragrance/parfum appears in the current ingredient list. Botanical ingredients may contribute a natural scent.</p>","category":"products_usage"}},
+        "q8":{"type":"faq_item","settings":{"question":"How long does a bottle typically last?","answer":"<p>Longevity varies with frequency and amount used. The verified usage direction is 2–3 drops per application; we do not provide a fixed duration estimate.</p>","category":"products_usage"}}
+      },
+      "block_order":["q1","q2","q3","q4","q5","q6","q7","q8"],
+      "settings":{"heading":"Frequently Asked Questions","subheading":"<p>Practical guidance for adding this serum to your routine.</p>","allow_multiple_open":false,"enable_faq_schema":true,"show_cta":false,"cta_heading":"Still have questions?","cta_body":"<p>We're here to help.</p>","cta_button_label":"Contact Customer Care","cta_button_link":""}
+    },
+    "reviews": {"type":"apps","blocks":{"judge_me":{"type":"shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8","settings":{"review_data":"product_reviews","max_width":1200,"show_shop_reviews":true,"empty_state":"empty_widget"}}},"block_order":["judge_me"],"settings":{"include_margins":true}},
+    "related-products": {"type":"related-products","settings":{"heading":"You may also like","heading_size":"h2","products_to_show":4,"columns_desktop":4,"color_scheme":"scheme-1","image_ratio":"square","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"columns_mobile":"2","padding_top":36,"padding_bottom":28}},
+    "commercial-video": {"type":"video","settings":{"heading":"","heading_size":"h2","video_url":"https://youtu.be/WuzpLwTIsLE","cover_image":"shopify://shop_images/roman-commercial-poster.jpg","description":"","full_width":false,"color_scheme":"scheme-1","padding_top":28,"padding_bottom":52}}
+  },
+  "order":["main","formula","bundle","results","value","faq","reviews","related-products","commercial-video"]
+}

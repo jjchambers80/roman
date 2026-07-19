@@ -6,12 +6,15 @@
   - product: {Object} Product liquid object
   - variant_images: {Array} Product images associated with a variant
   - limit: {Number} (optional) When passed, limits the number of media items to render
+  - desktop_layout: {String} (optional) Overrides the section's desktop gallery layout
 
   Usage:
   {% render 'product-media-gallery' %}
 {% endcomment %}
 
 {%- liquid
+  assign desktop_layout = desktop_layout | default: section.settings.gallery_layout
+
   if section.settings.hide_variants and variant_images.size == product.media.size
     assign single_media_visible = true
   endif
@@ -21,6 +24,13 @@
   endif
 
   assign media_count = product.media.size
+  assign supplemental_count = 0
+  for supplemental in supplemental_images
+    if supplemental.settings.image != blank or supplemental.settings.asset_filename != blank
+      assign supplemental_count = supplemental_count | plus: 1
+    endif
+  endfor
+  assign media_count = media_count | plus: supplemental_count
   if section.settings.hide_variants and media_count > 1 and variant_images.size > 0
     assign media_count = media_count | minus: variant_images.size | plus: 1
   endif
@@ -49,7 +59,9 @@
     class="product__column-sticky"
   {% endif %}
   aria-label="{{ 'products.product.media.gallery_viewer' | t }}"
-  data-desktop-layout="{{ section.settings.gallery_layout }}"
+  data-desktop-layout="{{ desktop_layout }}"
+  data-product-handle="{{ product.handle | escape }}"
+  data-experience-version="{{ section.settings.experience_version | escape }}"
 >
   <div id="GalleryStatus-{{ section.id }}" class="visually-hidden" role="status"></div>
   <slider-component id="GalleryViewer-{{ section.id }}" class="slider-mobile-gutter">
@@ -65,7 +77,7 @@
         {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
         <li
           id="Slide-{{ section.id }}-{{ featured_media.id }}"
-          class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          class="product__media-item grid__item slider__slide is-active{% if single_media_visible %} product__media-item--single{% endif %}{% if featured_media.media_type != 'image' %} product__media-item--full{% endif %}"
           data-media-id="{{ section.id }}-{{ featured_media.id }}"
         >
           {%- assign media_position = 1 -%}
@@ -73,7 +85,7 @@
             media: featured_media,
             media_count: media_count,
             position: media_position,
-            desktop_layout: section.settings.gallery_layout,
+            desktop_layout: desktop_layout,
             mobile_layout: section.settings.mobile_thumbnails,
             loop: section.settings.enable_video_looping,
             modal_id: section.id,
@@ -97,7 +109,7 @@
         {%- unless media.id == product.selected_or_first_available_variant.featured_media.id -%}
           <li
             id="Slide-{{ section.id }}-{{ media.id }}"
-            class="product__media-item grid__item slider__slide{% if single_media_visible %} product__media-item--single{% endif %}{% if product.selected_or_first_available_variant.featured_media == nil and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+            class="product__media-item grid__item slider__slide{% if single_media_visible %} product__media-item--single{% endif %}{% if product.selected_or_first_available_variant.featured_media == nil and forloop.index == 1 %} is-active{% endif %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}"
             data-media-id="{{ section.id }}-{{ media.id }}"
           >
             {%- liquid
@@ -111,7 +123,7 @@
               media: media,
               media_count: media_count,
               position: media_position,
-              desktop_layout: section.settings.gallery_layout,
+              desktop_layout: desktop_layout,
               mobile_layout: section.settings.mobile_thumbnails,
               loop: section.settings.enable_video_looping,
               modal_id: section.id,
@@ -123,6 +135,23 @@
             %}
           </li>
         {%- endunless -%}
+      {%- endfor -%}
+      {%- for supplemental in supplemental_images -%}
+        {%- if supplemental.settings.image != blank or supplemental.settings.asset_filename != blank -%}
+          {%- assign media_position = media_position | default: product.media.size | plus: 1 -%}
+          <li id="Slide-{{ section.id }}-supplemental-{{ supplemental.id }}" class="product__media-item grid__item slider__slide" data-media-id="{{ section.id }}-supplemental-{{ supplemental.id }}" data-media-type="image" data-media-position="{{ media_position }}">
+            <modal-opener class="product__modal-opener product__modal-opener--image no-js-hidden" data-modal="#ProductModal-{{ section.id }}">
+              <button class="product__media-toggle" type="button" aria-haspopup="dialog" data-media-id="supplemental-{{ supplemental.id }}"><span class="visually-hidden">{{ 'products.product.media.open_media' | t: index: media_position }}</span></button>
+              <div class="product-media-container media-type-image global-media-settings" style="--ratio: 1.0; --preview-ratio: 1.0;">
+                {%- if supplemental.settings.image != blank -%}
+                  {{ supplemental.settings.image | image_url: width: 2048 | image_tag: loading: 'lazy', widths: '375, 550, 750, 1100, 1500, 2048', sizes: '(min-width: 990px) 50vw, 100vw', class: 'product__supplemental-image', alt: supplemental.settings.alt }}
+                {%- else -%}
+                  <img class="product__supplemental-image" src="{{ supplemental.settings.asset_filename | asset_url }}" alt="{{ supplemental.settings.alt | escape }}" width="2048" height="2048" loading="lazy">
+                {%- endif -%}
+              </div>
+            </modal-opener>
+          </li>
+        {%- endif -%}
       {%- endfor -%}
     </ul>
     <div class="slider-buttons quick-add-hidden{% if hide_mobile_slider %} small-hide{% endif %}">
@@ -136,10 +165,14 @@
           {{- 'icon-caret.svg' | inline_asset_content -}}
         </span>
       </button>
-      <div class="slider-counter caption">
+      <div class="slider-counter caption{% if section.settings.experience_version == 'vitamin_c_v1' %} slider-counter--worded{% endif %}">
         <span class="slider-counter--current">1</span>
-        <span aria-hidden="true"> / </span>
-        <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+        {%- if section.settings.experience_version == 'vitamin_c_v1' -%}
+          <span class="slider-counter__separator">{{ 'general.slider.of' | t }}</span>
+        {%- else -%}
+          <span aria-hidden="true"> / </span>
+          <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+        {%- endif -%}
         <span class="slider-counter--total">{{ media_count }}</span>
       </div>
       <button
@@ -178,12 +211,12 @@
   -%}
   {%- if is_not_limited_to_single_item
     and media_count > 1
-    and section.settings.gallery_layout contains 'thumbnail'
+    and desktop_layout contains 'thumbnail'
     or section.settings.mobile_thumbnails == 'show'
   -%}
     <slider-component
       id="GalleryThumbnails-{{ section.id }}"
-      class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless section.settings.gallery_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if section.settings.mobile_thumbnails != 'show' %} small-hide{% endif %}{% if media_count <= 3 %} thumbnail-slider--no-slide{% endif %}"
+      class="thumbnail-slider slider-mobile-gutter quick-add-hidden{% unless desktop_layout contains 'thumbnail' %} medium-hide large-up-hide{% endunless %}{% if section.settings.mobile_thumbnails != 'show' %} small-hide{% endif %}{% if media_count <= 3 %} thumbnail-slider--no-slide{% endif %}"
     >
       <button
         type="button"
@@ -199,7 +232,7 @@
       </button>
       <ul
         id="Slider-Thumbnails-{{ section.id }}"
-        class="thumbnail-list list-unstyled slider slider--mobile{% if section.settings.gallery_layout == 'thumbnail_slider' %} slider--tablet-up{% endif %}"
+        class="thumbnail-list list-unstyled slider slider--mobile{% if desktop_layout == 'thumbnail_slider' %} slider--tablet-up{% endif %}"
       >
         {%- capture sizes -%}
           (min-width: {{ settings.page_width }}px) calc(({{ settings.page_width | minus: 100 | times: media_width | round }} - 4rem) / 4),
@@ -313,6 +346,21 @@
               </button>
             </li>
           {%- endunless -%}
+        {%- endfor -%}
+        {%- assign supplemental_position = product.media.size -%}
+        {%- for supplemental in supplemental_images -%}
+          {%- if supplemental.settings.image != blank or supplemental.settings.asset_filename != blank -%}
+            {%- assign supplemental_position = supplemental_position | plus: 1 -%}
+            <li class="thumbnail-list__item slider__slide" data-target="{{ section.id }}-supplemental-{{ supplemental.id }}" data-media-position="{{ supplemental_position }}">
+              <button class="thumbnail global-media-settings global-media-settings--no-shadow" aria-label="{{ 'products.product.media.load_image' | t: index: supplemental_position }}" aria-controls="GalleryViewer-{{ section.id }}">
+                {%- if supplemental.settings.image != blank -%}
+                  {{ supplemental.settings.image | image_url: width: 416 | image_tag: loading: 'lazy', widths: '104, 208, 416', class: 'product__supplemental-image', alt: supplemental.settings.alt }}
+                {%- else -%}
+                  <img class="product__supplemental-image" src="{{ supplemental.settings.asset_filename | asset_url }}" alt="{{ supplemental.settings.alt | escape }}" width="208" height="208" loading="lazy">
+                {%- endif -%}
+              </button>
+            </li>
+          {%- endif -%}
         {%- endfor -%}
       </ul>
       <button

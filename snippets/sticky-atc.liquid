@@ -23,6 +23,8 @@
   <sticky-atc
     class="sticky-atc"
     data-section-id="{{ section_id }}"
+    {% if experience_version != blank %}data-experience-version="{{ experience_version | escape }}"{% endif %}
+    {% if always_visible_mobile %}data-always-visible-mobile{% endif %}
     aria-hidden="true"
   >
     <div class="sticky-atc__card color-{{ section.settings.color_scheme }} gradient">
@@ -39,11 +41,22 @@
       {%- endif -%}
       <div class="sticky-atc__details">
         <p class="sticky-atc__title">{{ product.title | escape }}</p>
-        <p class="sticky-atc__price">{{ product.selected_or_first_available_variant.price | money }}</p>
+        {%- unless show_price_in_cta -%}
+          <p class="sticky-atc__price">{{ product.selected_or_first_available_variant.price | money }}</p>
+        {%- endunless -%}
       </div>
       <button
         type="button"
         class="sticky-atc__button button button--primary"
+        {% if experience_version != blank %}
+          data-pdp-cta
+          data-placement="sticky"
+          data-product-handle="{{ product.handle | escape }}"
+          data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+          data-price="{{ product.selected_or_first_available_variant.price }}"
+          data-currency="{{ cart.currency.iso_code | default: shop.currency }}"
+          data-experience-version="{{ experience_version | escape }}"
+        {% endif %}
         {% if product.selected_or_first_available_variant.available == false
           or product.selected_or_first_available_variant == null
         %}
@@ -56,7 +69,7 @@
           {%- elsif product.selected_or_first_available_variant.available == false -%}
             {{ 'products.product.sold_out' | t }}
           {%- else -%}
-            {{ 'products.product.add_to_cart' | t }}
+            {{ 'products.product.add_to_cart' | t }}{% if show_price_in_cta %} · {{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}{% endif %}
           {%- endif -%}
         </span>
       </button>

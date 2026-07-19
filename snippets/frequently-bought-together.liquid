@@ -1,0 +1,97 @@
+{%- liquid
+  assign fbt_products = bundle_products
+  assign fbt_total_price = 0
+  assign fbt_total_compare = 0
+  assign fbt_all_available = true
+  assign fbt_variant_ids = ''
+
+  for fbt_product in fbt_products
+    assign fbt_variant = fbt_product.selected_or_first_available_variant
+    if fbt_variant.available == false
+      assign fbt_all_available = false
+    endif
+    assign fbt_total_price = fbt_total_price | plus: fbt_variant.price
+    if fbt_variant.compare_at_price and fbt_variant.compare_at_price > fbt_variant.price
+      assign fbt_total_compare = fbt_total_compare | plus: fbt_variant.compare_at_price
+    else
+      assign fbt_total_compare = fbt_total_compare | plus: fbt_variant.price
+    endif
+    if forloop.first
+      assign fbt_variant_ids = fbt_variant.id
+    else
+      assign fbt_variant_ids = fbt_variant_ids | append: ',' | append: fbt_variant.id
+    endif
+  endfor
+
+  assign fbt_discount = discount_percentage | default: 0
+  if fbt_discount > 0
+    assign fbt_multiplier = 100 | minus: fbt_discount
+    assign fbt_discounted = fbt_total_price | times: fbt_multiplier | divided_by: 100
+    assign fbt_display_price = fbt_discounted
+    assign fbt_compare_price = fbt_total_price
+    assign fbt_show_compare = true
+  elsif fbt_total_compare > fbt_total_price
+    assign fbt_display_price = fbt_total_price
+    assign fbt_compare_price = fbt_total_compare
+    assign fbt_show_compare = true
+  else
+    assign fbt_display_price = fbt_total_price
+    assign fbt_show_compare = false
+  endif
+-%}
+
+<frequently-bought-together
+  class="frequently-bought-together{% if inline %} frequently-bought-together--inline{% else %} frequently-bought-together--section{% endif %}"
+  data-product-handle="{{ product.handle | escape }}"
+  data-experience-version="{{ experience_version | default: 'default' | escape }}"
+  {{ shopify_attributes }}
+>
+  <h2 class="frequently-bought-together__heading">{{ heading | default: 'Frequently Bought Together' | escape }}</h2>
+  <div class="frequently-bought-together__inner">
+    <div class="frequently-bought-together__products">
+      {%- for fbt_product in fbt_products -%}
+        {%- unless forloop.first -%}<span class="frequently-bought-together__separator" aria-hidden="true">+</span>{%- endunless -%}
+        <a href="{{ fbt_product.url }}" class="frequently-bought-together__item">
+          {%- if fbt_product.featured_image -%}
+            {{ fbt_product.featured_image | image_url: width: 200 | image_tag: loading: 'lazy', widths: '100, 160, 200', class: 'frequently-bought-together__item-image', alt: fbt_product.title }}
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'frequently-bought-together__item-image' }}
+          {%- endif -%}
+          <span class="frequently-bought-together__item-title">{{ fbt_product.title | escape }}</span>
+        </a>
+      {%- endfor -%}
+    </div>
+    <div class="frequently-bought-together__summary">
+      <div class="frequently-bought-together__price-row">
+        <span class="frequently-bought-together__price-label">Total price:</span>
+        <span class="frequently-bought-together__price-sale">{{ fbt_display_price | money_with_currency }}</span>
+        {%- if fbt_show_compare -%}<s class="frequently-bought-together__price-compare">{{ fbt_compare_price | money_with_currency }}</s>{%- endif -%}
+      </div>
+      <button
+        type="button"
+        class="frequently-bought-together__button"
+        data-bundle-add
+        data-variant-ids='[{{ fbt_variant_ids }}]'
+        data-item-count="{{ fbt_products.size }}"
+        data-bundle-value="{{ fbt_display_price }}"
+        data-discount-percentage="{{ fbt_discount }}"
+        {% unless fbt_all_available %}aria-disabled="true"{% endunless %}
+      >
+        <span class="frequently-bought-together__button-label">
+          {%- if fbt_all_available -%}
+            {{ button_label | default: 'Add Bundle' | escape }}{% if fbt_discount > 0 %} ({{ fbt_discount }}% OFF){% endif %}
+          {%- else -%}
+            {{ 'products.product.sold_out' | t }}
+          {%- endif -%}
+        </span>
+        {%- render 'loading-spinner' -%}
+      </button>
+      <div class="frequently-bought-together__error" role="alert"></div>
+      {%- if fbt_discount > 0 -%}
+        <p class="frequently-bought-together__discount-note">
+          {{ fbt_discount }}% bundle discount applied at checkout{% if discount_code != blank %} with code <strong>{{ discount_code | escape }}</strong>{% endif %}
+        </p>
+      {%- endif -%}
+    </div>
+  </div>
+</frequently-bought-together>

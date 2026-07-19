@@ -1,0 +1,25 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} .pdp-value { padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px; }
+  #shopify-section-{{ section.id }} .pdp-value__inner { max-width: 100rem; margin: auto; }
+  #shopify-section-{{ section.id }} .pdp-value__header { text-align: center; max-width: 68rem; margin: 0 auto 3rem; }
+  #shopify-section-{{ section.id }} .pdp-value__header h2 { margin: 0 0 1rem; }
+  #shopify-section-{{ section.id }} .pdp-value__list { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; }
+  #shopify-section-{{ section.id }} .pdp-value__item { padding: 2rem 1.6rem; background: rgba(var(--color-foreground), .04); }
+  #shopify-section-{{ section.id }} .pdp-value__item h3 { margin: 0 0 .7rem; font-size: 1.6rem; }
+  #shopify-section-{{ section.id }} .pdp-value__item p { margin: 0; font-size: 1.4rem; }
+  @media screen and (min-width: 990px) {
+    #shopify-section-{{ section.id }} .pdp-value__inner { max-width: 120rem; }
+    #shopify-section-{{ section.id }} .pdp-value__list { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.6rem; align-items: stretch; }
+    #shopify-section-{{ section.id }} .pdp-value__item { display: grid; grid-template-rows: 5.8rem auto; align-content: start; padding: 2.4rem 2rem; }
+    #shopify-section-{{ section.id }} .pdp-value__item h3 { line-height: 1.2; }
+  }
+  @media screen and (max-width: 989px) { #shopify-section-{{ section.id }} .pdp-value__list { grid-template-columns: repeat(2, 1fr); } }
+  @media screen and (max-width: 749px) { #shopify-section-{{ section.id }} .pdp-value__list { grid-template-columns: 1fr; } }
+{%- endstyle -%}
+<section class="pdp-value color-{{ section.settings.color_scheme }} gradient"><div class="page-width pdp-value__inner">
+  <header class="pdp-value__header"><h2 class="h1">{{ section.settings.heading | escape }}</h2>{% if section.settings.subheading != blank %}<p>{{ section.settings.subheading | escape }}</p>{% endif %}</header>
+  <div class="pdp-value__list">{% for block in section.blocks %}<article class="pdp-value__item" {{ block.shopify_attributes }}><h3>{{ block.settings.heading | escape }}</h3><p>{{ block.settings.text | escape }}</p></article>{% endfor %}</div>
+</div></section>
+{% schema %}
+{"name":"PDP premium value","settings":[{"type":"text","id":"heading","label":"Heading","default":"Why it earns a place in your routine"},{"type":"text","id":"subheading","label":"Subheading"},{"type":"color_scheme","id":"color_scheme","label":"Color scheme","default":"scheme-2"},{"type":"range","id":"padding_top","min":0,"max":100,"step":4,"unit":"px","label":"Top padding","default":52},{"type":"range","id":"padding_bottom","min":0,"max":100,"step":4,"unit":"px","label":"Bottom padding","default":52}],"blocks":[{"type":"value","name":"Value point","settings":[{"type":"text","id":"heading","label":"Heading"},{"type":"textarea","id":"text","label":"Text"}]}],"max_blocks":5,"presets":[{"name":"PDP premium value"}]}
+{% endschema %}

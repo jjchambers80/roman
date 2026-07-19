@@ -1,0 +1,67 @@
+{
+  "scenarios": [
+    {
+      "name": "Low claims — 2% refund rate",
+      "currency": "USD",
+      "forecast_periods": 1,
+      "starting_orders": 100,
+      "order_growth_rate": 0,
+      "gross_merchandise_aov": 86.30,
+      "discount_rate": 0,
+      "refund_rate": 0.02,
+      "shipping_revenue_per_order": 0,
+      "landed_cogs_per_order": { "product_cost_and_inbound_freight": 30.61 },
+      "variable_costs_per_order": {
+        "packaging": 1.25,
+        "pick_pack": 3.00,
+        "outbound_shipping": 7.00,
+        "payment_fixed_fee": 0.30
+      },
+      "variable_cost_rates": { "payment_processing": 0.029 },
+      "fixed_costs_per_period": { "incremental_policy_admin": 0 },
+      "one_time_costs_by_period": {}
+    },
+    {
+      "name": "Expected claims — 4% refund rate",
+      "currency": "USD",
+      "forecast_periods": 1,
+      "starting_orders": 100,
+      "order_growth_rate": 0,
+      "gross_merchandise_aov": 86.30,
+      "discount_rate": 0,
+      "refund_rate": 0.04,
+      "shipping_revenue_per_order": 0,
+      "landed_cogs_per_order": { "product_cost_and_inbound_freight": 30.61 },
+      "variable_costs_per_order": {
+        "packaging": 1.25,
+        "pick_pack": 3.00,
+        "outbound_shipping": 7.00,
+        "payment_fixed_fee": 0.30
+      },
+      "variable_cost_rates": { "payment_processing": 0.029 },
+      "fixed_costs_per_period": { "incremental_policy_admin": 0 },
+      "one_time_costs_by_period": {}
+    },
+    {
+      "name": "High claims — 8% refund rate",
+      "currency": "USD",
+      "forecast_periods": 1,
+      "starting_orders": 100,
+      "order_growth_rate": 0,
+      "gross_merchandise_aov": 86.30,
+      "discount_rate": 0,
+      "refund_rate": 0.08,
+      "shipping_revenue_per_order": 0,
+      "landed_cogs_per_order": { "product_cost_and_inbound_freight": 30.61 },
+      "variable_costs_per_order": {
+        "packaging": 1.25,
+        "pick_pack": 3.00,
+        "outbound_shipping": 7.00,
+        "payment_fixed_fee": 0.30
+      },
+      "variable_cost_rates": { "payment_processing": 0.029 },
+      "fixed_costs_per_period": { "incremental_policy_admin": 0 },
+      "one_time_costs_by_period": {}
+    }
+  ]
+}

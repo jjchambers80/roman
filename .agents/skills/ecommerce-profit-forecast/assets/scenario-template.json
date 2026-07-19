@@ -1,0 +1,39 @@
+{
+  "name": "Base case",
+  "currency": "USD",
+  "forecast_periods": 12,
+  "starting_orders": 500,
+  "order_growth_rate": 0.03,
+  "gross_merchandise_aov": 72.0,
+  "discount_rate": 0.05,
+  "refund_rate": 0.04,
+  "shipping_revenue_per_order": 0.0,
+  "landed_cogs_per_order": {
+    "product_cost": 19.0,
+    "inbound_freight": 2.0
+  },
+  "variable_costs_per_order": {
+    "packaging": 1.25,
+    "pick_pack": 3.0,
+    "outbound_shipping": 7.0,
+    "payment_fixed_fee": 0.3
+  },
+  "variable_cost_rates": {
+    "payment_processing": 0.029,
+    "affiliate_commission": 0.0,
+    "variable_marketing": 0.08
+  },
+  "fixed_costs_per_period": {
+    "payroll_and_contractors": 6000.0,
+    "platform_and_apps": 800.0,
+    "fixed_marketing": 4000.0,
+    "rent_and_storage": 1000.0,
+    "insurance_and_professional": 500.0,
+    "other_overhead": 300.0
+  },
+  "one_time_costs_by_period": {
+    "1": {
+      "launch_creative": 2500.0
+    }
+  }
+}

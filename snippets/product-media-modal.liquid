@@ -52,6 +52,17 @@
           endunless
         -%}
       {%- endfor -%}
+      {%- for supplemental in supplemental_images -%}
+        {%- if supplemental.settings.image != blank or supplemental.settings.asset_filename != blank -%}
+          <div class="product-media-modal__asset" data-media-id="supplemental-{{ supplemental.id }}">
+            {%- if supplemental.settings.image != blank -%}
+              {{ supplemental.settings.image | image_url: width: 2048 | image_tag: loading: 'lazy', widths: '750, 1100, 1500, 2048', class: 'product__supplemental-image', alt: supplemental.settings.alt }}
+            {%- else -%}
+              <img class="product__supplemental-image" src="{{ supplemental.settings.asset_filename | asset_url }}" alt="{{ supplemental.settings.alt | escape }}" width="2048" height="2048" loading="lazy">
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
     </div>
   </div>
 </product-modal>

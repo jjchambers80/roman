@@ -4,15 +4,7 @@
  * product.metafields.custom.tab_* is accessible in Liquid.
  * Usage: node scripts/create-metafield-definitions.js
  */
-require("dotenv").config({
-  path: require("path").join(__dirname, "..", ".env"),
-});
-
-const GQL_URL = `https://${process.env.SHOPIFY_STORE}/admin/api/2026-04/graphql.json`;
-const H = {
-  "Content-Type": "application/json",
-  "X-Shopify-Access-Token": process.env.SHOPIFY_ACCESS_TOKEN,
-};
+const { graphqlClient } = require("./shopify");
 
 const DEFINITIONS = [
   { name: "Tab Description", key: "tab_description" },
@@ -28,12 +20,7 @@ const EXISTING_IDS = {
 };
 
 async function gql(query, variables) {
-  const res = await fetch(GQL_URL, {
-    method: "POST",
-    headers: H,
-    body: JSON.stringify({ query, variables }),
-  });
-  return res.json();
+  return graphqlClient.request(query, { variables });
 }
 
 async function updateStorefrontAccess(def) {

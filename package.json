@@ -7,7 +7,11 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "mcp:ads": "node scripts/mcp-google-ads.js"
+    "mcp:ads": "node scripts/mcp-google-ads.js",
+    "theme:check-integrations": "node scripts/check-theme-integrations.js",
+    "pdp:check": "node scripts/pdp-section-release.js check",
+    "pdp:preview": "node scripts/pdp-section-release.js preview",
+    "pdp:release": "node scripts/pdp-section-release.js release"
   },
   "keywords": [],
   "author": "",

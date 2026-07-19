@@ -8,17 +8,9 @@
  * Idempotent — checks for an existing code before creating.
  * Usage: node scripts/create-bundle-discounts.js
  */
-require("dotenv").config({
-  path: require("path").join(__dirname, "..", ".env"),
-});
+const { graphqlClient } = require("./shopify");
 
 const COLLECTION_GID = "gid://shopify/Collection/513621655834";
-
-const GQL_URL = `https://${process.env.SHOPIFY_STORE}/admin/api/2026-04/graphql.json`;
-const H = {
-  "Content-Type": "application/json",
-  "X-Shopify-Access-Token": process.env.SHOPIFY_ACCESS_TOKEN,
-};
 
 const TIERS = [
   { code: "BUNDLE15", title: "Bundle — 3 items, 15% off", percentage: 0.15, minQty: 3 },
@@ -27,12 +19,7 @@ const TIERS = [
 ];
 
 async function gql(query, variables) {
-  const res = await fetch(GQL_URL, {
-    method: "POST",
-    headers: H,
-    body: JSON.stringify({ query, variables }),
-  });
-  return res.json();
+  return graphqlClient.request(query, { variables });
 }
 
 async function codeExists(code) {

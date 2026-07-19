@@ -5,8 +5,7 @@
  *   node scripts/update-cleanser-guidance.js         # preview
  *   node scripts/update-cleanser-guidance.js --apply # write to Shopify
  */
-const { createAdminApiClient } = require("@shopify/admin-api-client");
-const { client, STORE, TOKEN, API_VERSION } = require("./shopify");
+const { client, graphqlClient } = require("./shopify");
 
 const APPLY = process.argv.includes("--apply");
 const NAMESPACE = "custom";
@@ -47,13 +46,6 @@ const GUIDANCE_BY_HANDLE = {
       "Contains fragrance. Patch test first if your skin is highly reactive or fragrance-sensitive, even though the creamy base is intended to minimize a stripped feeling.",
   },
 };
-
-const graphqlClient = createAdminApiClient({
-  storeDomain: STORE,
-  apiVersion: API_VERSION,
-  accessToken: TOKEN,
-  retries: 2,
-});
 
 function getUserErrorMessage(errors) {
   return errors.map((error) => error.message).join("; ");

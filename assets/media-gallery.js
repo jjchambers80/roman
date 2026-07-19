@@ -26,6 +26,7 @@ if (!customElements.get('media-gallery')) {
           `[data-target="${event.detail.currentElement.dataset.mediaId}"]`
         );
         this.setActiveThumbnail(thumbnail);
+        this.trackMedia(event.detail.currentElement);
       }
 
       setActiveMedia(mediaId, prepend) {
@@ -68,6 +69,23 @@ if (!customElements.get('media-gallery')) {
         const activeThumbnail = this.elements.thumbnails.querySelector(`[data-target="${mediaId}"]`);
         this.setActiveThumbnail(activeThumbnail);
         this.announceLiveRegion(activeMedia, activeThumbnail.dataset.mediaPosition);
+        this.trackMedia(activeMedia);
+      }
+
+      trackMedia(media) {
+        if (!this.dataset.experienceVersion || !media) return;
+        const thumbnail = this.elements.thumbnails?.querySelector(`[data-target="${media.dataset.mediaId}"]`);
+        const position = Number(media.dataset.mediaPosition || thumbnail?.dataset.mediaPosition || 0);
+        const trackingKey = `${media.dataset.mediaId}:${position}`;
+        if (this.lastTrackingKey === trackingKey && Date.now() - this.lastTrackedAt < 750) return;
+        this.lastTrackingKey = trackingKey;
+        this.lastTrackedAt = Date.now();
+        document.dispatchEvent(new CustomEvent('pdp:gallery-viewed', { detail: {
+          media_position: position,
+          media_type: media.dataset.mediaType || (media.querySelector('video') ? 'video' : 'image'),
+          product_handle: this.dataset.productHandle,
+          experience_version: this.dataset.experienceVersion,
+        }}));
       }
 
       setActiveThumbnail(thumbnail) {

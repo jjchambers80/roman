@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ecommerce Profit Forecast"
+  short_description: "Model store margins, costs, and revenue"
+  default_prompt: "Use $ecommerce-profit-forecast to analyze a mock store scenario, allocate operating costs, and forecast profit and revenue."

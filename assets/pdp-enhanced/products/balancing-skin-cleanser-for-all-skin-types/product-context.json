@@ -1,0 +1,200 @@
+{
+  "product_handle": "balancing-skin-cleanser-for-all-skin-types",
+  "product_id": 10134049751322,
+  "product_title": "Balancing Foaming Cleanser with Green Tea & Rooibos",
+  "product_type": "Cleanser",
+  "product_size": "8 fl oz / 250 mL",
+  "verified_at": "2026-07-19",
+  "evidence_sources": {
+    "shopify_product": "Shopify Admin product 10134049751322 and current metafields, read 2026-07-19",
+    "product_information": "brain/roman/roman-skin-body-care-product-info.md#BALANCING SKIN CLEANSER FOR ALL SKIN TYPES",
+    "supplier_copy_index": "brain/roman/research/vitelle-supplier-marketing-copy-index.md#Balancing Foaming Cleanser with Green Tea & Rooibos",
+    "review_audit": "brain/roman/reviews/judgeme-review-provenance-2026-07-19.md"
+  },
+  "commerce": {
+    "price": "dynamic",
+    "availability": "dynamic",
+    "quantity_default": 1,
+    "template_suffix_assignment": null
+  },
+  "product_image": {
+    "shopify_media_id": 54801413570842,
+    "width": 1024,
+    "height": 1024,
+    "source": "https://cdn.shopify.com/s/files/1/0894/1417/2954/files/ROMAN-CLEANSER-FOR-ALL-SKIN-TYPES.png?v=1783261823",
+    "supplemental_gallery_status": "not_created",
+    "notes": "Use the existing Shopify product media only. Packaging fidelity has not been validated for supplemental gallery production."
+  },
+  "approved_copy": {
+    "eyebrow": "Daily foaming cleanser · 8 fl oz / 250 mL",
+    "value_proposition": "A fresh foaming cleanse with green tea, rooibos, and fruit oils that leaves skin feeling clean, comfortable, and ready for the next step.",
+    "benefits": [
+      "Refreshes without leaving skin feeling depleted",
+      "Green tea and rooibos help support a balanced-looking complexion",
+      "Fruit oils help maintain softness and moisture"
+    ],
+    "suitable_skin_types": [
+      "Normal",
+      "Combination",
+      "Oily",
+      "Mature"
+    ],
+    "expected_finish": "Fresh, clean, supple, and balanced-looking—not a creamy residue.",
+    "sensitivity_guidance": "Contains fragrance, geraniol, and multiple cleansing agents. Patch test first if your skin is dry, reactive, or fragrance-sensitive; choose a creamier cleanser if skin feels tight after rinsing.",
+    "usage": "Wet hands, face and décolleté; gently massage foaming cleanser onto skin in gentle sweeping motion. Rinse with warm water to remove.",
+    "ingredients": "Aqua (Purified Water), Decyl Glucoside, Sodium C14-16 Olefin Sulfonate, Glyceryl Stearate, Cocamidopropyl Betaine, Vaccinium Macrocarpon (Cranberry) Seed Oil, Camellia Sinensis (Green Tea) Leaf Extract, Aspalathus Linearis (Rooibos) Leaf Extract, Rosa Canina Fruit Oil, Acrylates/Steareth-20 Methacrylate Copolymer, 1,2-Hexanediol, Caprylyl Glycol, Caprylhydroxamic Acid, Glycerin, Styrene/Acrylates Copolymer, Arginine, Citric Acid, Fragrance (Parfum), Aloe Barbadensis Leaf Extract, Silybum Marianum Extract, Hippophae Rhamnoides (Seabuckthorn) Fruit Extract, Copper Chlorophyllin Complex, Chromium Oxide Greens, Geraniol."
+  },
+  "review_provenance": {
+    "official_export_date": "2026-07-19",
+    "official_export_rows": 140,
+    "approved_cleanser_product_reviews": 13,
+    "approved_shop_reviews": 39,
+    "status": "approved",
+    "approval_source": "Explicit written user approval on 2026-07-19",
+    "notes": "The user confirmed the supplied Judge.me export is authoritative as-is and all included reviews are retained. Preserve exported wording and attribution. Do not add Verified Buyer because the export does not establish it."
+  },
+  "claim_evidence": [
+    {
+      "copy": "Balancing Foaming Cleanser with Green Tea & Rooibos",
+      "claim_type": "seo",
+      "source": "Shopify Admin product 10134049751322",
+      "source_location": "product.title",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Render dynamically as the single product H1."
+    },
+    {
+      "copy": "Daily foaming cleanser · 8 fl oz / 250 mL",
+      "claim_type": "size",
+      "source": "Shopify Admin product 10134049751322",
+      "source_location": "product_type and custom.product_size",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Category and size verified from current Admin fields."
+    },
+    {
+      "copy": "A fresh foaming cleanse with green tea, rooibos, and fruit oils that leaves skin feeling clean, comfortable, and ready for the next step.",
+      "claim_type": "benefit",
+      "source": "brain/roman/research/vitelle-supplier-marketing-copy-index.md",
+      "source_location": "Balancing Foaming Cleanser Roman-ready copy and marketing angles; corroborated by current INCI",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Preserves cosmetic and feel-based language; makes no clinical or universal-tolerance claim."
+    },
+    {
+      "copy": "Refreshes without leaving skin feeling depleted",
+      "claim_type": "benefit",
+      "source": "Shopify Admin product 10134049751322",
+      "source_location": "custom.product_benefits[0]",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Current customer-facing metafield."
+    },
+    {
+      "copy": "Green tea and rooibos help support a balanced-looking complexion",
+      "claim_type": "benefit",
+      "source": "Shopify Admin product 10134049751322",
+      "source_location": "custom.product_benefits[1]",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Preserve helps/support/looking qualifiers. Ingredient presence is corroborated by current INCI."
+    },
+    {
+      "copy": "Fruit oils help maintain softness and moisture",
+      "claim_type": "benefit",
+      "source": "Shopify Admin product 10134049751322",
+      "source_location": "custom.product_benefits[2]",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Preserve helps qualifier. Fruit-oil presence is corroborated by current INCI."
+    },
+    {
+      "copy": "Suitable for normal, combination, oily, and mature skin",
+      "claim_type": "usage",
+      "source": "Shopify Admin product 10134049751322 and user-directed evidence determination",
+      "source_location": "custom.suitable_skin_types",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Do not broaden to all skin types or sensitive/reactive skin. Pair with the approved sensitivity guidance."
+    },
+    {
+      "copy": "Contains fragrance, geraniol, and multiple cleansing agents. Patch test first if your skin is dry, reactive, or fragrance-sensitive; choose a creamier cleanser if skin feels tight after rinsing.",
+      "claim_type": "usage",
+      "source": "Shopify Admin product 10134049751322",
+      "source_location": "custom.sensitivity_guidance; fragrance and geraniol corroborated by custom.tab_ingredients",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Required alongside suitability guidance."
+    },
+    {
+      "copy": "Fresh, clean, supple, and balanced-looking—not a creamy residue.",
+      "claim_type": "benefit",
+      "source": "Shopify Admin product 10134049751322",
+      "source_location": "custom.expected_finish",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Expected finish, not a guaranteed universal outcome."
+    },
+    {
+      "copy": "Wet hands, face and décolleté; gently massage foaming cleanser onto skin in gentle sweeping motion. Rinse with warm water to remove.",
+      "claim_type": "usage",
+      "source": "Shopify Admin product 10134049751322 and brain/roman/roman-skin-body-care-product-info.md",
+      "source_location": "custom.tab_usage and Client Use",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Exact current directions; no frequency added."
+    },
+    {
+      "copy": "Current full ingredient list",
+      "claim_type": "ingredient",
+      "source": "Shopify Admin product 10134049751322 and brain/roman/roman-skin-body-care-product-info.md",
+      "source_location": "custom.tab_ingredients and Product Ingredients",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Use verbatim. Establishes ingredient presence only."
+    },
+    {
+      "copy": "13 product reviews · 4.69 average rating",
+      "claim_type": "testimonial",
+      "source": "Judge.me published review export supplied 2026-07-19 and explicit written user approval",
+      "source_location": "13 balancing cleanser rows and current Judge.me aggregate metafields",
+      "verified_at": "2026-07-19",
+      "status": "approved",
+      "notes": "Render dynamically through Judge.me so the count and average remain current. Do not add Verified Buyer labels."
+    },
+    {
+      "copy": "Vitamin C, paraben-free, $43",
+      "claim_type": "seo",
+      "source": "Current global.description_tag and historical scripts/update-seo.js",
+      "source_location": "Shopify SEO description and PRODUCTS cleanser entry",
+      "verified_at": "2026-07-19",
+      "status": "rejected",
+      "notes": "Vitamin C is absent from the current INCI; paraben-free is not approved; price must be dynamic."
+    },
+    {
+      "copy": "Salicylic acid, niacinamide, zinc PCA, pH-balanced, SLS-free",
+      "claim_type": "ingredient",
+      "source": "Historical scripts/create-articles.js",
+      "source_location": "cleanser article body",
+      "verified_at": "2026-07-19",
+      "status": "rejected",
+      "notes": "Not supported by the current INCI or approved product information."
+    }
+  ],
+  "prohibited_claims": [
+    "all skin types",
+    "safe for sensitive skin",
+    "fragrance-free",
+    "paraben-free",
+    "sulfate-free",
+    "SLS-free",
+    "ultra-gentle",
+    "Vitamin C",
+    "salicylic acid",
+    "niacinamide",
+    "zinc PCA",
+    "pH-balanced",
+    "clinical-grade",
+    "clinically proven"
+  ]
+}

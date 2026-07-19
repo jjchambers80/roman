@@ -8,25 +8,41 @@
  *  - All product SEO meta descriptions
  *  - URL redirects
  *
- * Usage: node scripts/update-seo.js
+ * Usage: node scripts/update-seo.js [--product <handle>] [--dry-run]
  * Requires: SHOPIFY_STORE and SHOPIFY_ACCESS_TOKEN in .env
  */
 
 const { client, STORE } = require("./shopify");
 
+const args = process.argv.slice(2);
+const productArgIndex = args.indexOf("--product");
+const TARGET_PRODUCT = productArgIndex >= 0 ? args[productArgIndex + 1] : null;
+const DRY_RUN = args.includes("--dry-run");
+
+if (productArgIndex >= 0 && !TARGET_PRODUCT) throw new Error("--product requires a product handle");
+
 async function apiGet(path) {
-  const res = await client.get(path.replace(/^\//, "").replace(/\.json$/, ""));
+  const [pathname, query = ""] = path.split("?");
+  const searchParams = {};
+  for (const [key, value] of new URLSearchParams(query)) {
+    searchParams[key] = /^\d+$/.test(value) ? Number(value) : value;
+  }
+  const res = await client.get(pathname.replace(/^\//, "").replace(/\.json$/, ""), {
+    searchParams,
+  });
   if (!res.ok) throw new Error(`GET ${path} failed: ${res.status} ${await res.text()}`);
   return res.json();
 }
 
 async function apiPost(path, body) {
+  if (DRY_RUN) return { dryRun: true, path, body };
   const res = await client.post(path.replace(/^\//, "").replace(/\.json$/, ""), { data: body });
   if (!res.ok) throw new Error(`POST ${path} failed: ${res.status} ${await res.text()}`);
   return res.json();
 }
 
 async function apiPut(path, body) {
+  if (DRY_RUN) return { dryRun: true, path, body };
   const res = await client.put(path.replace(/^\//, "").replace(/\.json$/, ""), { data: body });
   if (!res.ok) throw new Error(`PUT ${path} failed: ${res.status} ${await res.text()}`);
   return res.json();
@@ -40,9 +56,11 @@ async function upsertMetafield(resourcePath, namespace, key, value, type = "sing
   const data = await apiGet(`${resourcePath}/metafields.json?namespace=${namespace}&key=${key}`);
   if (data.metafields && data.metafields.length > 0) {
     const existing = data.metafields[0];
+    if (DRY_RUN) return existing.value === value ? "unchanged (dry run)" : "would update";
     await apiPut(`/metafields/${existing.id}.json`, { metafield: { id: existing.id, value } });
     return "updated";
   } else {
+    if (DRY_RUN) return "would create";
     await apiPost(`${resourcePath}/metafields.json`, { metafield: { namespace, key, value, type } });
     return "created";
   }
@@ -153,7 +171,7 @@ const PRODUCTS = [
   {
     handle: "illuminating-daily-serum-with-vitamin-c",
     descriptionTag:
-      "Brightening daily serum with stabilized Vitamin C to fade dark spots and even skin tone. Clinical-grade radiance by a CIDESCO esthetician. Paraben-free. $145.",
+      "Vitamin C and ferulic acid serum that helps brighten dull, uneven-looking skin, support moisture, and promote natural radiance. 1 fl oz. $145.",
   },
   {
     handle: "multi-peptide-moisture-creme",
@@ -229,9 +247,10 @@ async function buildProductMap() {
   return map;
 }
 
-async function updateProducts(productMap) {
+async function updateProducts(productMap, targetProduct) {
   console.log("\n── Products ──────────────────────────────────────────────");
   for (const prod of PRODUCTS) {
+    if (targetProduct && prod.handle !== targetProduct) continue;
     const id = productMap[prod.handle];
     if (!id) {
       console.log(`  [SKIP] ${prod.handle} — not found in store`);
@@ -265,6 +284,17 @@ async function createRedirects() {
 async function main() {
   console.log(`\nRoman Skin SEO Update`);
   console.log(`Store: ${STORE}`);
+  if (DRY_RUN) console.log("Mode: dry run (no writes)");
+
+  if (TARGET_PRODUCT) {
+    if (!PRODUCTS.some((product) => product.handle === TARGET_PRODUCT)) {
+      throw new Error(`No SEO entry found for product: ${TARGET_PRODUCT}`);
+    }
+    const productMap = await buildProductMap();
+    await updateProducts(productMap, TARGET_PRODUCT);
+    console.log("\n✓ Product SEO validation complete; no other resources were touched.\n");
+    return;
+  }
 
   // Homepage SEO
   await updateHomepageSEO();

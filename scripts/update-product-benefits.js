@@ -5,8 +5,7 @@
  *   node scripts/update-product-benefits.js         # preview
  *   node scripts/update-product-benefits.js --apply # write to Shopify
  */
-const { createAdminApiClient } = require("@shopify/admin-api-client");
-const { client, STORE, TOKEN, API_VERSION } = require("./shopify");
+const { client, graphqlClient } = require("./shopify");
 
 const APPLY = process.argv.includes("--apply");
 const NAMESPACE = "custom";
@@ -70,13 +69,6 @@ const BENEFITS_BY_HANDLE = {
     "Fruit acids gently improve the appearance of dull, uneven texture",
   ],
 };
-
-const graphqlClient = createAdminApiClient({
-  storeDomain: STORE,
-  apiVersion: API_VERSION,
-  accessToken: TOKEN,
-  retries: 2,
-});
 
 function getUserErrorMessage(errors) {
   return errors.map((error) => error.message).join("; ");

@@ -71,6 +71,16 @@ sticky-atc.sticky-atc.is-visible {
     flex: 1 1 auto;
     min-width: 0;
   }
+
+  sticky-atc[data-experience-version='vitamin_c_v1'] {
+    max-width: 52rem;
+  }
+
+  sticky-atc[data-experience-version='vitamin_c_v1'] .sticky-atc__button {
+    flex: 0 0 auto;
+    min-width: 18.5rem;
+    padding-inline: 2.4rem;
+  }
 }
 
 @media screen and (max-width: 749px) {

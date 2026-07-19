@@ -71,6 +71,8 @@
     opacity: 0.6;
   }
 
+  .testimonials__disclaimer { text-align: center; margin: 2rem auto 0; font-size: 1.2rem; opacity: .7; }
+
   @media screen and (max-width: 989px) {
     .testimonials__grid {
       grid-template-columns: repeat(2, 1fr);
@@ -118,6 +120,7 @@
       </div>
     {%- endfor -%}
   </div>
+  {%- if section.settings.disclaimer != blank -%}<p class="testimonials__disclaimer">{{ section.settings.disclaimer | escape }}</p>{%- endif -%}
 </section>
 
 {% schema %}
@@ -137,6 +140,11 @@
       "id": "subheading",
       "label": "Subheading",
       "default": "Real results from real skincare lovers"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer"
     },
     {
       "type": "color",

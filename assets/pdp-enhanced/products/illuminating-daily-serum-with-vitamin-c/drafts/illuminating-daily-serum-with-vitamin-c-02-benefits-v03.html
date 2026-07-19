@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      @font-face {
+        font-family: "Harmonia Sans";
+        src: url("file:///private/tmp/harmoniasans-regular.woff") format("woff2");
+        font-style: normal;
+        font-weight: 400;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 2048px;
+        height: 2048px;
+        margin: 0;
+        overflow: hidden;
+        background: #ffffff;
+      }
+
+      .canvas {
+        position: relative;
+        width: 2048px;
+        height: 2048px;
+        overflow: hidden;
+        background: #ffffff;
+        color: #121212;
+        font-family: "Harmonia Sans";
+        font-weight: 400;
+      }
+
+      .packshot {
+        position: absolute;
+        left: -40px;
+        top: 276px;
+        width: 1178px;
+        height: 1766px;
+        object-fit: contain;
+      }
+
+      .content {
+        position: absolute;
+        top: 160px;
+        right: 160px;
+        width: 874px;
+      }
+
+      h1 {
+        margin: 0 0 102px;
+        color: #6d796e;
+        font-size: 106px;
+        font-weight: 400;
+        letter-spacing: 0.2px;
+        line-height: 1.02;
+        text-transform: uppercase;
+      }
+
+      .benefits {
+        border-top: 3px solid #6d796e;
+      }
+
+      .benefit {
+        display: grid;
+        grid-template-columns: 76px 1fr;
+        gap: 22px;
+        min-height: 300px;
+        padding: 54px 0 48px;
+        border-bottom: 3px solid #6d796e;
+        align-content: start;
+      }
+
+      .marker {
+        color: #6d796e;
+        font-size: 78px;
+        line-height: 0.88;
+      }
+
+      .benefit-copy {
+        margin: 0;
+        color: #121212;
+        font-size: 60px;
+        line-height: 1.16;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="canvas">
+      <img
+        class="packshot"
+        src="../source/illuminating-daily-serum-packshot.webp"
+        alt="Illuminating Daily Serum with Vitamin C"
+      >
+      <section class="content">
+        <h1>Illuminating<br>Vitamin C Serum<br>with Ferulic Acid</h1>
+        <div class="benefits">
+          <div class="benefit">
+            <span class="marker">+</span>
+            <p class="benefit-copy">Helps brighten the look of dull, uneven skin</p>
+          </div>
+          <div class="benefit">
+            <span class="marker">+</span>
+            <p class="benefit-copy">Multi-source antioxidants support skin exposed to daily stressors</p>
+          </div>
+          <div class="benefit">
+            <span class="marker">+</span>
+            <p class="benefit-copy">Vitamin C, ferulic acid, and vitamin E help maintain moisture</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

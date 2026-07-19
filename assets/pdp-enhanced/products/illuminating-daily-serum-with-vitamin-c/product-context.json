@@ -1,0 +1,143 @@
+{
+  "product_handle": "illuminating-daily-serum-with-vitamin-c",
+  "product_title": "Illuminating Vitamin C Serum with Ferulic Acid",
+  "packaging_label": "Illuminating Daily Serum with Vitamin C",
+  "brand": {
+    "heading_font": "Harmonia Sans",
+    "body_font": "Harmonia Sans",
+    "approved_colors": ["#6D796E", "#FFFFFF", "#121212", "#000000"]
+  },
+  "image_specification": {
+    "width": 2048,
+    "height": 2048,
+    "color_profile": "sRGB",
+    "safe_zone": 160,
+    "required_background": "#FFFFFF"
+  },
+  "production_constraints": {
+    "product_packshot_mode": "immutable",
+    "require_pixel_faithful_packshot": true,
+    "allow_ai_regeneration_of_product": false,
+    "allow_logo_changes": false,
+    "allow_packaging_text_changes": false,
+    "allow_label_changes": false,
+    "allow_container_or_pump_changes": false,
+    "allow_product_color_changes": false,
+    "require_white_background": true,
+    "allow_dark_backgrounds": false,
+    "final_assembly": "Place the verified source packshot unchanged into the approved template. Generate only non-product decorative elements when needed."
+  },
+  "description": "An illuminating Vitamin C serum with Ferulic Acid, enriched with peptides and fortified with revitalizing Ameliox Complex to support skin against ambient stressors while promoting natural radiance. Astaxanthin, Kakadu Plum, and Emblica work synergistically to help improve the look of skin texture and luminosity.",
+  "benefits": [
+    "Helps brighten the look of dull, uneven skin",
+    "Multi-source antioxidants support skin exposed to daily stressors",
+    "Vitamin C, ferulic acid, and vitamin E help maintain moisture"
+  ],
+  "usage": "AM and PM. Apply 2 to 3 drops of serum to face and decollete following thorough cleansing of the skin. Allow to absorb.",
+  "featured_ingredients": [
+    "Vitamin C",
+    "Ferulic Acid",
+    "Vitamin E",
+    "Astaxanthin",
+    "Kakadu Plum",
+    "Emblica",
+    "Peptides"
+  ],
+  "source_files": {
+    "packshot": "source/illuminating-daily-serum-packshot.webp",
+    "competitor_reference": "references/competitor-benefit-card.webp"
+  },
+  "copy_sources": [
+    "Live Shopify Admin API product and custom metafields verified 2026-07-15",
+    "brain/roman/seo/roman-skin-body-care-product-info-seo.md",
+    "scripts/update-product-benefits.js",
+    "config/settings_data.json"
+  ],
+  "competitor_analysis": {
+    "reference": "references/competitor-benefit-card.webp",
+    "adopted_devices": [
+      "Asymmetric product-left and copy-right hierarchy",
+      "Large product presence",
+      "Ruled rows for fast benefit scanning",
+      "Oversized headline and plus-sign markers"
+    ],
+    "excluded_elements": [
+      "Competitor branding and packaging",
+      "Dark background and dramatic lighting",
+      "Clinically proven language",
+      "After 1 use and after 4 weeks timeframes",
+      "All competitor benefit claims"
+    ]
+  },
+  "planned_output": {
+    "card": "02-benefits",
+    "draft": "drafts/illuminating-daily-serum-with-vitamin-c-02-benefits-v03.png",
+    "final": "final/illuminating-daily-serum-with-vitamin-c-02-benefits.png",
+    "assembly": "Deterministic HTML/CSS composition using the verified source packshot without generative transformation"
+  },
+  "cro_gallery_outputs": [
+    {
+      "card": "03-ingredients",
+      "final": "final/illuminating-daily-serum-with-vitamin-c-03-ingredients.png",
+      "assembly": "Deterministic HTML/CSS composition using approved ingredient-role copy",
+      "sha256": "290bba622722bb6eff2afb9351bc9279fb8062669bfbdff4ada2fffda6d8ea7a"
+    },
+    {
+      "card": "06-routine",
+      "final": "final/illuminating-daily-serum-with-vitamin-c-06-routine.png",
+      "assembly": "Deterministic HTML/CSS composition using verified usage directions",
+      "sha256": "f4d98536036a2a97819d16f289f130e1ce2769dd3b0bd493c760e18b8f645b12"
+    }
+  ],
+  "pending_real_photography": [
+    "04-texture/dropper",
+    "05-face-and-decollete application"
+  ],
+  "validation": {
+    "status": "approved",
+    "validated_at": "2026-07-15",
+    "final_sha256": "cdef6ada93b0bd3c6b4317f4593155a7b11e2cf513d2272c89dcd84a554b0d66",
+    "packshot_source_sha256": "cedfc217eda4178f84ecc456f61efbd420f63d5abb47cf0a33233b162478e9a6",
+    "checks": [
+      "2048 x 2048 PNG-24",
+      "Embedded sRGB IEC61966-2.1 profile",
+      "Pure white #FFFFFF canvas background",
+      "Harmonia Sans typography",
+      "Verified live Shopify product title and product_benefits copy only",
+      "Immutable source packshot placed with uniform scaling only",
+      "Critical content inside the 160 px safe zone",
+      "Readable in a 375 x 375 px preview"
+    ]
+  },
+  "prohibited_claims": [
+    "Clinically proven",
+    "After 1 use",
+    "After 4 weeks"
+  ],
+  "rejected_drafts": [
+    {
+      "file": "drafts/illuminating-daily-serum-main-v01.png",
+      "reasons": [
+        "AI-modified logo",
+        "AI-modified packaging text and typography",
+        "AI-modified bottle and pump"
+      ]
+    },
+    {
+      "file": "drafts/illuminating-daily-serum-benefits-v01.png",
+      "reasons": [
+        "AI-modified logo",
+        "AI-modified packaging",
+        "Product color changed"
+      ]
+    },
+    {
+      "file": "drafts/illuminating-daily-serum-benefits-v02.png",
+      "reasons": [
+        "AI-modified logo and packaging text",
+        "AI-modified bottle and pump",
+        "Dark background violates required white background"
+      ]
+    }
+  ]
+}

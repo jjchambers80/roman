@@ -53,6 +53,14 @@
             "show_gift_card_recipient": true
           }
         },
+        "shipping_details": {
+          "type": "shipping_details",
+          "settings": {}
+        },
+        "satisfaction_guarantee": {
+          "type": "satisfaction_guarantee",
+          "settings": {}
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -108,8 +116,10 @@
         "price",
         "variant_picker",
         "quantity_selector",
-        "benefits",
         "buy_buttons",
+        "shipping_details",
+        "satisfaction_guarantee",
+        "benefits",
         "share",
         "bought_together",
         "accordion_description",
@@ -123,7 +133,7 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail",
         "media_position": "left",
         "image_zoom": "lightbox",
         "mobile_thumbnails": "hide",

@@ -3,6 +3,7 @@
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
+  data-experience-version="{{ section.settings.experience_version | escape }}"
   data-update-url="true"
   data-url="{{ product.url }}"
   {% if section.settings.image_zoom == 'hover' %}
@@ -33,7 +34,7 @@
 
     @media screen and (min-width: 750px) {
       .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.padding_top }}px;
+        padding-top: {{ section.settings.padding_top | at_least: 32 }}px;
         padding-bottom: {{ section.settings.padding_bottom }}px;
       }
     }
@@ -73,10 +74,13 @@
   {%- endif -%}
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
+  {% assign supplemental_images = section.blocks | where: 'type', 'gallery_image' %}
+  {% assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first %}
+  {%- assign desktop_gallery_layout = 'thumbnail' -%}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ desktop_gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
-        {% render 'product-media-gallery', variant_images: variant_images %}
+        {% render 'product-media-gallery', variant_images: variant_images, desktop_layout: desktop_gallery_layout, supplemental_images: supplemental_images %}
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
@@ -85,6 +89,9 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
           {%- assign share_block = section.blocks | where: 'type', 'share' | first -%}
+          {%- assign benefits_block = section.blocks | where: 'type', 'benefits' | first -%}
+          {%- assign product_benefits = product.metafields.custom.product_benefits.value -%}
+          {%- assign shipping_details_block = section.blocks | where: 'type', 'shipping_details' | first -%}
           {%- assign share_rendered = false -%}
 
           {%- for block in section.blocks -%}
@@ -123,6 +130,21 @@
                     </h2>
                   </a>
                 </div>
+                {%- if benefits_block != blank and product_benefits != blank -%}
+                  <ul class="product__benefits quick-add-hidden" {{ benefits_block.shopify_attributes }}>
+                    {%- for benefit in product_benefits -%}
+                      <li>{{ benefit | escape }}</li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              {%- when 'value_proposition' -%}
+                <p class="product__value-proposition" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+              {%- when 'authority' -%}
+                <p class="product__authority" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+              {%- when 'purchase_reassurance' -%}
+                {% render 'product-purchase-reassurance', block: block %}
+              {%- when 'gallery_image' -%}
+                {%- comment -%}Rendered in the product gallery.{%- endcomment -%}
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   <div class="product__price-row">
@@ -485,6 +507,75 @@
                     {{ block.settings.text | default: block.settings.page.title | escape }}
                   </button>
                 </modal-opener>
+              {%- when 'shipping_details' -%}
+                {%- comment -%}Rendered with the buy buttons to keep placement consistent across saved templates.{%- endcomment -%}
+              {%- when 'satisfaction_guarantee' -%}
+                <div class="product__guarantee quick-add-hidden" {{ block.shopify_attributes }}>
+                  <modal-opener data-modal="#GuaranteeModal-{{ block.id }}">
+                    <button
+                      class="product__guarantee-trigger"
+                      type="button"
+                      aria-haspopup="dialog"
+                    >
+                      <span class="product__guarantee-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                          <path d="M12 2.75 20 6v5.45c0 4.67-3.22 8.63-8 9.8-4.78-1.17-8-5.13-8-9.8V6l8-3.25Z" stroke="currentColor" stroke-width="1.5"/>
+                          <path d="m8.4 12.05 2.25 2.25 4.95-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>
+                        <strong>Risk Free for 60 Days</strong>
+                        <small>Try it with confidence</small>
+                      </span>
+                      <span class="product__guarantee-link">View promise</span>
+                    </button>
+                  </modal-opener>
+
+                  <modal-dialog id="GuaranteeModal-{{ block.id }}" class="product-popup-modal product-guarantee-modal">
+                    <div
+                      role="dialog"
+                      aria-modal="true"
+                      aria-labelledby="GuaranteeHeading-{{ block.id }}"
+                      class="product-popup-modal__content product-guarantee-modal__content"
+                      tabindex="-1"
+                    >
+                      <header class="product-guarantee-modal__header">
+                        <h2 id="GuaranteeHeading-{{ block.id }}">Risk Free for 60 Days</h2>
+                        <button
+                          id="ModalClose-Guarantee-{{ block.id }}"
+                          type="button"
+                          class="product-guarantee-modal__close"
+                          aria-label="{{ 'accessibility.close' | t }}"
+                        >
+                          {{- 'icon-close.svg' | inline_asset_content -}}
+                        </button>
+                      </header>
+                      <div class="product-guarantee-modal__body rte">
+                        <p class="product-guarantee-modal__lead">
+                          Skincare takes consistency—and the right fit. We want you to have time to try Roman Skin with confidence.
+                        </p>
+                        <p>
+                          If a product purchased directly from RomanSkinCare.com is not right for you, contact Customer Care within 60 days of delivery. Opened products are eligible when at least 50% of the product remains.
+                        </p>
+                        <h3>How the promise works</h3>
+                        <ol>
+                          <li>Contact us within 60 days of delivery with your order number and the product you would like to return.</li>
+                          <li>We will provide return authorization and instructions. Ship the product within 14 days of authorization.</li>
+                          <li>After the return is received and approved, we will refund the product price to the original payment method.</li>
+                        </ol>
+                        <h3>Good to know</h3>
+                        <ul>
+                          <li>Limited to one satisfaction return per product, per household.</li>
+                          <li>Sets and bundles must be returned together; partial sets are not eligible.</li>
+                          <li>Original and return shipping charges are not refundable unless the item arrived damaged, defective, or incorrect.</li>
+                          <li>Gift cards and final-sale items are excluded.</li>
+                          <li>We monitor return activity and may limit or refuse requests involving suspected misuse, fraud, or excessive returns.</li>
+                        </ul>
+                        <a href="/pages/contact" class="button button--primary">Contact Customer Care</a>
+                      </div>
+                    </div>
+                  </modal-dialog>
+                </div>
               {%- when 'share' -%}
                 {%- unless share_rendered -%}
                   {% liquid
@@ -537,14 +628,7 @@
                   </div>
                 {%- endif -%}
               {%- when 'benefits' -%}
-                {%- assign product_benefits = product.metafields.custom.product_benefits.value -%}
-                {%- if product_benefits != blank -%}
-                  <ul class="product__benefits quick-add-hidden" {{ block.shopify_attributes }}>
-                    {%- for benefit in product_benefits -%}
-                      <li>{{ benefit | escape }}</li>
-                    {%- endfor -%}
-                  </ul>
-                {%- endif -%}
+                {%- comment -%}Rendered immediately below the product title.{%- endcomment -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -553,6 +637,12 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                {%- if shipping_details_block != blank -%}
+                  {%- render 'product-shipping-details',
+                    block: shipping_details_block,
+                    fallback_block_id: block.id
+                  -%}
+                {%- endif -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -743,6 +833,20 @@
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
               {%- when 'bought_together' -%}
+                {%- render 'frequently-bought-together',
+                  product: product,
+                  bundle_products: block.settings.bundle_products,
+                  heading: block.settings.heading,
+                  discount_percentage: block.settings.discount_percentage,
+                  discount_code: block.settings.discount_code,
+                  button_label: block.settings.button_label,
+                  inline: true,
+                  experience_version: 'default',
+                  shopify_attributes: block.shopify_attributes
+                -%}
+                {{ 'section-frequently-bought-together.css' | asset_url | stylesheet_tag }}
+                <script src="{{ 'frequently-bought-together.js' | asset_url }}" defer="defer"></script>
+                {%- comment -%}
                 {%- if block.settings.bundle_products.size > 0 -%}
                   {{ 'section-frequently-bought-together.css' | asset_url | stylesheet_tag }}
 
@@ -879,6 +983,7 @@
 
                   <script src="{{ 'frequently-bought-together.js' | asset_url }}" defer="defer"></script>
                 {%- endif -%}
+                {%- endcomment -%}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -889,7 +994,7 @@
       </div>
     </div>
 
-    {% render 'product-media-modal', variant_images: variant_images %}
+  {% render 'product-media-modal', variant_images: variant_images, supplemental_images: supplemental_images %}
 
     {% assign popups = section.blocks | where: 'type', 'popup' %}
     {%- for block in popups -%}
@@ -943,7 +1048,8 @@
   </div>
 </product-info>
 
-{% render 'sticky-atc', product: product, section_id: section.id %}
+{% render 'sticky-atc', product: product, section_id: section.id, show_price_in_cta: buy_buttons_block.settings.show_price_in_cta, always_visible_mobile: buy_buttons_block.settings.always_visible_mobile, experience_version: section.settings.experience_version %}
+{% if section.settings.experience_version != blank %}<script src="{{ 'pdp-analytics.js' | asset_url }}" defer="defer"></script>{% endif %}
 
 {% schema %}
 {
@@ -1134,6 +1240,18 @@
       "settings": [
         {
           "type": "checkbox",
+          "id": "show_price_in_cta",
+          "default": false,
+          "label": "Show variant price in add-to-cart label"
+        },
+        {
+          "type": "checkbox",
+          "id": "always_visible_mobile",
+          "default": false,
+          "label": "Always show mobile sticky CTA"
+        },
+        {
+          "type": "checkbox",
           "id": "show_dynamic_checkout",
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
@@ -1147,6 +1265,45 @@
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
         }
       ]
+    },
+    {
+      "type": "value_proposition",
+      "name": "Value proposition",
+      "limit": 1,
+      "settings": [{"type":"textarea","id":"text","label":"Text"}]
+    },
+    {
+      "type": "authority",
+      "name": "Authority statement",
+      "limit": 1,
+      "settings": [{"type":"textarea","id":"text","label":"Text"}]
+    },
+    {
+      "type": "purchase_reassurance",
+      "name": "Compact reassurance",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "gallery_image",
+      "name": "Supplemental image",
+      "settings": [
+        {"type":"image_picker","id":"image","label":"Image"},
+        {"type":"text","id":"asset_filename","label":"Theme asset filename","info":"Development fallback for approved theme assets."},
+        {"type":"text","id":"alt","label":"Required alt text"}
+      ]
+    },
+    {
+      "type": "satisfaction_guarantee",
+      "name": "60-day guarantee",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "shipping_details",
+      "name": "Shipping details",
+      "limit": 1,
+      "settings": []
     },
     {
       "type": "description",
@@ -2375,6 +2532,11 @@
     }
   ],
   "settings": [
+    {
+      "type": "text",
+      "id": "experience_version",
+      "label": "Analytics experience version"
+    },
     {
       "type": "checkbox",
       "id": "enable_sticky_info",

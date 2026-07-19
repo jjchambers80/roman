@@ -1,0 +1,29 @@
+ROMAN SKIN CARE — WHOLESALE TO RETAIL PRICE ANALYSIS,,,,,,,,,,,,,,,,,,,,,
+"NOTE: Wholesale costs are confirmed from Vitelle emails/invoices dated through 2026-07-15, except the Balancing Cleanser retail size ($23.60 from Vitelle's 2025 wholesale list received 2026-04-09). Glass Glow and Pomegranate Eye Patches remain TBD. Retail prices and product statuses were verified against Shopify on 2026-07-18. Freight remains estimated at $2.00/unit and excludes optional packaging surcharges.",,,,,,,,,,,,,,,,,,,,,
+As of: 2026-07-18,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,
+SKU / Handle,Product Name,Brand,Category,Product Type,Shopify Status,Units In Stock,Wholesale Unit Cost,Freight / Handling (Est.),Total Landed Cost,MSRP (Current Retail),Your Retail Price,Gross Profit $,Gross Margin %,Markup % on Cost,Keystone Pricing? (≥100% Markup),Min Retail Price @ 40% Margin,Break-Even Price (= Landed Cost),10% Off Sale Price,Sale Gross Margin % (10% Off),Still Profitable at Sale?,Notes
+balancing-skin-cleanser-for-all-skin-types,Balancing Skin Cleanser for All Skin Types,Roman Skin,Facial Cleansers,Cleanser,Active,-1,23.60,2.00,25.60,43.00,43.00,17.40,40.47%,67.97%,NO,42.67,25.60,38.70,33.85%,YES,"Wholesale from Vitelle 2025 list, Moda 250 ml; retail verified in Shopify"
+ha-peptide-eye-creme,HA & Peptide Eye Crème,Roman Skin,Eye Treatments,Treatment,Active,0,31.50,2.00,33.50,95.00,95.00,61.50,64.74%,183.58%,YES,55.83,33.50,85.50,60.82%,YES,"Wholesale confirmed by Vitelle; retail verified in Shopify"
+illuminating-daily-serum-with-vitamin-c,Illuminating Daily Serum with Vitamin C,Roman Skin,Face Serums,Serum,Active,0,34.90,2.00,36.90,145.00,145.00,108.10,74.55%,292.95%,YES,61.50,36.90,130.50,71.72%,YES,"Wholesale confirmed by Vitelle and invoice #40148; retail verified in Shopify"
+rejuvenating-serum-with-ferulic-acid,Rejuvenating Serum with Ferulic Acid,Roman Skin,Face Serums,Serum,Not in Shopify,0,24.95,2.00,26.95,110.00,110.00,83.05,75.50%,308.16%,YES,44.92,26.95,99.00,72.78%,YES,"Wholesale confirmed by Vitelle 2026-04-09; $110 is last known retail"
+hyaluronic-serum-with-vitamin-e,Hyaluronic Serum with Vitamin E,Roman Skin,Face Serums,Serum,Active,0,24.95,2.00,26.95,95.00,95.00,68.05,71.63%,252.50%,YES,44.92,26.95,85.50,68.48%,YES,"Wholesale confirmed by Vitelle; retail verified in Shopify"
+revitalizing-serum-with-botanical-growth-factor,Revitalizing Serum with Botanical Growth Factors,Roman Skin,Face Serums,Serum,Active,0,47.20,2.00,49.20,155.00,155.00,105.80,68.26%,215.04%,YES,82.00,49.20,139.50,64.73%,YES,"Wholesale confirmed by Vitelle; retail/status verified in Shopify"
+gentle-cleansing-milk,Gentle Cleansing Milk,Roman Skin,Facial Cleansers,Cleanser,Active,0,23.60,2.00,25.60,43.00,43.00,17.40,40.47%,67.97%,NO,42.67,25.60,38.70,33.85%,YES,"Wholesale confirmed by Vitelle and invoice #40148; optional pump adds $2.00"
+gentle-toner,Gentle Toner,Roman Skin,Toners,Toner,Active,0,23.05,2.00,25.05,47.00,47.00,21.95,46.70%,87.63%,NO,41.75,25.05,42.30,40.78%,YES,"Wholesale confirmed by Vitelle; retail verified in Shopify"
+multi-peptide-moisture-creme,Multi-Peptide Moisture Crème,Roman Skin,Face Moisturizers,Moisturizer,Active,0,27.20,2.00,29.20,78.00,78.00,48.80,62.56%,167.12%,YES,48.67,29.20,70.20,58.40%,YES,"Wholesale confirmed by Vitelle; retail verified in Shopify"
+hydrating-essence-with-hyaluronic-acid,Hydrating Essence with Hyaluronic Acid,Roman Skin,Toners,Essence,Active,0,25.15,2.00,27.15,52.00,52.00,24.85,47.79%,91.53%,NO,45.25,27.15,46.80,41.99%,YES,"Wholesale reconfirmed by Vitelle 2026-07-15; retail verified in Shopify"
+glass-glow-serum,Glass Glow Peptide Serum for Fine Lines,Roman Skin,Face Serums,Serum,Active,0,TBD,2.00,TBD,150.00,150.00,TBD,TBD,TBD,TBD,TBD,TBD,135.00,TBD,TBD,"Wholesale not present in archived emails or Shopify; retail verified in Shopify"
+pomegranate-eye-patches,Pomegranate & Resveratrol Anti-Aging Eye Patches,Roman Skin,Eye Treatments,Treatment,Draft,0,TBD,2.00,TBD,15.00,15.00,TBD,TBD,TBD,TBD,TBD,TBD,13.50,TBD,TBD,"Wholesale not present in archived emails or Shopify; retail verified in Shopify"
+,,,,,,,,,,,,,,,,,,,,,
+SUMMARY METRICS,,,,,,,,,,,,,,,,,,,,,
+,,Total Units,Avg Wholesale,Avg Landed,Avg MSRP,Avg Retail,,Avg GP $,Avg GM %,Avg Markup %,Keystone Products,,,,,,,,,,
+,,0 (need to update),28.61,30.61,86.30,86.30,,55.69,59.27%,173.45%,6 of 10,,,,,,,,,,"Confirmed-cost products only; excludes Glass Glow and Pomegranate Eye Patches"
+,,,,,,,,,,,,,,,,,,,,,
+PRICING REFERENCE KEY,,,,,,,,,,,,,,,,,,,,,
+Gross Margin % = (Retail Price - Landed Cost) / Retail Price × 100,,,,,,,,,,,,,,,,,,,,,
+Markup % = (Retail Price - Landed Cost) / Landed Cost × 100,,,,,,,,,,,,,,,,,,,,,
+Keystone = Markup of 100% or more (Retail ≥ 2× landed cost),,,,,,,,,,,,,,,,,,,,,
+Min Retail @ 40% Margin = Landed Cost ÷ (1 - 0.40),,,,,,,,,,,,,,,,,,,,,
+Break-Even Price = Total Landed Cost (0% margin),,,,,,,,,,,,,,,,,,,,,
+10% Off Sale Price = MSRP × 0.90,,,,,,,,,,,,,,,,,,,,,

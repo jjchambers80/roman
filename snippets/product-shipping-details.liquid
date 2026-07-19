@@ -1,0 +1,78 @@
+{%- liquid
+  assign shipping_block_id = block.id | default: fallback_block_id
+-%}
+
+<div class="product__guarantee product__shipping quick-add-hidden" {{ block.shopify_attributes }}>
+  <modal-opener data-modal="#ShippingModal-{{ shipping_block_id }}">
+    <button
+      class="product__guarantee-trigger"
+      type="button"
+      aria-haspopup="dialog"
+    >
+      <span class="product__guarantee-icon product__shipping-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M3.5 6.5h11v10h-11v-10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M14.5 10h3l3 3v3h-6V10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6.5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM17.5 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" fill="rgb(var(--color-background))" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span>
+        <strong>Ships in 1–2 Business Days</strong>
+        <small>Free U.S. shipping on orders over $99</small>
+      </span>
+      <span class="product__guarantee-link">Delivery details</span>
+    </button>
+  </modal-opener>
+
+  <modal-dialog id="ShippingModal-{{ shipping_block_id }}" class="product-popup-modal product-guarantee-modal product-shipping-modal">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="ShippingHeading-{{ shipping_block_id }}"
+      class="product-popup-modal__content product-guarantee-modal__content"
+      tabindex="-1"
+    >
+      <header class="product-guarantee-modal__header">
+        <h2 id="ShippingHeading-{{ shipping_block_id }}">Shipping &amp; Delivery</h2>
+        <button
+          id="ModalClose-Shipping-{{ shipping_block_id }}"
+          type="button"
+          class="product-guarantee-modal__close"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          {{- 'icon-close.svg' | inline_asset_content -}}
+        </button>
+      </header>
+      <div class="product-guarantee-modal__body product-shipping-modal__body rte">
+        <p class="product-guarantee-modal__lead">Carefully packed. Easy to track.</p>
+        <p>
+          Most orders leave Roman Skin within 1–2 business days. Once yours is on the way, we’ll email your tracking number so you can follow it to your door.
+        </p>
+        <dl class="product-shipping-modal__facts">
+          <div>
+            <dt>Free standard shipping</dt>
+            <dd>Available on U.S. orders over $99, before taxes and after discounts.</dd>
+          </div>
+          <div>
+            <dt>Estimated delivery</dt>
+            <dd>Standard: 3–5 business days. Expedited: 2–3 business days. Carrier delivery times are estimates.</dd>
+          </div>
+          <div>
+            <dt>Tracking included</dt>
+            <dd>Your tracking email arrives after shipment. Allow up to 24 hours for the carrier status to update.</dd>
+          </div>
+          <div>
+            <dt>U.S. delivery</dt>
+            <dd>Roman Skin currently ships within the United States only.</dd>
+          </div>
+        </dl>
+        <p class="product-shipping-modal__note">
+          Orders placed after 2 PM ET begin processing the next business day. Weekends and holidays are excluded.
+        </p>
+        <a href="{{ shop.shipping_policy.url | default: '/policies/shipping-policy' }}" class="button button--primary">
+          Read Full Shipping Policy
+        </a>
+      </div>
+    </div>
+  </modal-dialog>
+</div>

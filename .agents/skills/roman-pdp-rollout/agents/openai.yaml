@@ -1,0 +1,4 @@
+interface:
+  display_name: "Roman PDP Rollout"
+  short_description: "Build accurate, conversion-focused Roman PDPs"
+  default_prompt: "Use $roman-pdp-rollout to build an enhanced Roman Skin PDP from verified product sources and deploy it safely to a development theme."
