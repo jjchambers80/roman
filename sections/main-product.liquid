@@ -90,6 +90,7 @@
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
           {%- assign share_block = section.blocks | where: 'type', 'share' | first -%}
           {%- assign benefits_block = section.blocks | where: 'type', 'benefits' | first -%}
+          {%- assign product_value_proposition = product.metafields.custom.value_proposition.value -%}
           {%- assign product_benefits = product.metafields.custom.product_benefits.value -%}
           {%- assign shipping_details_block = section.blocks | where: 'type', 'shipping_details' | first -%}
           {%- assign share_rendered = false -%}
@@ -130,6 +131,9 @@
                     </h2>
                   </a>
                 </div>
+                {%- if product_value_proposition != blank -%}
+                  <p class="product__value-proposition">{{ product_value_proposition | escape }}</p>
+                {%- endif -%}
                 {%- if benefits_block != blank and product_benefits != blank -%}
                   <ul class="product__benefits quick-add-hidden" {{ benefits_block.shopify_attributes }}>
                     {%- for benefit in product_benefits -%}
@@ -138,7 +142,7 @@
                   </ul>
                 {%- endif -%}
               {%- when 'value_proposition' -%}
-                <p class="product__value-proposition" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
+                {%- comment -%}Rendered immediately below the product title from the product metafield.{%- endcomment -%}
               {%- when 'authority' -%}
                 <p class="product__authority" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
               {%- when 'purchase_reassurance' -%}

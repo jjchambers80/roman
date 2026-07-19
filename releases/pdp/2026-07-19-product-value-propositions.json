@@ -1,0 +1,26 @@
+{
+  "id": "2026-07-19-product-value-propositions",
+  "section": "Main product purchase area value propositions",
+  "scope": "all-pdps",
+  "commit_message": "feat(pdp): add product value propositions",
+  "acceptance_criteria": [
+    "Every product with a value proposition renders it directly below the product title",
+    "Existing product benefit bullets render directly after the value proposition",
+    "Products without a value proposition omit the element without leaving empty space"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com/?preview_theme_id=189301457178",
+    "approved_by": "Store owner via Codex",
+    "approved_at": "2026-07-19T13:52:28-04:00",
+    "file_digest": "1f5995938512228f35fd71a34f636a58e2e9cf9693694009cd3d23ac30bad53f"
+  },
+  "theme_files": [
+    "sections/main-product.liquid"
+  ],
+  "production_release": {
+    "released_at": "2026-07-19T17:53:07.992Z",
+    "target": "live",
+    "file_digest": "1f5995938512228f35fd71a34f636a58e2e9cf9693694009cd3d23ac30bad53f"
+  }
+}
