@@ -1,0 +1,204 @@
+{{ 'section-routine-bundles.css' | asset_url | stylesheet_tag }}
+
+<div class="routine-bundles page-width section-{{ section.id }}-padding">
+  {%- if section.settings.title != blank -%}
+    <div class="routine-bundles__intro">
+      <h2 class="h1">{{ section.settings.title | escape }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p>{{ section.settings.subheading | escape }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+  <div class="routine-bundles__grid">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign bundle_products = block.settings.bundle_products
+        assign bundle_total = 0
+        assign bundle_all_available = true
+        assign bundle_variant_ids = ''
+
+        for bundle_product in bundle_products
+          assign bundle_variant = bundle_product.selected_or_first_available_variant
+          if bundle_variant.available == false
+            assign bundle_all_available = false
+          endif
+          assign bundle_total = bundle_total | plus: bundle_variant.price
+          if forloop.first
+            assign bundle_variant_ids = bundle_variant.id
+          else
+            assign bundle_variant_ids = bundle_variant_ids | append: ',' | append: bundle_variant.id
+          endif
+        endfor
+
+        assign bundle_discount = block.settings.discount_percentage | default: 0
+        assign bundle_multiplier = 100 | minus: bundle_discount
+        assign bundle_display_value = bundle_total | times: bundle_multiplier | divided_by: 100
+      -%}
+
+      {%- if bundle_products.size > 0 -%}
+        <frequently-bought-together
+          class="routine-bundle-card"
+          data-product-handle="{{ product.handle | escape }}"
+          data-experience-version="{{ block.settings.experience_version | escape }}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="routine-bundle-card__media">
+            {%- if block.settings.asset_image != blank -%}
+              <img
+                src="{{ block.settings.asset_image | asset_url }}"
+                alt="{{ block.settings.title | escape }} bundle"
+                class="routine-bundle-card__image"
+                loading="lazy"
+                width="1024"
+                height="1024"
+              >
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'routine-bundle-card__image placeholder-svg' }}
+            {%- endif -%}
+          </div>
+
+          <div class="routine-bundle-card__content">
+            <h2 class="routine-bundle-card__title">{{ block.settings.title | escape }}</h2>
+            <div class="routine-bundle-card__excerpt rte">{{ block.settings.excerpt }}</div>
+
+            <button
+              type="button"
+              class="routine-bundle-card__button"
+              data-bundle-add
+              data-variant-ids='[{{ bundle_variant_ids }}]'
+              data-item-count="{{ bundle_products.size }}"
+              data-bundle-value="{{ bundle_display_value }}"
+              data-discount-percentage="{{ bundle_discount }}"
+              {% unless bundle_all_available %}aria-disabled="true"{% endunless %}
+            >
+              <span class="routine-bundle-card__button-label frequently-bought-together__button-label">
+                {%- if bundle_all_available -%}
+                  {{ block.settings.button_label | escape }}
+                {%- else -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- endif -%}
+              </span>
+              {%- render 'loading-spinner' -%}
+            </button>
+
+            <div class="frequently-bought-together__error" role="alert" aria-live="polite"></div>
+          </div>
+        </frequently-bought-together>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<script src="{{ 'frequently-bought-together.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "PDP routine bundles",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Build Your Routine"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Section subheading",
+      "default": "Two complete four-step systems, morning and evening, bundled together in one click for 10% off."
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "routine_bundle",
+      "name": "Routine bundle",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Routine System"
+        },
+        {
+          "type": "richtext",
+          "id": "excerpt",
+          "label": "Excerpt",
+          "default": "<p>Add the complete routine to your cart in one click.</p>"
+        },
+        {
+          "type": "text",
+          "id": "asset_image",
+          "label": "Theme asset image filename",
+          "info": "Enter the exact filename of an image stored in the theme assets folder."
+        },
+        {
+          "type": "product_list",
+          "id": "bundle_products",
+          "label": "Bundle products",
+          "limit": 4
+        },
+        {
+          "type": "range",
+          "id": "discount_percentage",
+          "label": "Bundle discount",
+          "min": 0,
+          "max": 30,
+          "step": 5,
+          "default": 10,
+          "unit": "%",
+          "info": "Display and analytics only. The matching Shopify discount must be configured separately."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Add Bundle (10% off)"
+        },
+        {
+          "type": "text",
+          "id": "experience_version",
+          "label": "Analytics experience",
+          "default": "routine_bundles_v1"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "PDP routine bundles",
+      "blocks": [
+        { "type": "routine_bundle" },
+        { "type": "routine_bundle" }
+      ]
+    }
+  ]
+}
+{% endschema %}
