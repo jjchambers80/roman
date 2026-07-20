@@ -639,7 +639,11 @@
                 {%- endif -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
-                  <div class="rating-wrapper">
+                  <a
+                    href="#shopify-section-1777831556ef440bf8"
+                    class="rating-wrapper"
+                    onclick="document.getElementById('shopify-section-1777831556ef440bf8')?.scrollIntoView({behavior: 'smooth', block: 'start'}); return false;"
+                  >
                     {% liquid
                       assign rating_decimal = 0
                       assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
@@ -666,10 +670,10 @@
                         {{ product.metafields.reviews.rating.value.scale_max -}}
                       </span>
                     </p>
-                    <a href="#shopify-section-1777831556ef440bf8" class="rating-reviews-link caption" onclick="document.getElementById('shopify-section-1777831556ef440bf8')?.scrollIntoView({behavior: 'smooth', block: 'start'}); return false;">
+                    <span class="rating-reviews-link caption">
                       | {{ product.metafields.reviews.rating_count }} Reviews
-                    </a>
-                  </div>
+                    </span>
+                  </a>
                 {%- endif -%}
               {%- when 'complementary' -%}
                 <product-recommendations

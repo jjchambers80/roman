@@ -1,3 +1,9 @@
+.rating-wrapper {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .product--no-media .rating-wrapper {
   text-align: center;
 }
