@@ -1,0 +1,25 @@
+{
+  "id": "2026-07-20-sticky-atc-always-visible-mobile-simplify",
+  "section": "Sticky ATC — simplify always-visible-mobile logic",
+  "scope": "all-pdps",
+  "commit_message": "fix(pdp): simplify sticky ATC always-visible-mobile visibility logic",
+  "acceptance_criteria": [
+    "On mobile with always_visible_mobile enabled, the sticky ATC bar is visible immediately (not gated on intersection observer state)",
+    "On desktop or with always_visible_mobile disabled, the sticky ATC bar still only appears after scrolling past the main add-to-cart button"
+  ],
+  "theme_files": [
+    "assets/sticky-atc.js"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com?preview_theme_id=189301457178",
+    "approved_by": "jjchambers80",
+    "approved_at": "2026-07-19T22:54:00-04:00",
+    "file_digest": "5000fec848cd4508376bca1e2238288af1e1b66d9dc1886a22f3147be8df1db9"
+  },
+  "production_release": {
+    "released_at": "2026-07-20T14:03:51.000Z",
+    "target": "live",
+    "file_digest": "5000fec848cd4508376bca1e2238288af1e1b66d9dc1886a22f3147be8df1db9"
+  }
+}

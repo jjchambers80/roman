@@ -20,11 +20,9 @@ if (!customElements.get('sticky-atc')) {
         });
 
         this.updateVisibility = () => {
-          const preemptiveMobile = this.alwaysVisibleMobile && this.mobileQuery.matches;
+          const alwaysMobile = this.alwaysVisibleMobile && this.mobileQuery.matches;
           const scrolledPast = this.lastObserverEntry && !this.lastObserverEntry.isIntersecting && this.lastObserverEntry.boundingClientRect.bottom < 0;
-          const visible = preemptiveMobile
-            ? !this.lastObserverEntry || !this.lastObserverEntry.isIntersecting
-            : scrolledPast;
+          const visible = alwaysMobile || scrolledPast;
           this.classList.toggle('is-visible', visible);
           this.setAttribute('aria-hidden', String(!visible));
         };
