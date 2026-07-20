@@ -1,0 +1,28 @@
+{
+  "id": "2026-07-19-why-this-formula",
+  "section": "Why this formula ingredient cards",
+  "scope": "all-pdps",
+  "commit_message": "feat(pdp): add why-this-formula section",
+  "acceptance_criteria": [
+    "The shared PDP renders a 'Why this formula' section immediately after the main purchase area and before the Build Your Routine bundle cards",
+    "Each product with a custom.why_this_formula metafield shows its own subheading and up to 4 unique heading/text cards",
+    "The card grid renders two columns on desktop and stacks to one column on mobile without horizontal overflow",
+    "A product with no custom.why_this_formula metafield and no section blocks renders no section (no broken empty state)"
+  ],
+  "theme_files": [
+    "templates/product.json",
+    "sections/pdp-formula.liquid"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com?preview_theme_id=189301457178",
+    "approved_by": "jjchambers80",
+    "approved_at": "2026-07-19T15:15:00-04:00",
+    "file_digest": "5eeaab10996744c45dc09eb784e20b70f676410fae7684add7b8a40098f85f6c"
+  },
+  "production_release": {
+    "released_at": "2026-07-20T02:14:43.773Z",
+    "target": "live",
+    "file_digest": "5eeaab10996744c45dc09eb784e20b70f676410fae7684add7b8a40098f85f6c"
+  }
+}

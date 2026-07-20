@@ -129,6 +129,16 @@
         "padding_bottom": 12
       }
     },
+    "formula": {
+      "type": "pdp-formula",
+      "settings": {
+        "heading": "Why this formula",
+        "subheading": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
     "routine-bundles": {
       "type": "pdp-routine-bundles",
       "blocks": {
@@ -233,6 +243,7 @@
   },
   "order": [
     "main",
+    "formula",
     "routine-bundles",
     "1777831556ef440bf8",
     "related-products",
