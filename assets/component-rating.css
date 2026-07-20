@@ -18,7 +18,7 @@
 }
 
 .rating-star {
-  --color-rating-star: rgb(var(--color-foreground));
+  --color-rating-star: rgb(var(--color-button));
   --percent: calc(
     (
         var(--rating) / var(--rating-max) + var(--rating-decimal) * var(--font-size) /
@@ -30,7 +30,7 @@
   line-height: 1;
   display: inline-block;
   font-family: Times;
-  margin: 0;
+  margin: 0 calc(-1 * var(--letter-spacing) * 1rem) 0 0;
 }
 
 .rating-star::before {
@@ -51,6 +51,18 @@
 .rating-count {
   display: inline-block;
   margin: 0;
+}
+
+.rating-reviews-link {
+  display: inline-block;
+  margin: 0 0 0 0.15rem;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#shopify-section-1777831556ef440bf8 {
+  scroll-margin-top: var(--header-height, 0);
 }
 
 @media (forced-colors: active) {

@@ -19,6 +19,10 @@
             "text_style": "uppercase"
           }
         },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -49,6 +53,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
+            "always_visible_mobile": true,
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
           }
@@ -98,6 +103,7 @@
       },
       "block_order": [
         "vendor",
+        "rating",
         "title",
         "price",
         "variant_picker",
