@@ -1,0 +1,25 @@
+{
+  "id": "2026-07-20-shipping-modal-button-removed",
+  "section": "PDP shipping details modal — remove full-policy button",
+  "scope": "all-pdps",
+  "commit_message": "fix(pdp): remove Read Full Shipping Policy button from shipping modal",
+  "acceptance_criteria": [
+    "The shipping details flyout no longer shows a 'Read Full Shipping Policy' button",
+    "The rest of the shipping modal content (delivery note) is unchanged"
+  ],
+  "theme_files": [
+    "snippets/product-shipping-details.liquid"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com?preview_theme_id=189301457178",
+    "approved_by": "jjchambers80",
+    "approved_at": "2026-07-19T22:31:00-04:00",
+    "file_digest": "90d50b708bdae744a99c525ce56f09c59cfb6442dd15faea78c163cec544776a"
+  },
+  "production_release": {
+    "released_at": "2026-07-20T14:03:28.683Z",
+    "target": "live",
+    "file_digest": "90d50b708bdae744a99c525ce56f09c59cfb6442dd15faea78c163cec544776a"
+  }
+}
