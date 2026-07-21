@@ -639,10 +639,13 @@
                 {%- endif -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
+                  {%- liquid
+                    assign reviews_section_id = section.id | split: '__' | first | append: '__1777831556ef440bf8'
+                  -%}
                   <a
-                    href="#shopify-section-1777831556ef440bf8"
+                    href="#shopify-section-{{ reviews_section_id }}"
                     class="rating-wrapper"
-                    onclick="document.getElementById('shopify-section-1777831556ef440bf8')?.scrollIntoView({behavior: 'smooth', block: 'start'}); return false;"
+                    onclick="document.getElementById('shopify-section-{{ reviews_section_id }}')?.scrollIntoView({behavior: 'smooth', block: 'start'}); return false;"
                   >
                     {% liquid
                       assign rating_decimal = 0
