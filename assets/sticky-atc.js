@@ -21,8 +21,8 @@ if (!customElements.get('sticky-atc')) {
 
         this.updateVisibility = () => {
           const alwaysMobile = this.alwaysVisibleMobile && this.mobileQuery.matches;
-          const scrolledPast = this.lastObserverEntry && !this.lastObserverEntry.isIntersecting && this.lastObserverEntry.boundingClientRect.bottom < 0;
-          const visible = alwaysMobile || scrolledPast;
+          const mainButtonOffscreen = this.lastObserverEntry && !this.lastObserverEntry.isIntersecting;
+          const visible = alwaysMobile || mainButtonOffscreen;
           this.classList.toggle('is-visible', visible);
           this.setAttribute('aria-hidden', String(!visible));
         };

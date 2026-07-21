@@ -1,0 +1,26 @@
+{
+  "id": "2026-07-20-sticky-atc-show-when-button-offscreen",
+  "section": "Sticky ATC — show whenever main button is out of viewport",
+  "scope": "all-pdps",
+  "commit_message": "fix(pdp): show sticky ATC whenever main add-to-cart button is offscreen",
+  "acceptance_criteria": [
+    "At page load with scroll position 0, if the main add-to-cart button is below the fold, the sticky ATC bar is visible",
+    "The sticky ATC bar hides while the main add-to-cart button is in the viewport",
+    "The sticky ATC bar shows again after scrolling past the main add-to-cart button"
+  ],
+  "theme_files": [
+    "assets/sticky-atc.js"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com?preview_theme_id=189301457178",
+    "approved_by": "jjchambers80",
+    "approved_at": "2026-07-20T23:05:00-04:00",
+    "file_digest": "5b9022c61cd9c94d3c006ffb2dbfef8d680cd97d225ef1541646012f3b6eb9e5"
+  },
+  "production_release": {
+    "released_at": "2026-07-21T03:07:19.391Z",
+    "target": "live",
+    "file_digest": "5b9022c61cd9c94d3c006ffb2dbfef8d680cd97d225ef1541646012f3b6eb9e5"
+  }
+}
