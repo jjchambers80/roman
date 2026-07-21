@@ -1,0 +1,27 @@
+{
+  "id": "2026-07-20-sticky-atc-mobile-crop-fix",
+  "section": "Sticky ATC — mobile bar no longer cropped at bottom/right",
+  "scope": "all-pdps",
+  "commit_message": "fix(pdp): float mobile sticky ATC as inset pill so edges are never cropped",
+  "acceptance_criteria": [
+    "On mobile, the sticky ATC bar is fully visible with margin on left, right, and bottom — no edge cropping under system nav bars or in in-app browsers",
+    "The bar renders as a rounded floating pill with the full add-to-cart button visible",
+    "Desktop bottom-right card behavior unchanged"
+  ],
+  "theme_files": [
+    "assets/sticky-atc.js",
+    "assets/component-sticky-atc.css"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com?preview_theme_id=189301457178",
+    "approved_by": "jjchambers80",
+    "approved_at": "2026-07-20T23:15:00-04:00",
+    "file_digest": "5334e262c5ef42d74a5f1bd751ceddf665abc2e046204f205e0a8c7bd54f12b8"
+  },
+  "production_release": {
+    "released_at": "2026-07-21T03:14:05.789Z",
+    "target": "live",
+    "file_digest": "5334e262c5ef42d74a5f1bd751ceddf665abc2e046204f205e0a8c7bd54f12b8"
+  }
+}

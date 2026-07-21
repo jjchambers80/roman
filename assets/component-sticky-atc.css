@@ -85,10 +85,10 @@ sticky-atc.sticky-atc.is-visible {
 
 @media screen and (max-width: 749px) {
   sticky-atc.sticky-atc {
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: translateY(100%);
+    left: max(1rem, env(safe-area-inset-left, 0px));
+    right: max(1rem, env(safe-area-inset-right, 0px));
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    transform: translateY(calc(100% + 2rem + env(safe-area-inset-bottom, 0px)));
   }
 
   sticky-atc.sticky-atc.is-visible {
@@ -96,8 +96,9 @@ sticky-atc.sticky-atc.is-visible {
   }
 
   .sticky-atc__card {
-    padding: 1rem 1.5rem calc(1rem + env(safe-area-inset-bottom, 0px));
-    box-shadow: 0 -0.2rem 1.2rem rgba(0, 0, 0, 0.12);
+    padding: 1rem 1.2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.2);
   }
 
   .sticky-atc__media,

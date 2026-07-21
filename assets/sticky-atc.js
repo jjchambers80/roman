@@ -3,6 +3,13 @@ if (!customElements.get('sticky-atc')) {
     'sticky-atc',
     class StickyAtc extends HTMLElement {
       connectedCallback() {
+        // Re-parent to <body> so position: fixed is always viewport-relative —
+        // a transformed/filtered ancestor would otherwise become the containing
+        // block and crop the bar at the viewport edges.
+        if (this.parentElement !== document.body) {
+          document.body.appendChild(this);
+          return;
+        }
         this.sectionId = this.dataset.sectionId;
         this.mainButton = document.getElementById(`ProductSubmitButton-${this.sectionId}`);
         if (!this.mainButton) return;
