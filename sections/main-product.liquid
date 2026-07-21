@@ -631,6 +631,7 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                {%- render 'product-trust-badges', product: product -%}
                 {%- if shipping_details_block != blank -%}
                   {%- render 'product-shipping-details',
                     block: shipping_details_block,
