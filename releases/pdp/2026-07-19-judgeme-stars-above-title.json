@@ -1,0 +1,29 @@
+{
+  "id": "2026-07-19-judgeme-stars-above-title",
+  "section": "Judge.me star rating above product title",
+  "scope": "all-pdps",
+  "commit_message": "feat(pdp): add rating block above product title",
+  "acceptance_criteria": [
+    "The shared PDP renders the native star rating block flush left, below the vendor text and above the product title",
+    "Products with a populated Judge.me reviews.rating metafield show stars, average, and review count in that position",
+    "Products with no reviews.rating metafield render no rating row (no broken empty state)",
+    "A '| [count] Reviews' link renders after the rating count and, on click, smooth-scrolls the Judge.me review widget section into view accounting for the sticky header"
+  ],
+  "theme_files": [
+    "templates/product.json",
+    "sections/main-product.liquid",
+    "assets/component-rating.css"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com?preview_theme_id=189301457178",
+    "approved_by": "jjchambers80",
+    "approved_at": "2026-07-19T23:15:00-04:00",
+    "file_digest": "e07d91db04dc8afc44c5d4aeb035df64e2f665a0439a325469a2f292ce544fc3"
+  },
+  "production_release": {
+    "released_at": "2026-07-20T03:14:56.330Z",
+    "target": "live",
+    "file_digest": "e07d91db04dc8afc44c5d4aeb035df64e2f665a0439a325469a2f292ce544fc3"
+  }
+}

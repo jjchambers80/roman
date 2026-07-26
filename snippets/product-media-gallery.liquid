@@ -143,10 +143,11 @@
             <modal-opener class="product__modal-opener product__modal-opener--image no-js-hidden" data-modal="#ProductModal-{{ section.id }}">
               <button class="product__media-toggle" type="button" aria-haspopup="dialog" data-media-id="supplemental-{{ supplemental.id }}"><span class="visually-hidden">{{ 'products.product.media.open_media' | t: index: media_position }}</span></button>
               <div class="product-media-container media-type-image global-media-settings" style="--ratio: 1.0; --preview-ratio: 1.0;">
+                {%- assign supplemental_alt = supplemental.settings.alt | default: product.title -%}
                 {%- if supplemental.settings.image != blank -%}
-                  {{ supplemental.settings.image | image_url: width: 2048 | image_tag: loading: 'lazy', widths: '375, 550, 750, 1100, 1500, 2048', sizes: '(min-width: 990px) 50vw, 100vw', class: 'product__supplemental-image', alt: supplemental.settings.alt }}
+                  {{ supplemental.settings.image | image_url: width: 2048 | image_tag: loading: 'lazy', widths: '375, 550, 750, 1100, 1500, 2048', sizes: '(min-width: 990px) 50vw, 100vw', class: 'product__supplemental-image', alt: supplemental_alt }}
                 {%- else -%}
-                  <img class="product__supplemental-image" src="{{ supplemental.settings.asset_filename | asset_url }}" alt="{{ supplemental.settings.alt | escape }}" width="2048" height="2048" loading="lazy">
+                  <img class="product__supplemental-image" src="{{ supplemental.settings.asset_filename | asset_url }}" alt="{{ supplemental_alt | escape }}" width="2048" height="2048" loading="lazy">
                 {%- endif -%}
               </div>
             </modal-opener>

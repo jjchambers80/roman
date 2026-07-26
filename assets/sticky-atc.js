@@ -3,6 +3,13 @@ if (!customElements.get('sticky-atc')) {
     'sticky-atc',
     class StickyAtc extends HTMLElement {
       connectedCallback() {
+        // Re-parent to <body> so position: fixed is always viewport-relative —
+        // a transformed/filtered ancestor would otherwise become the containing
+        // block and crop the bar at the viewport edges.
+        if (this.parentElement !== document.body) {
+          document.body.appendChild(this);
+          return;
+        }
         this.sectionId = this.dataset.sectionId;
         this.mainButton = document.getElementById(`ProductSubmitButton-${this.sectionId}`);
         if (!this.mainButton) return;
@@ -20,11 +27,9 @@ if (!customElements.get('sticky-atc')) {
         });
 
         this.updateVisibility = () => {
-          const preemptiveMobile = this.alwaysVisibleMobile && this.mobileQuery.matches;
-          const scrolledPast = this.lastObserverEntry && !this.lastObserverEntry.isIntersecting && this.lastObserverEntry.boundingClientRect.bottom < 0;
-          const visible = preemptiveMobile
-            ? !this.lastObserverEntry || !this.lastObserverEntry.isIntersecting
-            : scrolledPast;
+          const alwaysMobile = this.alwaysVisibleMobile && this.mobileQuery.matches;
+          const mainButtonOffscreen = this.lastObserverEntry && !this.lastObserverEntry.isIntersecting;
+          const visible = alwaysMobile || mainButtonOffscreen;
           this.classList.toggle('is-visible', visible);
           this.setAttribute('aria-hidden', String(!visible));
         };
@@ -77,6 +82,7 @@ if (!customElements.get('sticky-atc')) {
           const url = new URL(imageSrc, window.location.origin);
           url.searchParams.set('width', '120');
           this.image.src = url.href;
+          if (variant.featured_media?.alt) this.image.alt = variant.featured_media.alt;
         }
       }
     }

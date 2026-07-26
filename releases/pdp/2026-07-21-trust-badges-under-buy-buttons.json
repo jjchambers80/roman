@@ -1,0 +1,30 @@
+{
+  "id": "2026-07-21-trust-badges-under-buy-buttons",
+  "section": "Trust badges under buy buttons",
+  "scope": "all-pdps",
+  "commit_message": "feat(pdp): add supplier-verified trust badges under buy buttons",
+  "acceptance_criteria": [
+    "Four badges (Not Tested on Animals, Paraben-Free, Silicone-Free, Small Batch) render under the buy buttons / More payment options link on every PDP",
+    "Silicone-Free badge is suppressed on revitalizing-serum-with-growth-factor (contains Cyclopentasiloxane + Dimethicone per Vitelle INCI, 2026-07-20)",
+    "No cruelty-free certification wording or bunny-certification iconography; animal-testing claim is finished-product scoped per Vitelle email 2026-07-20",
+    "Badges wrap cleanly at desktop, tablet, 390px, and 375px with no horizontal overflow",
+    "Evidence: brain/roman/roman-products-inci-ingredients.md and archived supplier email in brain/roman/emails/vitelle-labs/product-and-pricing/2026-07-inci-and-claims/"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com?preview_theme_id=189301457178",
+    "approved_by": "jjchambers80",
+    "approved_at": "2026-07-21T00:45:00-04:00",
+    "file_digest": "da67d81da0b2b8929223c51bed8125489d9718401d4fc76191dca51be0ab3241"
+  },
+  "theme_files": [
+    "sections/main-product.liquid",
+    "snippets/product-trust-badges.liquid",
+    "assets/component-trust-badges.css"
+  ],
+  "production_release": {
+    "released_at": "2026-07-21T04:32:54.343Z",
+    "target": "live",
+    "file_digest": "da67d81da0b2b8929223c51bed8125489d9718401d4fc76191dca51be0ab3241"
+  }
+}

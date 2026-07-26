@@ -19,6 +19,10 @@
             "text_style": "uppercase"
           }
         },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -49,6 +53,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
+            "always_visible_mobile": true,
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
           }
@@ -65,20 +70,6 @@
           "type": "share",
           "settings": {
             "share_label": "Share"
-          }
-        },
-        "bought_together": {
-          "type": "bought_together",
-          "settings": {
-            "heading": "Frequently Bought Together",
-            "bundle_products": [
-              "gentle-toner",
-              "balancing-skin-cleanser-for-all-skin-types",
-              "multi-peptide-moisture-creme"
-            ],
-            "discount_percentage": 10,
-            "discount_code": "",
-            "button_label": "Add Bundle"
           }
         },
         "accordion_description": {
@@ -112,6 +103,7 @@
       },
       "block_order": [
         "vendor",
+        "rating",
         "title",
         "price",
         "variant_picker",
@@ -121,13 +113,13 @@
         "satisfaction_guarantee",
         "benefits",
         "share",
-        "bought_together",
         "accordion_description",
         "product_guidance",
         "accordion_usage",
         "accordion_ingredients"
       ],
       "settings": {
+        "experience_version": "routine_bundles_v1",
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_size": "large",
@@ -141,6 +133,65 @@
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
+      }
+    },
+    "formula": {
+      "type": "pdp-formula",
+      "settings": {
+        "heading": "Why this formula",
+        "subheading": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "routine-bundles": {
+      "type": "pdp-routine-bundles",
+      "blocks": {
+        "morning": {
+          "type": "routine_bundle",
+          "settings": {
+            "title": "Morning Defense System",
+            "excerpt": "<p>Start your day with the complete four-step system. Add all four products to your cart in one click and save 10%.<\/p>",
+            "asset_image": "routine-morning-1.png",
+            "bundle_products": [
+              "balancing-skin-cleanser-for-all-skin-types",
+              "gentle-toner",
+              "illuminating-daily-serum-with-vitamin-c",
+              "multi-peptide-moisture-creme"
+            ],
+            "discount_percentage": 10,
+            "button_label": "Add Bundle (10% off)",
+            "experience_version": "morning_defense_bundle_v1"
+          }
+        },
+        "evening": {
+          "type": "routine_bundle",
+          "settings": {
+            "title": "Evening Defense System",
+            "excerpt": "<p>End your day with the complete four-step system. Add all four products to your cart in one click and save 10%.<\/p>",
+            "asset_image": "routine-evening-1.png",
+            "bundle_products": [
+              "gentle-cleansing-milk",
+              "gentle-toner",
+              "ha-peptide-eye-creme",
+              "multi-peptide-moisture-creme"
+            ],
+            "discount_percentage": 10,
+            "button_label": "Add Bundle (10% off)",
+            "experience_version": "evening_defense_bundle_v1"
+          }
+        }
+      },
+      "block_order": [
+        "morning",
+        "evening"
+      ],
+      "settings": {
+        "title": "Build Your Routine",
+        "subheading": "Two complete four-step systems, morning and evening, bundled together in one click for 10% off.",
+        "padding_top": 36,
+        "padding_bottom": 52
       }
     },
     "1777831556ef440bf8": {
@@ -198,6 +249,8 @@
   },
   "order": [
     "main",
+    "formula",
+    "routine-bundles",
     "1777831556ef440bf8",
     "related-products",
     "commercial-video"

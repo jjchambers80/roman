@@ -1,0 +1,27 @@
+{
+  "id": "2026-07-20-rating-clickable-wrapper",
+  "section": "Judge.me star rating above product title — clickable wrapper",
+  "scope": "all-pdps",
+  "commit_message": "feat(pdp): make rating block a single clickable wrapper",
+  "acceptance_criteria": [
+    "The entire rating row (stars and review count) is one clickable element, not a nested anchor-in-anchor",
+    "Clicking anywhere in the rating row smooth-scrolls the Judge.me review widget section into view accounting for the sticky header",
+    "No change to visual presentation from the previously released rating block"
+  ],
+  "theme_files": [
+    "sections/main-product.liquid",
+    "assets/component-rating.css"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com?preview_theme_id=189301457178",
+    "approved_by": "jjchambers80",
+    "approved_at": "2026-07-19T23:20:00-04:00",
+    "file_digest": "7f790737a0b58c7edf40aca60bd6771ed77f00e99ccf28d15ee2716e060e8e7e"
+  },
+  "production_release": {
+    "released_at": "2026-07-20T13:40:56.050Z",
+    "target": "live",
+    "file_digest": "7f790737a0b58c7edf40aca60bd6771ed77f00e99ccf28d15ee2716e060e8e7e"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "2026-07-20-rating-scroll-target-fix",
+  "section": "Judge.me star rating above product title — scroll-to-reviews target fix",
+  "scope": "all-pdps",
+  "commit_message": "fix(pdp): scroll rating block clicks to reviews section via correct DOM id",
+  "acceptance_criteria": [
+    "Clicking the stars or the 'X Reviews' text above the product title smooth-scrolls the page to the Judge.me customer reviews section",
+    "Anchor href resolves to the real rendered section id (template--<id>__1777831556ef440bf8), not the bare template key",
+    "No visual change to the rating block"
+  ],
+  "theme_files": [
+    "sections/main-product.liquid"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com?preview_theme_id=189301457178",
+    "approved_by": "jjchambers80",
+    "approved_at": "2026-07-20T23:25:00-04:00",
+    "file_digest": "b80a3b6209d0e9ec952daac8704cabe6e295f1cb9ffb35e0f4f804e3514319b5"
+  },
+  "production_release": {
+    "released_at": "2026-07-21T03:24:15.187Z",
+    "target": "live",
+    "file_digest": "b80a3b6209d0e9ec952daac8704cabe6e295f1cb9ffb35e0f4f804e3514319b5"
+  }
+}

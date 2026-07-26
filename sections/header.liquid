@@ -399,6 +399,18 @@
     "@context": "http://schema.org",
     "@type": "Organization",
     "name": {{ shop.name | json }},
+    "description": "Clinical skincare by a CIDESCO-certified esthetician with 30+ years of spa expertise. Peptide-powered serums, hyaluronic acid moisturizers, and vitamin C formulas for visible results.",
+    "url": {{ request.origin | json }},
+    "foundingDate": "2020",
+    "areaServed": "US",
+    "knowsAbout": [
+      "peptide serum for wrinkles",
+      "hyaluronic acid moisturizer",
+      "vitamin C serum",
+      "anti-aging skincare",
+      "clinical esthetics",
+      "fine lines treatment"
+    ],
     {% if settings.logo %}
       "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
     {% endif %}
@@ -412,8 +424,7 @@
       {{ settings.social_snapchat_link | json }},
       {{ settings.social_youtube_link | json }},
       {{ settings.social_vimeo_link | json }}
-    ],
-    "url": {{ request.origin | append: page.url | json }}
+    ]
   }
 </script>
 

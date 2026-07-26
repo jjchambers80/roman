@@ -556,26 +556,16 @@
                       </header>
                       <div class="product-guarantee-modal__body rte">
                         <p class="product-guarantee-modal__lead">
-                          Skincare takes consistency—and the right fit. We want you to have time to try Roman Skin with confidence.
+                          We want you to try Roman Skin with confidence. If a product isn't right for you, contact Customer Care within 60 days of delivery. Opened products qualify if 50% or more remains.
                         </p>
+                        <h3>How it works</h3>
                         <p>
-                          If a product purchased directly from RomanSkinCare.com is not right for you, contact Customer Care within 60 days of delivery. Opened products are eligible when at least 50% of the product remains.
+                          Contact us with your order number within 60 days. We'll send return instructions — ship within 14 days. Once received and approved, we'll refund your original payment method.
                         </p>
-                        <h3>How the promise works</h3>
-                        <ol>
-                          <li>Contact us within 60 days of delivery with your order number and the product you would like to return.</li>
-                          <li>We will provide return authorization and instructions. Ship the product within 14 days of authorization.</li>
-                          <li>After the return is received and approved, we will refund the product price to the original payment method.</li>
-                        </ol>
                         <h3>Good to know</h3>
-                        <ul>
-                          <li>Limited to one satisfaction return per product, per household.</li>
-                          <li>Sets and bundles must be returned together; partial sets are not eligible.</li>
-                          <li>Original and return shipping charges are not refundable unless the item arrived damaged, defective, or incorrect.</li>
-                          <li>Gift cards and final-sale items are excluded.</li>
-                          <li>We monitor return activity and may limit or refuse requests involving suspected misuse, fraud, or excessive returns.</li>
-                        </ul>
-                        <a href="/pages/contact" class="button button--primary">Contact Customer Care</a>
+                        <p>
+                          One return per product, per household. Sets and bundles must be returned together. Shipping charges aren't refundable unless the item arrived damaged, defective, or incorrect. Gift cards and final-sale items are excluded.
+                        </p>
                       </div>
                     </div>
                   </modal-dialog>
@@ -641,6 +631,7 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                {%- render 'product-trust-badges', product: product -%}
                 {%- if shipping_details_block != blank -%}
                   {%- render 'product-shipping-details',
                     block: shipping_details_block,
@@ -649,7 +640,14 @@
                 {%- endif -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
-                  <div class="rating-wrapper">
+                  {%- liquid
+                    assign reviews_section_id = section.id | split: '__' | first | append: '__1777831556ef440bf8'
+                  -%}
+                  <a
+                    href="#shopify-section-{{ reviews_section_id }}"
+                    class="rating-wrapper"
+                    onclick="document.getElementById('shopify-section-{{ reviews_section_id }}')?.scrollIntoView({behavior: 'smooth', block: 'start'}); return false;"
+                  >
                     {% liquid
                       assign rating_decimal = 0
                       assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
@@ -676,14 +674,10 @@
                         {{ product.metafields.reviews.rating.value.scale_max -}}
                       </span>
                     </p>
-                    <p class="rating-count caption">
-                      <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
-                      <span class="visually-hidden">
-                        {{- product.metafields.reviews.rating_count }}
-                        {{ 'accessibility.total_reviews' | t -}}
-                      </span>
-                    </p>
-                  </div>
+                    <span class="rating-reviews-link caption">
+                      | {{ product.metafields.reviews.rating_count }} Reviews
+                    </span>
+                  </a>
                 {%- endif -%}
               {%- when 'complementary' -%}
                 <product-recommendations

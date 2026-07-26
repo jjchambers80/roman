@@ -1,0 +1,30 @@
+{
+  "id": "2026-07-19-routine-bundles",
+  "section": "Morning and evening routine bundles",
+  "scope": "all-pdps",
+  "commit_message": "feat(pdp): release routine bundles",
+  "acceptance_criteria": [
+    "The shared PDP renders Morning Defense System and Evening Defense System cards immediately after the main purchase area and before Judge.me reviews",
+    "The cards render in two columns on desktop and stack morning before evening on mobile without horizontal overflow",
+    "Each available bundle adds its four configured products to the cart in one action and refreshes the cart drawer",
+    "A bundle with any unavailable product renders a sold-out disabled action and cart errors are announced accessibly",
+    "The Add Bundle (10% off) claim matches an active Shopify discount verified in cart and checkout before production release"
+  ],
+  "theme_files": [
+    "templates/product.json",
+    "sections/pdp-routine-bundles.liquid",
+    "assets/section-routine-bundles.css"
+  ],
+  "development_approval": {
+    "theme_id": "189301457178",
+    "preview_url": "https://roman-skin.myshopify.com?preview_theme_id=189301457178",
+    "approved_by": "jjchambers80",
+    "approved_at": "2026-07-19T14:55:00-04:00",
+    "file_digest": "f6d4b6bb2e6e53bf779f203ee8dd669c732aadedacadfe93ce3d2c550841b141"
+  },
+  "production_release": {
+    "released_at": "2026-07-19T18:48:37.980Z",
+    "target": "live",
+    "file_digest": "f6d4b6bb2e6e53bf779f203ee8dd669c732aadedacadfe93ce3d2c550841b141"
+  }
+}

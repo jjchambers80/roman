@@ -84,9 +84,10 @@
     </div>
   {%- elsif section.settings.asset_image != blank -%}
     <div class="banner__media media{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- assign banner_alt = section.settings.asset_image_alt | default: shop.name -%}
       <img
         src="{{ section.settings.asset_image | asset_url }}"
-        alt="{{ shop.name | escape }}"
+        alt="{{ banner_alt | escape }}"
         class="{{ image_class }} banner__asset-image"
         sizes="{{ full_width }}"
         loading="eager"
@@ -199,6 +200,12 @@
       "id": "asset_image",
       "label": "Asset image filename",
       "info": "Use a theme asset image instead of uploaded image (e.g. hero.png)"
+    },
+    {
+      "type": "text",
+      "id": "asset_image_alt",
+      "label": "Asset image alt text",
+      "info": "Describe the banner image for screen readers and search engines."
     },
     {
       "type": "image_picker",

@@ -57,9 +57,10 @@
                 | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
               }}
             {%- elsif section.settings.asset_image != blank -%}
+              {%- assign asset_alt = section.settings.asset_image_alt | default: section.settings.asset_image | split: '.' | first | replace: '-', ' ' -%}
               <img
                 src="{{ section.settings.asset_image | asset_url }}"
-                alt="{{ section.settings.asset_image | split: '.' | first | replace: '-', ' ' }}"
+                alt="{{ asset_alt | escape }}"
                 loading="lazy"
                 width="1500"
                 height="1000"
@@ -136,6 +137,12 @@
       "id": "asset_image",
       "label": "Asset image filename",
       "info": "Use a theme asset filename (e.g. my-image.png). Overridden by image picker above."
+    },
+    {
+      "type": "text",
+      "id": "asset_image_alt",
+      "label": "Asset image alt text",
+      "info": "Describe the image for screen readers and search engines."
     },
     {
       "type": "select",
