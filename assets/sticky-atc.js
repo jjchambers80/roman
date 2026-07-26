@@ -82,6 +82,7 @@ if (!customElements.get('sticky-atc')) {
           const url = new URL(imageSrc, window.location.origin);
           url.searchParams.set('width', '120');
           this.image.src = url.href;
+          if (variant.featured_media?.alt) this.image.alt = variant.featured_media.alt;
         }
       }
     }
